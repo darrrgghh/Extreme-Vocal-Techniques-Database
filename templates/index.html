@@ -100,7 +100,7 @@
       background: #fff;
     }
 
-    th:nth-child(5), td:nth-child(5) {
+    th:nth-child(6), td:nth-child(6) {
       width: 80px;
       text-align: center;
     }
@@ -112,11 +112,13 @@
     }
   </style>
 </head>
-
 <body>
-
 <h1>The Database of Extreme Metal Vocal Techniques</h1>
-
+<p style="text-align: center; max-width: 900px; margin: 0 auto 20px; font-size: 1rem; color: #555;">
+  A curated database of extreme vocal techniques in metal music.
+  <br>Each entry includes information about the technique, artist, album, year, lyrics excerpt,<br> rhythmic and melodic representation, time signature, tempo, and Spotify popularity metrics.
+  <br>More details and full research: <a href="https://github.com/darrrgghh/Metal-Music" target="_blank">Metal Music Research on GitHub ↗</a>
+</p>
 <div class="filter-bar">
   <label>Filter by Technique:
     <select id="techniqueFilter" onchange="applyFilters()">
@@ -126,7 +128,6 @@
       {% endfor %}
     </select>
   </label>
-
   <label>Filter by Artist:
     <select id="artistFilter" onchange="applyFilters()">
       <option value="">All</option>
@@ -135,10 +136,8 @@
       {% endfor %}
     </select>
   </label>
-
   <span class="counter" id="recordCount"></span>
 </div>
-
 <table id="exampleTable">
   <thead>
   <tr>
@@ -147,9 +146,10 @@
     </th>
     <th>Technique</th>
     <th>Artist</th>
+    <th>Album</th>
     <th>Song</th>
     <th class="sortable">Year
-      <span class="sort-icon" data-col="4">▲▼</span>
+      <span class="sort-icon" data-col="5">▲▼</span>
     </th>
   </tr>
   </thead>
@@ -162,37 +162,37 @@
       <td>{{ item['Excerpt_ID'] }}</td>
       <td>{{ item['Technique'] }}</td>
       <td>{{ item['Artist'] }}</td>
+      <td>{{ item['Album'] if item['Album'] and item['Album'] != "nan" else "N/A" }}</td>
       <td>{{ item['Song'] }}</td>
       <td>{{ item['Year'] }}</td>
     </tr>
     <tr id="details{{ loop.index }}" class="details" style="display: none;">
-      <td colspan="5">
+      <td colspan="6">
         <div class="audio-player">
           <audio controls>
             <source src="/{{ item['MP3_Path'] }}" type="audio/mpeg">
             Your browser does not support the audio element.
           </audio>
         </div>
+
         {% if item['Spotify_URL'] %}
           <div>
             <a class="spotify-link" href="{{ item['Spotify_URL'] }}" target="_blank">Open in Spotify ↗</a>
           </div>
         {% endif %}
-        {% if item['Lyrics'] %}
-          <p><span class="label">Lyrics:</span> {{ item['Lyrics'] }}</p>
-        {% endif %}
-        {% if item['Rhythmic_representation'] %}
-          <p><span class="label">Rhythm:</span> {{ item['Rhythmic_representation'] }}</p>
-        {% endif %}
-        {% if item['Melodic_representation'] %}
-          <p><span class="label">Melody:</span> {{ item['Melodic_representation'] }}</p>
-        {% endif %}
+        <p><span class="label">Lyrics:</span> {{ item['Lyrics'] if item['Lyrics'] and item['Lyrics'] != "nan" else "N/A" }}</p>
+        <p><span class="label">Rhythm:</span> {{ item['Rhythmic_representation'] if item['Rhythmic_representation'] and item['Rhythmic_representation'] != "nan" else "N/A" }}</p>
+        <p><span class="label">Melody:</span> {{ item['Melodic_representation'] if item['Melodic_representation'] and item['Melodic_representation'] != "nan" else "N/A" }}</p>
+        <p><span class="label">Time Signature:</span> {{ item['Time_signature'] if item['Time_signature'] and item['Time_signature'] != "nan" else "N/A" }}</p>
+        <p><span class="label">Tempo (approx.):</span> {{ item['Tempo_(approx.)'] if item['Tempo_(approx.)'] and item['Tempo_(approx.)'] != "nan" else "N/A" }}</p>
+        <p><span class="label">Album Popularity:</span> {{ item['Album_Popularity'] if item['Album_Popularity'] and item['Album_Popularity'] != "nan" else "N/A" }}</p>
+        <p><span class="label">Song Popularity:</span> {{ item['Track_Popularity'] if item['Track_Popularity'] and item['Track_Popularity'] != "nan" else "N/A" }}</p>
+        <p><span class="label">Data collected:</span> {{ item['Date_collected'] if item['Date_collected'] and item['Date_collected'] != "nan" else "N/A" }}</p>
       </td>
     </tr>
   {% endfor %}
   </tbody>
 </table>
-
 <script>
   let sortDirection = 1;
   let lastSortedCol = null;
@@ -236,7 +236,7 @@
       let aVal = a.row.cells[colIndex].innerText.trim();
       let bVal = b.row.cells[colIndex].innerText.trim();
 
-      if (colIndex === 4) {
+      if (colIndex === 5) {
         aVal = parseInt(aVal) || 0;
         bVal = parseInt(bVal) || 0;
         return (aVal - bVal) * sortDirection;
@@ -275,6 +275,5 @@
     });
   };
 </script>
-
 </body>
 </html>
