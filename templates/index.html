@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Database of Extreme Metal Vocal Techniques</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 30px auto;
+      max-width: 1200px;
+      background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background-color: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    th, td {
+      border-bottom: 1px solid #eee;
+      padding: 10px 14px;
+      text-align: left;
+    }
+
+    thead {
+      background-color: #f1f3f5;
+      height: 50px;
+    }
+
+    th.sortable {
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    .sort-icon {
+      font-size: 12px;
+      margin-left: 6px;
+      cursor: pointer;
+      color: #666;
+    }
+
+    tr.data-row {
+      line-height: 1.4;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    tr.data-row:hover {
+      background-color: #f8f9fa;
+    }
+
+    .details td {
+      padding: 12px;
+      background-color: #fdfdfd;
+      border-radius: 0 0 12px 12px;
+    }
+
+    .audio-player {
+      margin-top: 8px;
+    }
+
+    .spotify-link {
+      display: inline-block;
+      margin-top: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      color: #1DB954;
+    }
+
+    .label {
+      font-weight: 600;
+    }
+
+    .filter-bar {
+      margin-bottom: 20px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+    }
+
+    select {
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      background: #fff;
+    }
+
+    th:nth-child(5), td:nth-child(5) {
+      width: 80px;
+      text-align: center;
+    }
+
+    .counter {
+      margin-left: 20px;
+      font-weight: 600;
+      color: #555;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>The Database of Extreme Metal Vocal Techniques</h1>
+
+<div class="filter-bar">
+  <label>Filter by Technique:
+    <select id="techniqueFilter" onchange="applyFilters()">
+      <option value="">All</option>
+      {% for technique in excerpts | map(attribute='Technique') | unique | sort %}
+        <option value="{{ technique }}">{{ technique }}</option>
+      {% endfor %}
+    </select>
+  </label>
+
+  <label>Filter by Artist:
+    <select id="artistFilter" onchange="applyFilters()">
+      <option value="">All</option>
+      {% for artist in excerpts | map(attribute='Artist') | unique | sort %}
+        <option value="{{ artist }}">{{ artist }}</option>
+      {% endfor %}
+    </select>
+  </label>
+
+  <span class="counter" id="recordCount"></span>
+</div>
+
+<table id="exampleTable">
+  <thead>
+  <tr>
+    <th class="sortable">Excerpt ID
+      <span class="sort-icon" data-col="0">▲▼</span>
+    </th>
+    <th>Technique</th>
+    <th>Artist</th>
+    <th>Song</th>
+    <th class="sortable">Year
+      <span class="sort-icon" data-col="4">▲▼</span>
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+  {% for item in excerpts %}
+    <tr class="data-row"
+        data-technique="{{ item['Technique'] }}"
+        data-artist="{{ item['Artist'] }}"
+        data-detail-id="details{{ loop.index }}">
+      <td>{{ item['Excerpt_ID'] }}</td>
+      <td>{{ item['Technique'] }}</td>
+      <td>{{ item['Artist'] }}</td>
+      <td>{{ item['Song'] }}</td>
+      <td>{{ item['Year'] }}</td>
+    </tr>
+    <tr id="details{{ loop.index }}" class="details" style="display: none;">
+      <td colspan="5">
+        <div class="audio-player">
+          <audio controls>
+            <source src="/{{ item['MP3_Path'] }}" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+        {% if item['Spotify_URL'] %}
+          <div>
+            <a class="spotify-link" href="{{ item['Spotify_URL'] }}" target="_blank">Open in Spotify ↗</a>
+          </div>
+        {% endif %}
+        {% if item['Lyrics'] %}
+          <p><span class="label">Lyrics:</span> {{ item['Lyrics'] }}</p>
+        {% endif %}
+        {% if item['Rhythmic_representation'] %}
+          <p><span class="label">Rhythm:</span> {{ item['Rhythmic_representation'] }}</p>
+        {% endif %}
+        {% if item['Melodic_representation'] %}
+          <p><span class="label">Melody:</span> {{ item['Melodic_representation'] }}</p>
+        {% endif %}
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+<script>
+  let sortDirection = 1;
+  let lastSortedCol = null;
+
+  function updateCounter() {
+    const total = document.querySelectorAll(".data-row").length;
+    const visible = Array.from(document.querySelectorAll(".data-row"))
+      .filter(row => row.style.display !== "none").length;
+    document.getElementById("recordCount").innerText = `${visible} / ${total} shown`;
+  }
+
+  function applyFilters() {
+    const tech = document.getElementById("techniqueFilter").value.toLowerCase();
+    const artist = document.getElementById("artistFilter").value.toLowerCase();
+
+    document.querySelectorAll(".data-row").forEach(row => {
+      const rowTech = row.dataset.technique.toLowerCase();
+      const rowArtist = row.dataset.artist.toLowerCase();
+      const match = (!tech || rowTech === tech) && (!artist || rowArtist === artist);
+      row.style.display = match ? "" : "none";
+      const detailRow = document.getElementById(row.dataset.detailId);
+      if (detailRow) detailRow.style.display = "none";
+    });
+
+    updateCounter();
+  }
+
+  function sortTable(colIndex) {
+    const tbody = document.querySelector("#exampleTable tbody");
+    const rows = Array.from(tbody.querySelectorAll(".data-row"))
+      .map(row => ({ row, detail: document.getElementById(row.dataset.detailId) }));
+
+    if (lastSortedCol === colIndex) {
+      sortDirection *= -1;
+    } else {
+      sortDirection = 1;
+      lastSortedCol = colIndex;
+    }
+
+    rows.sort((a, b) => {
+      let aVal = a.row.cells[colIndex].innerText.trim();
+      let bVal = b.row.cells[colIndex].innerText.trim();
+
+      if (colIndex === 4) {
+        aVal = parseInt(aVal) || 0;
+        bVal = parseInt(bVal) || 0;
+        return (aVal - bVal) * sortDirection;
+      } else {
+        return aVal.localeCompare(bVal) * sortDirection;
+      }
+    });
+
+    rows.forEach(pair => {
+      tbody.appendChild(pair.row);
+      tbody.appendChild(pair.detail);
+    });
+  }
+
+  function setupRowEvents() {
+    const tbody = document.querySelector("#exampleTable tbody");
+
+    tbody.addEventListener("click", (e) => {
+      const row = e.target.closest(".data-row");
+      if (row && row.style.display !== "none") {
+        const detail = document.getElementById(row.dataset.detailId);
+        detail.style.display = detail.style.display === "table-row" ? "none" : "table-row";
+      }
+    });
+  }
+
+  window.onload = function() {
+    setupRowEvents();
+    updateCounter();
+
+    document.querySelectorAll(".sort-icon").forEach(icon => {
+      icon.addEventListener("click", (e) => {
+        e.stopPropagation();
+        sortTable(parseInt(icon.dataset.col));
+      });
+    });
+  };
+</script>
+
+</body>
+</html>
