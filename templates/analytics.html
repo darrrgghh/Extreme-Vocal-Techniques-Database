@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Analytics - Extreme Vocal Techniques</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+      font-family: 'Inter', sans-serif;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+    }
+    h1 {
+      text-align: center;
+      margin: 20px 0 10px;
+    }
+    .controls {
+      display: flex;
+      gap: 10px;
+      margin: 10px auto;
+      justify-content: center;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    #plot {
+      flex: 1;
+      width: 95vw;
+    }
+    .back-button {
+      display: inline-block;
+      padding: 10px 18px;
+      background-color: #e0e0e0;
+      color: #333;
+      font-weight: 600;
+      border-radius: 8px;
+      text-decoration: none;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: background-color 0.2s;
+      text-align: center;
+    }
+    .back-button:hover {
+      background-color: #d4d4d4;
+    }
+    .back-arrow {
+      color: #555;
+      margin-right: 6px;
+    }
+  </style>
+</head>
+<body>
+<h1>Analytics & Correlations</h1>
+
+<div class="controls">
+  <a href="/" class="back-button"><span class="back-arrow">⬅</span>Back to Database</a>
+  <label>X axis:
+    <select id="xSelect"></select>
+  </label>
+  <label>Y axis:
+    <select id="ySelect"></select>
+  </label>
+  <label>Chart Type:
+    <select id="chartType" onchange="updateDropdowns()">
+      <option value="scatter">Scatter</option>
+      <option value="bar">Bar</option>
+    </select>
+  </label>
+  <button onclick="drawChart()">Build Chart</button>
+</div>
+
+<div id="plot"></div>
+
+<script>
+  let data = [];
+  let colorMap = {};
+  let numericColumns = {{ numeric_columns|tojson }};
+  let categoricalColumns = {{ categorical_columns|tojson }};
+
+  fetch("/data.json")
+    .then(response => response.json())
+    .then(json => {
+      data = json;
+      buildColorMap();
+      updateDropdowns();
+    });
+
+  function buildColorMap() {
+    const uniqueTechniques = [...new Set(data.map(d => d.Technique))];
+    const uniqueArtists = [...new Set(data.map(d => d.Artist))];
+    const uniqueAlbums = [...new Set(data.map(d => d.Album))];
+
+    const palette = ["#ff8a65", "#ba68c8", "#4db6ac", "#f06292", "#9575cd", "#4fc3f7", "#81c784"];
+    let i = 0;
+
+    uniqueTechniques.forEach(t => colorMap[t] = palette[i++ % palette.length]);
+    uniqueArtists.forEach(a => colorMap[a] = palette[i++ % palette.length]);
+    uniqueAlbums.forEach(al => colorMap[al] = palette[i++ % palette.length]);
+  }
+
+  function updateDropdowns() {
+    const chartType = document.getElementById("chartType").value;
+    let allowedX = [];
+    let allowedY = [];
+
+    if (chartType === "scatter") {
+      allowedX = [...numericColumns, ...categoricalColumns];
+      allowedY = [...numericColumns, ...categoricalColumns];
+    } else if (chartType === "bar") {
+      allowedX = categoricalColumns;
+      allowedY = numericColumns;
+    }
+
+    fillDropdown("xSelect", allowedX);
+    fillDropdown("ySelect", allowedY);
+  }
+
+  function fillDropdown(selectId, options) {
+    const select = document.getElementById(selectId);
+    select.innerHTML = "";
+    options.forEach(opt => {
+      const option = document.createElement("option");
+      option.value = opt;
+      option.textContent = opt;
+      select.appendChild(option);
+    });
+  }
+
+  function drawChart() {
+    const xVar = document.getElementById("xSelect").value;
+    const yVar = document.getElementById("ySelect").value;
+    const chartType = document.getElementById("chartType").value;
+
+    let xData = data.map(d => d[xVar]);
+    let yData = yVar ? data.map(d => d[yVar]) : null;
+    let textData = data.map(d =>
+      `Technique: ${d.Technique}<br>Artist: ${d.Artist}<br>Album: ${d.Album}<br>Song: ${d.Song}<br>${xVar}: ${d[xVar]}${yVar ? "<br>" + yVar + ": " + d[yVar] : ""}`
+    );
+
+    let colorData = data.map(d =>
+      colorMap[d.Technique] || colorMap[d.Artist] || colorMap[d.Album] || "#888"
+    );
+
+    let trace;
+    if (chartType === "scatter") {
+      trace = {
+        x: xData,
+        y: yData,
+        mode: 'markers',
+        type: 'scatter',
+        text: textData,
+        hoverinfo: 'text',
+        marker: { color: colorData, size: 8 }
+      };
+    } else if (chartType === "bar") {
+      let counts = {};
+      xData.forEach((v, i) => {
+        counts[v] = (counts[v] || 0) + Number(yData[i]) || 0;
+      });
+      trace = {
+        x: Object.keys(counts),
+        y: Object.values(counts),
+        type: 'bar',
+        marker: { color: Object.keys(counts).map(k => colorMap[k] || "#888") }
+      };
+    }
+
+    const layout = {
+      title: `${chartType.charAt(0).toUpperCase() + chartType.slice(1)} Chart`,
+      autosize: true,
+      margin: { t: 50, b: 80, l: 100, r: 50 },
+      xaxis: { title: xVar, tickangle: 30, tickfont: { size: 12 }, automargin: true },
+      yaxis: { title: yVar, tickfont: { size: 12 }, automargin: true }
+    };
+
+    const config = {
+      responsive: true,
+      scrollZoom: true,
+      displayModeBar: true
+    };
+
+    Plotly.newPlot('plot', [trace], layout, config);
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+Unpopularity Export for Artist: Morbid Angel
+Date/Time (Local): 2025-03-16 16:02:48 Eastern Daylight Time
+Source: Spotify API
+The most popular song: Immortal Rites
+Stream Count: 9432887
+
+Album: Abominations of Desolation (1991), Popularity: 17
+   Track: Abominations, Popularity: 10, Stream Count: 63524
+   Track: The Gate / Lord of All Fevers, Popularity: 11, Stream Count: 77074
+   Track: Hell Spawn, Popularity: 11, Stream Count: 76662
+
+Album: Heretic (2003), Popularity: 24
+   Track: Stricken Arise, Popularity: 15, Stream Count: 150308
+   Track: Within Thy Enemy, Popularity: 12, Stream Count: 90190
+   Track: God Of Our Own Divinity, Popularity: 13, Stream Count: 112616
+
+Album: Kingdoms Disdained (2017), Popularity: 25
+   Track: From the Hand of Kings, Popularity: 14, Stream Count: 216890
+   Track: The Fall of Idols, Popularity: 14, Stream Count: 201836
+   Track: For No Master, Popularity: 15, Stream Count: 266232

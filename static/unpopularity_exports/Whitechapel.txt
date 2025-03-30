@@ -1,0 +1,20 @@
+Unpopularity Export for Artist: Whitechapel
+Date/Time (Local): 2025-03-22 15:09:19 Eastern Daylight Time
+Source: Spotify API
+The most popular track: The Saw is the Law
+Stream Count: 28556529
+
+Album: A New Era Of Corruption (2010), Popularity: 36
+   Track: A Future Corrupt, Popularity: 24, Stream Count: 602149
+   Track: Single File to Dehumanization, Popularity: 24, Stream Count: 587604
+   Track: Prayer of Mockery, Popularity: 25, Stream Count: 671134
+
+Album: Whitechapel (2012), Popularity: 38
+   Track: Faces, Popularity: 26, Stream Count: 1274691
+   Track: Dead Silence, Popularity: 26, Stream Count: 1132661
+   Track: The Night Remains, Popularity: 29, Stream Count: 1468047
+
+Album: Somatic Defilement (2007), Popularity: 39
+   Track: Festering Fiesta, Popularity: 26, Stream Count: 688572
+   Track: Articulo Mortis, Popularity: 27, Stream Count: 688092
+   Track: Alone in the Morgue, Popularity: 30, Stream Count: 1126940

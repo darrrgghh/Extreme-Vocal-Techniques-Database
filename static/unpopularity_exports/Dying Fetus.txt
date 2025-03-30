@@ -1,0 +1,15 @@
+Unpopularity Export for Artist: Dying Fetus
+Date/Time (Local): 2025-03-19 20:22:13 Eastern Daylight Time
+Source: Spotify API
+The most popular song: Subjected to a Beating
+Stream Count: 10367030
+
+Album: Killing on Adrenaline (2022), Popularity: 20
+   Track: We Are Your Enemy, Popularity: 14, Stream Count: 349229
+   Track: Absolute Defiance, Popularity: 14, Stream Count: 282879
+   Track: Judgement Day, Popularity: 14, Stream Count: 484210
+
+Album: War of Attrition (2007), Popularity: 25
+   Track: The Ancient Rivalry, Popularity: 15, Stream Count: 143799
+   Track: Parasites of Catastrophe, Popularity: 16, Stream Count: 134607
+   Track: Obsolete Deterrence, Popularity: 16, Stream Count: 130603

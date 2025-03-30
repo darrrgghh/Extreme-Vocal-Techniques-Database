@@ -1,0 +1,20 @@
+Unpopularity Export for Artist: Trivium
+Date/Time (Local): 2025-03-22 15:05:58 Eastern Daylight Time
+Source: Spotify API
+The most popular track: The Heart from Your Hate
+Stream Count: 97879084
+
+Album: Ember to Inferno: Ab Initio (2016), Popularity: 31
+   Track: Thrust - Ruber, Popularity: 16, Stream Count: 401029
+   Track: Fugue - Caeruleus, Popularity: 17, Stream Count: 384619
+   Track: The Deceived - Flavus, Popularity: 19, Stream Count: 423655
+
+Album: In Waves (2011), Popularity: 38
+   Track: Of All These Yesterdays, Popularity: 26, Stream Count: 3973370
+   Track: Forsake Not the Dream, Popularity: 27, Stream Count: 5829797
+   Track: Caustic Are the Ties That Bind, Popularity: 27, Stream Count: 5219688
+
+Album: Shogun (2008), Popularity: 38
+   Track: He Who Spawned the Furies, Popularity: 27, Stream Count: 3357731
+   Track: The Calamity, Popularity: 28, Stream Count: 4008440
+   Track: Of Prometheus and the Crucifix, Popularity: 28, Stream Count: 4252474

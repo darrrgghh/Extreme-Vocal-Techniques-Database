@@ -1,0 +1,20 @@
+Unpopularity Export for Artist: Cradle Of Filth
+Date/Time (Local): 2025-03-22 13:57:12 Eastern Daylight Time
+Source: Spotify API
+The most popular song: Nynphetamine Fix
+Stream Count: 34417362
+
+Album: The Screaming Of The Valkyries (2025), Popularity: 18
+   Track: Malignant Perfection, Popularity: 10, Stream Count: 960194
+   Track: White Hellebore, Popularity: 13, Stream Count: 223978
+
+Album: The Principle Of Evil Made Flesh (2012), Popularity: 20 
+   Track: A Crescendo Of Passion Bleeding, Popularity: 11, Stream Count: 279185
+   Track: Summer Dying Fast, Popularity: 12, Stream Count: 337301
+   Track: Of Mist And Midnight Skies, Popularity: 12, Stream Count: 330436
+
+Album: Thornography (2006), Popularity: 26
+   Track: Foetus Of A New Day Kicking, Popularity: 13, Stream Count: 2456287
+   Track: Lovesick for Mina, Popularity: 17, Stream Count: 553564
+   Track: Libertina Grimm, Popularity: 18, Stream Count: 632870
+   Track: I Am the Thorn, Popularity: 18, Stream Count: 655581

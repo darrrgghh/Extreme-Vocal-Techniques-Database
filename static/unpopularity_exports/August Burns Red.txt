@@ -1,0 +1,20 @@
+Unpopularity Export for Artist: August Burns Red
+Date/Time (Local): 2025-03-22 15:10:15 Eastern Daylight Time
+Source: Spotify API
+The most popular track: White Washed
+Stream Count: 33272376
+
+Album: Thrill Seeker (2005), Popularity: 30
+   Track: A Wish Full of Dreams, Popularity: 20, Stream Count: 550870
+   Track: The Reflective Property, Popularity: 21, Stream Count: 593415
+   Track: Too Late for Roses, Popularity: 22, Stream Count: 738899
+
+Album: Rescue & Restore (2013), Popularity: 35
+   Track: Sincerity, Popularity: 23, Stream Count: 1454137
+   Track: Treatment, Popularity: 24, Stream Count: 1822506
+   Track: Creative Captivity, Popularity: 24, Stream Count: 1700074
+
+Album: Found In Far Away Places (2015), Popularity: 37
+   Track: Twenty-One Grams, Popularity: 20, Stream Count: 2032553
+   Track: Separating The Seas, Popularity: 21, Stream Count: 2646700
+   Track: Broken Promises, Popularity: 21, Stream Count: 2550756

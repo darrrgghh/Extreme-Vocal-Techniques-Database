@@ -1,0 +1,20 @@
+Unpopularity Export for Artist: Suicide Silence
+Date/Time (Local): 2025-03-16 21:48:01 Eastern Daylight Time
+Source: Spotify API
+The most popular song: You Only Live Once
+Stream Count: 59446058
+
+Album: Suicide Silence (2017), Popularity: 24 
+   Track: Don't Be Careful You Might Hurt Yourself, Popularity: 13, Stream Count: 370166
+   Track: Run, Popularity: 14, Stream Count: 387317
+   Track: Hold Me up, Hold Me Down, Popularity: 15, Stream Count: 568557
+
+Album: No Time to Bleed (2009), Popularity: 44 
+   Track: Your Creations, Popularity: 28, Stream Count: 1275056
+   Track: Something Invisible, Popularity: 29, Stream Count: 1629500
+   Track: Suffer, Popularity: 30, Stream Count: 1598871
+
+Album: The Black Crown (2012), Popularity: 49
+   Track: Cancerous Skies, Popularity: 27, Stream Count: 1573164
+   Track: Cross-Eyed Catastrophe, Popularity: 29, Stream Count: 2022297 
+   Track: Smashed, Popularity: 30, Stream Count: 2178704

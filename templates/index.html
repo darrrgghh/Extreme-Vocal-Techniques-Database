@@ -110,6 +110,23 @@
       font-weight: 600;
       color: #555;
     }
+
+    .analytics-button {
+      display: inline-block;
+      padding: 8px 16px;
+      background-color: #e0e0e0;
+      color: #333;
+      font-weight: 600;
+      border-radius: 8px;
+      text-decoration: none;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: background-color 0.2s;
+      margin-right: 12px;
+    }
+
+    .analytics-button:hover {
+      background-color: #d4d4d4;
+    }
   </style>
 </head>
 <body>
@@ -119,7 +136,9 @@
   <br>Each entry includes information about the technique, artist, album, year, lyrics excerpt,<br> rhythmic and melodic representation, time signature, tempo, and Spotify popularity metrics.
   <br>More details and full research: <a href="https://github.com/darrrgghh/Metal-Music" target="_blank">Metal Music Research on GitHub ↗</a>
 </p>
+
 <div class="filter-bar">
+  <a href="/analytics" class="analytics-button">Explore Analytics</a>
   <label>Filter by Technique:
     <select id="techniqueFilter" onchange="applyFilters()">
       <option value="">All</option>
@@ -138,6 +157,7 @@
   </label>
   <span class="counter" id="recordCount"></span>
 </div>
+
 <table id="exampleTable">
   <thead>
   <tr>
@@ -191,12 +211,14 @@
         <p><span class="label">Tempo (approx.):</span> {{ item['Tempo_(approx.)'] if item['Tempo_(approx.)'] and item['Tempo_(approx.)'] != "nan" else "N/A" }}</p>
         <p><span class="label">Album Popularity:</span> {{ item['Album_Popularity'] if item['Album_Popularity'] and item['Album_Popularity'] != "nan" else "N/A" }}</p>
         <p><span class="label">Song Popularity:</span> {{ item['Track_Popularity'] if item['Track_Popularity'] and item['Track_Popularity'] != "nan" else "N/A" }}</p>
-        <p><span class="label">Popularity metrics collected on:</span> {{ item['Date_collected'] if item['Date_collected'] and item['Date_collected'] != "nan" else "N/A" }}</p>
+        <p><span class="label">Stream Count:</span> {{ item['Stream_Count'] }}</p>
+        <p><span class="label">Popularity metrics & streams collected on:</span> {{ item['Date_collected'] if item['Date_collected'] and item['Date_collected'] != "nan" else "N/A" }}</p>
       </td>
     </tr>
   {% endfor %}
   </tbody>
 </table>
+
 <script>
   let sortDirection = 1;
   let lastSortedCol = null;

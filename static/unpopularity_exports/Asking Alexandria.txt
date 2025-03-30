@@ -1,0 +1,20 @@
+Unpopularity Export for Artist: Asking Alexandria
+Date/Time (Local): 2025-03-22 15:07:08 Eastern Daylight Time
+Source: Spotify API
+The most popular track: Alone In A Room
+Stream Count: 129625001 
+
+Album: Asking Alexandria (2017), Popularity: 40
+   Track: Empire, Popularity: 26, Stream Count: 5660323
+   Track: I Am One, Popularity: 28, Stream Count: 7342024
+   Track: Room 138, Popularity: 28, Stream Count: 7255905
+
+Album: See What’s On The Inside (2021), Popularity: 47
+   Track: Fame, Popularity: 28, Stream Count: 1805124
+   Track: The Grey, Popularity: 29, Stream Count: 1997269
+   Track: Misery Loves Company, Popularity: 30, Stream Count: 
+
+Album: Where Do We Go From Here? (2023), Popularity: 50
+   Track: Feel, Popularity: 36, Stream Count: 1479535
+   Track: Holding On To Something More, Popularity: 36, Stream Count: 1429485
+   Track: Let The Dead Take Me, Popularity: 39, Stream Count: 1846802

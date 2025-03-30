@@ -1,0 +1,20 @@
+Unpopularity Export for Artist: Protest The Hero
+Date/Time (Local): 2025-03-22 15:08:49 Eastern Daylight Time
+Source: Spotify API
+The most popular track: Bloodmeat
+Stream Count: 7545611
+
+Album: Volition (2013), Popularity: 31
+   Track: Animal Bones, Popularity: 19, Stream Count: 1158002
+   Track: A Life Embossed, Popularity: 20, Stream Count: 1347914
+   Track: Underbite, Popularity: 20, Stream Count: 1374534
+
+Album: Scurrilous (2011), Popularity: 31
+   Track: Termites, Popularity: 21, Stream Count: 794536
+   Track: Tapestry, Popularity: 22, Stream Count: 1047606
+   Track: The Reign of Unending Terror, Popularity: 22, Stream Count: 814597
+
+Album: Palimpsest (2020), Popularity: 35
+   Track: Rivet, Popularity: 25, Stream Count: 760069
+   Track: Gardenias, Popularity: 26, Stream Count: 806186
+   Track: Reverie, Popularity: 26, Stream Count: 959865

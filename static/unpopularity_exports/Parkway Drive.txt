@@ -1,0 +1,20 @@
+Unpopularity Export for Artist: Parkway Drive
+Date/Time (Local): 2025-03-22 15:10:54 Eastern Daylight Time
+Source: Spotify API
+The most popular track: Prey
+Stream Count: 87868224
+
+Album: Killing With A Smile (2006), Popularity: 43
+   Track: Blackout, Popularity: 31, Stream Count: 2826403
+   Track: Picture Perfect, Pathetic, Popularity: 31, Stream Count: 2653177
+   Track: A Cold Day in Hell, Popularity: 32, Stream Count: 3306951
+
+Album: Deep Blue (2010), Popularity: 48
+   Track: Set To Destroy, Popularity: 32, Stream Count: 4513526
+   Track: Pressures, Popularity: 34, Stream Count: 4901077
+   Track: Hollow, Popularity: 34, Stream Count: 4761259
+
+Album: Atlas (2012), Popularity: 50
+   Track: Snake Oil and Holy Water, Popularity: 31, Stream Count: 3686700
+   Track: Atlas, Popularity: 33, Stream Count: 5116100
+   Track: Sleight of Hand, Popularity: 33, Stream Count: 5044312

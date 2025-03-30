@@ -1,0 +1,20 @@
+Unpopularity Export for Artist: Job For A Cowboy
+Date/Time (Local): 2025-03-22 15:09:47 Eastern Daylight Time
+Source: Spotify API
+The most popular track: Entombment of a Machine
+Stream Count: 13485661
+
+Album: Ruination (2009), Popularity: 28
+   Track: To Detonate And Exterminate, Popularity: 17, Stream Count: 295175
+   Track: Butchering The Enlightened, Popularity: 18, Stream Count: 334335
+   Track: Lords Of Chaos, Popularity: 18, Stream Count: 359658
+
+Album: Genesis (2008), Popularity: 31
+   Track: Coalescing Prophecy, Popularity: 20, Stream Count: 361950
+   Track: Strings Of Hypocrisy, Popularity: 21, Stream Count: 482563
+   Track: Martyrdom Unsealed, Popularity: 22, Stream Count: 441565
+
+Album: Sun Eater (2014), Popularity: 32
+   Track: The Celestial Antidote, Popularity: 21, Stream Count: 547978
+   Track: Encircled by Mirrors, Popularity: 21, Stream Count: 533424
+   Track: Buried Monuments, Popularity: 24, Stream Count: 739027

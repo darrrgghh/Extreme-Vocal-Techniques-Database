@@ -1,0 +1,20 @@
+Unpopularity Export for Artist: Northlane
+Date/Time (Local): 2025-03-22 15:11:20 Eastern Daylight Time
+Source: Spotify API
+The most popular track: Quantum Flux
+Stream Count: 25559729
+
+Album: Mesmer (2017), Popularity: 34
+   Track: Paragon, Popularity: 23, Stream Count: 1560982
+   Track: Render, Popularity: 24, Stream Count: 1996265
+   Track: Zero-One, Popularity: 25, Stream Count: 1933175
+
+Album: Node (2015), Popularity: 34
+   Track: Ra, Popularity: 24, Stream Count: 1733984
+   Track: Animate, Popularity: 24, Stream Count: 1775661
+   Track: Weightless, Popularity: 25, Stream Count: 1618370
+
+Album: Discoveries (2011), Popularity: 35
+   Track: Solitude, Popularity: 23, Stream Count: 939120
+   Track: Metamorphosis, Popularity: 24, Stream Count: 1234225
+   Track: Corruption, Popularity: 25, Stream Count: 1260163

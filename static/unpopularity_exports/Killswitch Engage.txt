@@ -1,0 +1,20 @@
+Unpopularity Export for Artist: Killswitch Engage
+Date/Time (Local): 2025-03-22 15:06:38 Eastern Daylight Time
+Source: Spotify API
+The most popular track: My Curse
+Stream Count: 247881946
+
+Album: Disarm the Descent (2013), Popularity: 36
+   Track: The Call, Popularity: 25, Stream Count: 3912961
+   Track: All We Have, Popularity: 26, Stream Count: 5881452
+   Track: Time Will Not Remain, Popularity: 26, Stream Count: 4323231
+
+Album: As Daylight Dies (2007), Popularity: 39
+   Track: Desperate Times, Popularity: 27, Stream Count: 5885757
+   Track: For You, Popularity: 28, Stream Count: 8283899
+   Track: Still Beats Your Name, Popularity: 28, Stream Count: 8036395
+
+Album: The End of Heartache (2004), Popularity: 46
+   Track: Hope Is..., Popularity: 29, Stream Count: 3282157
+   Track: Wasted Sacrifice, Popularity: 29, Stream Count: 3353498
+   Track: World Ablaze, Popularity: 30, Stream Count: 3855544
