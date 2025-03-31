@@ -4,59 +4,17 @@ import os
 import re
 
 app = Flask(__name__)
-
 DATA_FILE = "1excerpts_database.tsv"
 
-# Функции сбора данных (оставляем как есть)
-def get_stream_count(artist, song_title):
-    filename = f"static/unpopularity_exports/{artist}.txt"
-    if not os.path.exists(filename):
-        return "N/A"
-    try:
-        with open(filename, "r", encoding="utf-8") as f:
-            lines = f.readlines()
-    except Exception:
-        return "N/A"
-
-    for line in lines:
-        if line.strip().lower().startswith("track:") and song_title.lower() in line.lower():
-            match = re.search(r"Stream Count:\s*([\d,]+)", line)
-            if match:
-                return int(match.group(1).replace(",", ""))
-    return "N/A"
-
-def get_album_popularity(artist, album_title):
-    filename = f"static/unpopularity_exports/{artist}.txt"
-    if not os.path.exists(filename):
-        return "N/A"
-    try:
-        with open(filename, "r", encoding="utf-8") as f:
-            lines = f.readlines()
-    except Exception:
-        return "N/A"
-
-    for line in lines:
-        if line.strip().lower().startswith("album:") and album_title.lower() in line.lower():
-            match = re.search(r"Popularity:\s*(\d+)", line)
-            if match:
-                return int(match.group(1))
-    return "N/A"
-
-def get_top_track_stream_count(artist):
-    filename = f"static/unpopularity_exports/{artist}.txt"
-    if not os.path.exists(filename):
-        return "N/A"
-    try:
-        with open(filename, "r", encoding="utf-8") as f:
-            lines = f.readlines()
-    except Exception:
-        return "N/A"
-    for line in lines:
-        if line.strip().startswith("Stream Count:"):
-            match = re.search(r"Stream Count:\s*([\d,]+)", line)
-            if match:
-                return int(match.group(1).replace(",", ""))
-    return "N/A"
+def count_syllables(rhythmic_representation):
+    if rhythmic_representation == "N/A":
+        return 0
+    tokens = rhythmic_representation.strip().split()
+    count = 0
+    for t in tokens:
+        if not t.endswith('r') and not t.endswith('r.'):
+            count += 1
+    return count
 
 if os.path.exists(DATA_FILE):
     df = pd.read_csv(DATA_FILE, sep="\t", encoding="cp1252")
@@ -65,9 +23,8 @@ if os.path.exists(DATA_FILE):
 else:
     df = pd.DataFrame()
 
-df["Stream_Count"] = df.apply(lambda row: get_stream_count(row["Artist"], row["Song"]), axis=1)
-df["Album_Popularity"] = df.apply(lambda row: get_album_popularity(row["Artist"], row["Album"]), axis=1)
-df["Top_Track_Stream_Count"] = df.apply(lambda row: get_top_track_stream_count(row["Artist"]), axis=1)
+df["Year"] = pd.to_numeric(df["Year"], errors="coerce")
+df["Syllable_Count"] = df["Rhythmic_representation"].apply(count_syllables)
 
 @app.route("/")
 def index():
@@ -80,33 +37,37 @@ def vocal_techniques_popularity():
 
 @app.route("/extreme-vocal-techniques")
 def vocal_techniques():
-    return render_template("extreme-vocal-techniques.html")  # пока пустая
+    return render_template("extreme-vocal-techniques.html")
 
 @app.route("/extreme-vocal-only-stimuli")
 def vocal_stimuli():
-    return render_template("extreme-vocal-only-stimuli.html")  # пока пустая
+    return render_template("extreme-vocal-only-stimuli.html")
 
 @app.route("/analytics")
 def analytics():
     columns = [
-        "Technique", "Artist", "Album", "Year",
+        "Artist", "Technique", "Album", "Year",
         "Album_Popularity", "Track_Popularity",
-        "Stream_Count", "Top_Track_Stream_Count"
+        "Stream_Count", "Syllable_Count"
     ]
     numeric_columns = [
-        "Year", "Album_Popularity", "Track_Popularity",
-        "Stream_Count", "Top_Track_Stream_Count"
+        "Album_Popularity", "Track_Popularity", "Stream_Count",
+        "Syllable_Count", "Year"
     ]
-    categorical_columns = [
-        "Technique", "Artist", "Album"
-    ]
-    examples = df.to_dict(orient="records")
+    categorical_columns = ["Technique", "Artist"]
+
+    data = df.to_dict(orient="records")
+
+    year_min = int(df["Year"].min())
+    year_max = int(df["Year"].max())
+
     return render_template(
         "analytics.html",
         columns=columns,
-        data=examples,
+        data=data,
         numeric_columns=numeric_columns,
-        categorical_columns=categorical_columns
+        categorical_columns=categorical_columns,
+        year_range=[year_min, year_max]
     )
 
 @app.route("/about")

@@ -17,7 +17,8 @@
     }
 
     .content-area {
-      max-width: 1050px;
+      flex: 1;
+      max-width: 2000px;
       margin: 40px auto;
       display: flex;
       gap: 20px;
@@ -36,9 +37,9 @@
       padding: 8px 16px;
       background-color: #e0e0e0;
       color: #333;
-      width: 90px;
-    text-align: center;
       font-weight: 600;
+      width: 90px;
+      text-align: center;
       border-radius: 8px;
       text-decoration: none;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
@@ -61,7 +62,7 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       flex-direction: column;
       gap: 10px;
-      z-index: 200;
+      z-index: 999;
       min-width: 250px;
     }
 
@@ -80,10 +81,6 @@
 
     .table-container {
       flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
     }
 
     h1 {
@@ -113,11 +110,11 @@
 
     #plot {
       width: 95vw;
-      max-width: 1300px;
+      max-width: 1200px;
       height: 70vh;
-      margin: 0 auto;
-      position: relative;
+      margin: 20px auto;
       z-index: 1;
+      position: relative;
     }
 
     footer {
@@ -156,22 +153,19 @@
       <label>Y axis:
         <select id="ySelect"></select>
       </label>
-      <label>Chart Type:
-        <select id="chartType" onchange="updateDropdowns()">
-          <option value="scatter">Scatter</option>
-          <option value="bar">Bar</option>
-        </select>
-      </label>
       <button onclick="drawChart()">Build Chart</button>
     </div>
-
-    <div id="plot"></div>
   </div>
+</div>
+
+<div class="plot-area">
+  <div id="plot"></div>
 </div>
 
 <footer>
   © 2025 Alexey Voronin
 </footer>
+
 
 <script>
   function toggleMenu() {
@@ -201,28 +195,17 @@
   function buildColorMap() {
     const uniqueTechniques = [...new Set(data.map(d => d.Technique))];
     const uniqueArtists = [...new Set(data.map(d => d.Artist))];
-    const uniqueAlbums = [...new Set(data.map(d => d.Album))];
 
     const palette = ["#ff8a65", "#ba68c8", "#4db6ac", "#f06292", "#9575cd", "#4fc3f7", "#81c784"];
     let i = 0;
 
     uniqueTechniques.forEach(t => colorMap[t] = palette[i++ % palette.length]);
     uniqueArtists.forEach(a => colorMap[a] = palette[i++ % palette.length]);
-    uniqueAlbums.forEach(al => colorMap[al] = palette[i++ % palette.length]);
   }
 
   function updateDropdowns() {
-    const chartType = document.getElementById("chartType").value;
-    let allowedX = [];
-    let allowedY = [];
-
-    if (chartType === "scatter") {
-      allowedX = [...numericColumns, ...categoricalColumns];
-      allowedY = [...numericColumns, ...categoricalColumns];
-    } else if (chartType === "bar") {
-      allowedX = categoricalColumns;
-      allowedY = numericColumns;
-    }
+    let allowedX = [...numericColumns, ...categoricalColumns];
+    let allowedY = [...numericColumns, ...categoricalColumns];
 
     fillDropdown("xSelect", allowedX);
     fillDropdown("ySelect", allowedY);
@@ -234,56 +217,55 @@
     options.forEach(opt => {
       const option = document.createElement("option");
       option.value = opt;
-      option.textContent = opt;
+      option.textContent = humanReadableLabel(opt);
       select.appendChild(option);
     });
+  }
+
+  function humanReadableLabel(key) {
+    const map = {
+      "Album_Popularity": "Album Popularity",
+      "Track_Popularity": "Track Popularity",
+      "Stream_Count": "Stream Count",
+      "Syllable_Count": "Syllable Count",
+      "Year": "Year of Release",
+      "Artist": "Artist",
+      "Technique": "Vocal Technique"
+    };
+    return map[key] || key;
   }
 
   function drawChart() {
     const xVar = document.getElementById("xSelect").value;
     const yVar = document.getElementById("ySelect").value;
-    const chartType = document.getElementById("chartType").value;
 
     let xData = data.map(d => d[xVar]);
     let yData = yVar ? data.map(d => d[yVar]) : null;
+
     let textData = data.map(d =>
-      `Technique: ${d.Technique}<br>Artist: ${d.Artist}<br>Album: ${d.Album}<br>Song: ${d.Song}<br>${xVar}: ${d[xVar]}${yVar ? "<br>" + yVar + ": " + d[yVar] : ""}`
+      `Vocal Technique: ${d.Technique}<br>Artist: ${d.Artist}<br>Album: ${d.Album} (pop. ${d.Album_Popularity})<br>Track: ${d.Song} (pop. ${d.Track_Popularity})<br>Syllables: ${d.Syllable_Count}<br>Year: ${d.Year}`
     );
 
     let colorData = data.map(d =>
-      colorMap[d.Technique] || colorMap[d.Artist] || colorMap[d.Album] || "#888"
+      colorMap[d.Technique] || colorMap[d.Artist] || "#888"
     );
 
-    let trace;
-    if (chartType === "scatter") {
-      trace = {
-        x: xData,
-        y: yData,
-        mode: 'markers',
-        type: 'scatter',
-        text: textData,
-        hoverinfo: 'text',
-        marker: { color: colorData, size: 8 }
-      };
-    } else if (chartType === "bar") {
-      let counts = {};
-      xData.forEach((v, i) => {
-        counts[v] = (counts[v] || 0) + Number(yData[i]) || 0;
-      });
-      trace = {
-        x: Object.keys(counts),
-        y: Object.values(counts),
-        type: 'bar',
-        marker: { color: Object.keys(counts).map(k => colorMap[k] || "#888") }
-      };
-    }
+    let trace = {
+      x: xData,
+      y: yData,
+      mode: 'markers',
+      type: 'scatter',
+      hovertemplate: textData.map(d => `${d}<extra></extra>`),
+      marker: { color: colorData, size: 8 }
+    };
 
     const layout = {
-      title: `${chartType.charAt(0).toUpperCase() + chartType.slice(1)} Chart`,
+      title: "Scatter Chart",
       autosize: true,
       margin: { t: 50, b: 80, l: 100, r: 50 },
       xaxis: { title: xVar, tickangle: 30, tickfont: { size: 12 }, automargin: true },
-      yaxis: { title: yVar, tickfont: { size: 12 }, automargin: true }
+      yaxis: { title: yVar, tickfont: { size: 12 }, automargin: true },
+      hovermode: 'closest'
     };
 
     const config = {

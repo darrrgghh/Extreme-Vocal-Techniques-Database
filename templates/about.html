@@ -107,6 +107,14 @@
       color: #333;
     }
 
+    .description h3 {
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-top: 25px;
+      margin-bottom: 10px;
+      color: #222;
+    }
+
     .description p {
       margin-bottom: 25px;
     }
@@ -149,16 +157,56 @@
 
       <p>This project was born out of pure love for extreme heavy music and aims to provide structured, accessible, and interactive data for music researchers, musicians, and fans interested in the analysis of extreme vocal techniques.</p>
 
-      <p>All spreadsheets, audio files and everything related to this project is available on GitHub: <br> <a href="https://github.com/darrrgghh/Extreme-Vocal-Techniques-Database" target="_blank">Extreme Vocal Techniques Database</a></p>
-
       <h2>Available Databases</h2>
       <ul>
-        <li><strong>Extreme Metal Vocal Techniques Database with Spotify popularity metrics</strong>: A curated database of metal vocal excerpts enriched with popularity metrics from Spotify.</li>
+        <li>
+          <h3>Extreme Metal Vocal Techniques Database with Spotify popularity metrics</h3>
+          This curated database contains 210 excerpts of metal songs, each showcasing one of three extreme vocal techniques: growling, screaming, or clean vocals. The database was created through a multi-step process:
+          <ul>
+            <li>We analyzed Reddit discussions, Loudwire articles, and metal-focused communities to identify the most prominent artists associated with each vocal technique based on community mentions and rankings.</li>
+            <li>Using the Spotify Popularity Analyzer tool (link is to be shared), we exported the complete discographies of selected artists, filtering out live albums, compilations, remixes, deluxe editions, and other non-studio releases.</li>
+            <li>For each album, the three least popular tracks on Spotify were selected. Instrumental tracks, tracks shorter than 59 seconds, or tracks without the target vocal technique were excluded and replaced by the next least popular track on the same album.</li>
+            <li>Time segments (excerpts) were selected using the <a href="https://github.com/darrrgghh/Metal-Music/blob/main/spotify_tools/timecode_selector.py" target="_blank">Timecode Selector</a> app. To capture the "core" of a vocal performance, the first 30% of each track were skipped (which often contains intros or ambient passages) and a vocal phrase fragment of ~5-8 syllables was extracted. If the automatically suggested timecode did not contain the desired vocal technique, the segment was manually adjusted within a ±25 second range. In a few cases (no more than seven entries in the database), the initially intended vocal technique could not be located, so the excerpt was reclassified to a different technique (e.g., growling was substituted with screaming).</li>
+            <li>The selected excerpt was cut in Audacity. One second of silence was added at the beginning and end of each excerpt to ensure smooth playback.</li>
+            <li>The dataset was finalized with detailed metadata collected both automatically and manually.</li>
+          </ul>
 
-        <li><strong>Extreme Metal Vocal Techniques Extended Database</strong>: A large-scale database currently under development. GitHub repository will be published soon.</li>
+          Each excerpt in the database contains the following metadata fields:
+          <ul>
+            <li><strong>Excerpt ID</strong>: Unique identifier in the format EXCE-001 to EXCE-999.</li>
+            <li><strong>Technique</strong>: The type of extreme vocal technique (Growling, Screaming, or Clean).</li>
+            <li><strong>Artist</strong>: Name of the performing artist or band.</li>
+            <li><strong>Album</strong>: Name of the album from which the excerpt was selected.</li>
+            <li><strong>Year</strong>: Release year of the album.</li>
+            <li><strong>Album Popularity</strong>: Popularity score of the album retrieved from the Spotify API.</li>
+            <li><strong>Song</strong>: Title of the song containing the excerpt.</li>
+            <li><strong>Track Popularity</strong>: Popularity score of the song retrieved from the Spotify API.</li>
+            <li><strong>Stream Count</strong>: Total number of streams for the song, manually collected from the Spotify website.</li>
+            <li><strong>Duration</strong>: Length of the selected excerpt in seconds.</li>
+            <li><strong>Timecode</strong>: Specific start and end times of the excerpt within the original song.</li>
+            <li><strong>Lyrics</strong>: The lyrical excerpt corresponding to the selected audio segment.</li>
+            <li><strong>Rhythmic Representation</strong>: A symbolic transcription of the rhythmic pattern of the excerpt in <em>Humdrum</em> format, using numeric note durations and including rests.</li>
+            <li><strong>Melodic Representation</strong>: A symbolic transcription of the melodic contour of the excerpt in <em>Humdrum</em> format.</li>
+            <li><strong>Time Signature</strong>: The time signature of the song section containing the excerpt. In examples with a duple meter, it is indicated as 4/4, except for examples featuring changing meters.</li>
+            <li><strong>Tempo (approx.)</strong>: The approximate tempo in BPM of the excerpted section. Tempo values were initially obtained using online BPM detection tools, and then manually verified and tapped multiple times using the BPM Tapper feature in GarageBand.</li>
+            <li><strong>Spotify URL</strong>: Direct link to the song on Spotify.</li>
+            <li><strong>MP3 Path</strong>: Path to the corresponding audio file within the project directory.</li>
+            <li><strong>Date Collected</strong>: Since popularity metrics and stream counts are constantly updated on Spotify, the date when these metrics were collected and recorded is included for each entry.</li>
+          </ul>
+        </li>
 
-        <li><strong>Extreme Metal Vocal Stimuli Database</strong>: A specialized database of studio-recorded vocal stimuli.</li>
+        <li><h3>Extreme Metal Vocal Techniques Extended Database</h3>
+          A large-scale database currently under development. GitHub repository will be published soon.
+        </li>
+
+        <li><h3>Extreme Metal Vocal Stimuli Database</h3>
+          A specialized database of studio-recorded vocal stimuli.
+        </li>
       </ul>
+      <br>
+      <p>All spreadsheets, audio files, and all materials related to this project are publicly available on GitHub: <br>
+  <a href="https://github.com/darrrgghh/Extreme-Vocal-Techniques-Database" target="_blank">Extreme Vocal Techniques Database on GitHub</a>
+</p>
 
       <h2>Contact</h2>
       <p>If you have questions, feedback, or want to collaborate, feel free to contact me at:
