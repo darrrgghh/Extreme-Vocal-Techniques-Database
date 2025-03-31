@@ -288,11 +288,11 @@
               <div><a class="spotify-link" href="{{ item['Spotify_URL'] }}" target="_blank">Open in Spotify ↗</a></div>
             {% endif %}
             <p><span class="label">Lyrics:</span> {{ item['Lyrics'] if item['Lyrics'] and item['Lyrics'] != "nan" else "N/A" }}</p>
-            <p><span class="label">Rhythm:</span> {{ item['Rhythmic_representation'] if item['Rhythmic_representation'] and item['Rhythmic_representation'] != "nan" else "N/A" }}</p>
+            <p><span class="label">Rhythm (<em>Humdrum</em>):</span> {{ item['Rhythmic_representation'] if item['Rhythmic_representation'] and item['Rhythmic_representation'] != "nan" else "N/A" }}</p>
             {% if item['Technique'] in ['Growling', 'Screaming'] and 'Contour:' in item['Melodic_representation'] %}
               <p><span class="label">Melodic contour:</span> {{ item['Melodic_representation'].split('Contour:')[1].strip() }}</p>
             {% else %}
-              <p><span class="label">Melody:</span> {{ item['Melodic_representation'] if item['Melodic_representation'] and item['Melodic_representation'] != "nan" else "N/A" }}</p>
+              <p><span class="label">Melody (<em>Humdrum</em>):</span> {{ item['Melodic_representation'] if item['Melodic_representation'] and item['Melodic_representation'] != "nan" else "N/A" }}</p>
             {% endif %}
             <p><span class="label">Time Signature:</span> {{ item['Time_signature'] if item['Time_signature'] and item['Time_signature'] != "nan" else "N/A" }}</p>
             <p><span class="label">Tempo (approx.):</span> {{ item['Tempo_(approx.)'] if item['Tempo_(approx.)'] and item['Tempo_(approx.)'] != "nan" else "N/A" }}</p>
