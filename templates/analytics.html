@@ -154,6 +154,7 @@
         <select id="ySelect"></select>
       </label>
       <button onclick="drawChart()">Build Chart</button>
+      <button id="zoomToggle">Zoom Off</button>
     </div>
   </div>
 </div>
@@ -183,14 +184,7 @@
   let colorMap = {};
   let numericColumns = {{ numeric_columns|tojson }};
   let categoricalColumns = {{ categorical_columns|tojson }};
-
-  fetch("/data.json")
-    .then(response => response.json())
-    .then(json => {
-      data = json;
-      buildColorMap();
-      updateDropdowns();
-    });
+  let zoomEnabled = false;
 
   function buildColorMap() {
     const uniqueTechniques = [...new Set(data.map(d => d.Technique))];
@@ -236,47 +230,68 @@
   }
 
   function drawChart() {
-    const xVar = document.getElementById("xSelect").value;
-    const yVar = document.getElementById("ySelect").value;
+  const xVar = document.getElementById("xSelect").value;
+  const yVar = document.getElementById("ySelect").value;
 
-    let xData = data.map(d => d[xVar]);
-    let yData = yVar ? data.map(d => d[yVar]) : null;
+  let xData = data.map(d => d[xVar]);
+  let yData = yVar ? data.map(d => d[yVar]) : null;
 
-    let textData = data.map(d =>
-      `Vocal Technique: ${d.Technique}<br>Artist: ${d.Artist}<br>Album: ${d.Album} (pop. ${d.Album_Popularity})<br>Track: ${d.Song} (pop. ${d.Track_Popularity})<br>Syllables: ${d.Syllable_Count}<br>Year: ${d.Year}`
-    );
+  let textData = data.map(d =>
+    `Vocal Technique: ${d.Technique}<br>Artist: ${d.Artist}<br>Album: ${d.Album} (pop. ${d.Album_Popularity})<br>Track: ${d.Song} (pop. ${d.Track_Popularity})<br>Syllables: ${d.Syllable_Count}<br>Year: ${d.Year}`
+  );
 
-    let colorData = data.map(d =>
-      colorMap[d.Technique] || colorMap[d.Artist] || "#888"
-    );
+  let colorData = data.map(d =>
+    colorMap[d.Technique] || colorMap[d.Artist] || "#888"
+  );
 
-    let trace = {
-      x: xData,
-      y: yData,
-      mode: 'markers',
-      type: 'scatter',
-      hovertemplate: textData.map(d => `${d}<extra></extra>`),
-      marker: { color: colorData, size: 8 }
-    };
+  let trace = {
+    x: xData,
+    y: yData,
+    mode: 'markers',
+    type: 'scatter',
+    hovertemplate: textData.map(d => `${d}<extra></extra>`),
+    marker: { color: colorData, size: 8 }
+  };
 
-    const layout = {
-      title: "Scatter Chart",
-      autosize: true,
-      margin: { t: 50, b: 80, l: 100, r: 50 },
-      xaxis: { title: xVar, tickangle: 30, tickfont: { size: 12 }, automargin: true },
-      yaxis: { title: yVar, tickfont: { size: 12 }, automargin: true },
-      hovermode: 'closest'
-    };
+  const layout = {
+    title: "Scatter Chart",
+    autosize: true,
+    margin: { t: 50, b: 80, l: 100, r: 50 },
+    xaxis: { title: humanReadableLabel(xVar), tickangle: 30, tickfont: { size: 12 }, automargin: true },
+    yaxis: { title: humanReadableLabel(yVar), tickfont: { size: 12 }, automargin: true },
+    hovermode: 'closest'
+  };
 
-    const config = {
-      responsive: true,
-      scrollZoom: true,
-      displayModeBar: true
-    };
+  const config = {
+    responsive: true,
+    scrollZoom: zoomEnabled,
+    displayModeBar: true
+  };
 
-    Plotly.newPlot('plot', [trace], layout, config);
+  Plotly.newPlot('plot', [trace], layout, config);
+
+  }
+
+  window.onload = function() {
+    fetch("/data.json")
+      .then(response => response.json())
+      .then(json => {
+        data = json;
+        buildColorMap();
+        updateDropdowns();
+      });
+
+    const zoomButton = document.getElementById('zoomToggle');
+zoomButton.addEventListener("click", () => {
+  zoomEnabled = !zoomEnabled;
+  zoomButton.textContent = zoomEnabled ? "Zoom On" : "Zoom Off";
+  drawChart(); // просто перерисовываем график с новым config
+});
+
   }
 </script>
+
+
 
 </body>
 </html>
