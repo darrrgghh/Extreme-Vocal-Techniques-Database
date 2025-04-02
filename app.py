@@ -11,10 +11,24 @@ def count_syllables(rhythmic_representation):
         return 0
     tokens = rhythmic_representation.strip().split()
     count = 0
-    for t in tokens:
-        if not t.endswith('r') and not t.endswith('r.'):
+    i = 0
+    while i < len(tokens):
+        token = tokens[i]
+        # Считаем как один слог, если это группа в квадратных скобках
+        if token.startswith('['):
+            # ищем конец группы
+            while not tokens[i].endswith(']') and i < len(tokens) - 1:
+                i += 1
             count += 1
+        # Считаем, если token оканчивается на q
+        elif token.endswith('q'):
+            count += 1
+        # Считаем, если обычный слог (не пауза)
+        elif not token.endswith('r') and not token.endswith('r.'):
+            count += 1
+        i += 1
     return count
+
 
 if os.path.exists(DATA_FILE):
     df = pd.read_csv(DATA_FILE, sep="\t", encoding="cp1252")
