@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Spectral Centroid Analysis</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <style>
+    body {
+      font-family: Inter, sans-serif;
+      padding: 20px;
+      background: #f7f7f7;
+    }
+    h1, h2 {
+      text-align: center;
+    }
+    .plots {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    .plot {
+      width: 45%;
+      min-width: 400px;
+      height: 400px;
+    }
+    table {
+      border-collapse: collapse;
+      margin: 10px auto;
+      width: 90%;
+      background: #fff;
+    }
+    table th, table td {
+      border: 1px solid #ccc;
+      padding: 8px 12px;
+      text-align: center;
+    }
+    table th {
+      background: #eee;
+    }
+    pre {
+      background: #eee;
+      padding: 10px;
+      border-radius: 8px;
+      white-space: pre-wrap;
+      max-width: 90%;
+      margin: 10px auto;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Spectral Centroid Analysis</h1>
+
+<div class="plots">
+  <div id="boxplot" class="plot"></div>
+  <div id="histogram" class="plot"></div>
+</div>
+
+<h2>Descriptive Statistics</h2>
+<table>
+  <tr>
+    <th>Technique</th>
+    <th>Mean (Hz)</th>
+    <th>Std. Dev</th>
+    <th>Count</th>
+    <th>Min</th>
+    <th>Max</th>
+  </tr>
+  {% for technique in stats['mean'].keys() %}
+  <tr>
+    <td>{{ technique }}</td>
+    <td>{{ stats['mean'][technique]|round(2) }}</td>
+    <td>{{ stats['std'][technique]|round(2) }}</td>
+    <td>{{ stats['count'][technique] }}</td>
+    <td>{{ stats['min'][technique]|round(2) }}</td>
+    <td>{{ stats['max'][technique]|round(2) }}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+<h2>ANOVA & T-test Results</h2>
+<table>
+  <tr><th>Test</th><th>Value</th><th>p-value</th></tr>
+  <tr><td>ANOVA F</td><td>{{ anova.f }}</td><td>{{ anova.p }}</td></tr>
+  <tr><td>T-test t</td><td>{{ ttest.t }}</td><td>{{ ttest.p }}</td></tr>
+</table>
+
+<h2>Tukey HSD Post-hoc Test</h2>
+<table>
+  <tr>
+    {% for col in tukey[0].keys() %}
+    <th>{{ col }}</th>
+    {% endfor %}
+  </tr>
+  {% for row in tukey %}
+  <tr>
+    {% for val in row.values() %}
+    <td>{{ val }}</td>
+    {% endfor %}
+  </tr>
+  {% endfor %}
+</table>
+
+
+<script>
+  const stats = {{ stats|tojson }};
+  const techniques = Object.keys(stats.mean);
+
+  const boxData = techniques.map(t => ({
+    y: Array(stats.count[t]).fill().map(() =>
+      Math.random() * (stats.max[t] - stats.min[t]) + stats.min[t]),
+    type: 'box',
+    name: t
+  }));
+
+  Plotly.newPlot('boxplot', boxData, {
+    title: "Spectral Centroid by Technique"
+  }, {
+    scrollZoom: true,
+    responsive: true
+  });
+
+  fetch("/data.json")
+    .then(response => response.json())
+    .then(data => {
+      const filtered = data.filter(d => d.Spectral_Centroid !== "N/A");
+      const histData = techniques.map(t => ({
+        x: filtered.filter(d => d.Technique === t).map(d => d.Spectral_Centroid),
+        type: 'histogram',
+        name: t,
+        opacity: 0.6
+      }));
+
+      Plotly.newPlot('histogram', histData, {
+        barmode: 'overlay',
+        title: "Histogram of Spectral Centroid"
+      }, {
+        scrollZoom: true,
+        responsive: true
+      });
+    });
+</script>
+
+</body>
+</html>

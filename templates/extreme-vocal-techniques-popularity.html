@@ -295,6 +295,7 @@
             <p><span class="label">Melody (<em>Humdrum</em>):</span> {{ item['Melodic_representation'] if item['Melodic_representation'] and item['Melodic_representation'] != "nan" else "N/A" }}</p>
             {% endif %}
             <p><span class="label">Syllables Count:</span> {{ item['Syllable_Count'] if item['Syllable_Count'] and item['Syllable_Count'] != "nan" else "N/A" }}</p>
+            <p><span class="label">Spectral Centroid (Hz):</span> {{ item['Spectral_Centroid'] if item['Spectral_Centroid'] and item['Spectral_Centroid'] != "nan" else "N/A" }}</p>
             <p><span class="label">Time Signature:</span> {{ item['Time_signature'] if item['Time_signature'] and item['Time_signature'] != "nan" else "N/A" }}</p>
             <p><span class="label">Tempo (approx.):</span> {{ item['Tempo_(approx.)'] if item['Tempo_(approx.)'] and item['Tempo_(approx.)'] != "nan" else "N/A" }}</p>
             <p><span class="label">Album Popularity:</span> {{ item['Album_Popularity'] if item['Album_Popularity'] and item['Album_Popularity'] != "nan" else "N/A" }}</p>

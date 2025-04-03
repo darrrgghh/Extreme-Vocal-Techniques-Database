@@ -16,19 +16,16 @@
       flex-direction: column;
     }
 
-    .content-area {
-      flex: 1;
-      max-width: 2000px;
-      margin: 40px auto;
+    .header {
       display: flex;
-      gap: 20px;
-      align-items: flex-start;
-      padding: 0 20px;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
     }
 
     .menu-wrapper {
-      position: sticky;
-      top: 30px;
+      position: relative;
       z-index: 100;
     }
 
@@ -79,15 +76,22 @@
       background: #e0e0e0;
     }
 
-    .table-container {
+    .content-area {
       flex: 1;
+      max-width: 2000px;
+      margin: 20px auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 20px;
+      position: relative;
     }
 
     h1 {
       text-align: center;
       font-weight: 600;
       font-size: 1.8rem;
-      margin-bottom: 5px;
+      margin: 0;
     }
 
     h2 {
@@ -95,7 +99,7 @@
       font-weight: 400;
       color: #555;
       font-size: 1rem;
-      margin-top: 0;
+      margin-top: 10px;
       margin-bottom: 10px;
     }
 
@@ -124,49 +128,108 @@
       padding: 16px 0;
       margin-top: 20px;
     }
+
+    .info-wrapper {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 10;
+      transition: opacity 0.8s ease;
+    }
+
+    .info-wrapper.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .info-card {
+      background: #f1f3f5;
+      border-radius: 12px;
+      padding: 20px;
+      max-width: 600px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      color: #333;
+    }
+
+    .info-card p {
+      margin: 0;
+      font-weight: 600;
+    }
+
+    .info-card ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 10px;
+    }
+
+    .info-card li {
+      margin-bottom: 6px;
+      font-style: italic;
+      color: #555;
+    }
   </style>
 </head>
 <body>
 
 <div class="content-area">
-  <div class="menu-wrapper">
-    <div class="menu-button" onclick="toggleMenu()">☰ Menu
-      <div class="menu-options" id="menuOptions">
-        <a href="/">Home</a>
-        <a href="/extreme-vocal-techniques-popularity">Extreme Metal Vocal Techniques Database with Spotify popularity metrics</a>
-        <a href="/extreme-vocal-techniques">Extreme Metal Vocal Techniques Extended Database</a>
-        <a href="/extreme-vocal-only-stimuli">Extreme Metal Vocal Stimuli Database</a>
-        <a href="/analytics">Analytics</a>
-        <a href="/about">About</a>
+  <div class="header">
+    <div class="menu-wrapper">
+      <div class="menu-button" onclick="toggleMenu()">☰ Menu
+        <div class="menu-options" id="menuOptions">
+          <a href="/">Home</a>
+          <a href="/extreme-vocal-techniques-popularity">Extreme Metal Vocal Techniques Database with Spotify popularity metrics</a>
+          <a href="/extreme-vocal-techniques">Extreme Metal Vocal Techniques Extended Database</a>
+          <a href="/extreme-vocal-only-stimuli">Extreme Metal Vocal Stimuli Database</a>
+          <a href="/analytics">Analytics</a>
+          <a href="/about">About</a>
+        </div>
       </div>
     </div>
-  </div>
-
-  <div class="table-container">
     <h1>Analytics & Correlations (beta)</h1>
-    <h2>This section is built to visualise the data across all available datasets. The list of all variables to plot is currently updated.</h2>
+  </div>
+  <h2>This section is built to visualise the data across all available datasets.</h2>
 
-    <div class="controls">
-      <label>X axis:
-        <select id="xSelect"></select>
-      </label>
-      <label>Y axis:
-        <select id="ySelect"></select>
-      </label>
-      <button onclick="drawChart()">Build Chart</button>
-      <button id="zoomToggle">Zoom Off</button>
+  <div id="analyticsInfoWrapper" class="info-wrapper">
+    <div id="analyticsInfo" class="info-card">
+      <p><strong>Available analytics for EMVT Database (popularity):</strong></p>
+      <ul>
+        <li>Scatter plot of all numeric and categorical variables</li>
+        <li>Spectral Centroid Analysis (ANOVA, T-test, Tukey HSD)</li>
+      </ul>
     </div>
   </div>
+
+  <div class="controls">
+    <label>Database:
+      <select id="dbSelect">
+        <option value="emvt">EMVT Database (popularity)</option>
+      </select>
+    </label>
+    <label>X axis:
+      <select id="xSelect"></select>
+    </label>
+    <label>Y axis:
+      <select id="ySelect"></select>
+    </label>
+    <button onclick="drawChart()">Build Chart</button>
+    <button id="zoomToggle" style="display:none;">Zoom Off</button>
+    <button onclick="openCentroid()">Spectral Centroid Analysis</button>
+  </div>
+
+  <div class="plot-area">
+    <div id="plot"></div>
+  </div>
+
+  <footer>
+    © 2025 Alexey Voronin
+  </footer>
 </div>
-
-<div class="plot-area">
-  <div id="plot"></div>
-</div>
-
-<footer>
-  © 2025 Alexey Voronin
-</footer>
-
 
 <script>
   function toggleMenu() {
@@ -180,6 +243,10 @@
     }
   }
 
+  function openCentroid() {
+    window.open('/spectral-centroid-analysis', '_blank', 'width=1000,height=800,toolbar=no,menubar=no,scrollbars=yes');
+  }
+
   let data = [];
   let colorMap = {};
   let numericColumns = {{ numeric_columns|tojson }};
@@ -187,14 +254,19 @@
   let zoomEnabled = false;
 
   function buildColorMap() {
-    const uniqueTechniques = [...new Set(data.map(d => d.Technique))];
+    colorMap = {
+      "Clean": "#4fc3f7",
+      "Growling": "#ff8a65",
+      "Screaming": "#81c784"
+    };
     const uniqueArtists = [...new Set(data.map(d => d.Artist))];
-
-    const palette = ["#ff8a65", "#ba68c8", "#4db6ac", "#f06292", "#9575cd", "#4fc3f7", "#81c784"];
+    const palette = ["#ba68c8", "#f06292", "#9575cd", "#4db6ac"];
     let i = 0;
-
-    uniqueTechniques.forEach(t => colorMap[t] = palette[i++ % palette.length]);
-    uniqueArtists.forEach(a => colorMap[a] = palette[i++ % palette.length]);
+    uniqueArtists.forEach(a => {
+      if (!colorMap[a]) {
+        colorMap[a] = palette[i++ % palette.length];
+      }
+    });
   }
 
   function updateDropdowns() {
@@ -230,46 +302,53 @@
   }
 
   function drawChart() {
-  const xVar = document.getElementById("xSelect").value;
-  const yVar = document.getElementById("ySelect").value;
+    const xVar = document.getElementById("xSelect").value;
+    const yVar = document.getElementById("ySelect").value;
+    const zoomButton = document.getElementById("zoomToggle");
+    const info = document.getElementById("analyticsInfoWrapper");
 
-  let xData = data.map(d => d[xVar]);
-  let yData = yVar ? data.map(d => d[yVar]) : null;
+    info.classList.add("hidden");
+    setTimeout(() => {
+      info.style.display = "none";
+    }, 800);
 
-  let textData = data.map(d =>
-    `Vocal Technique: ${d.Technique}<br>Artist: ${d.Artist}<br>Album: ${d.Album} (pop. ${d.Album_Popularity})<br>Track: ${d.Song} (pop. ${d.Track_Popularity})<br>Syllables: ${d.Syllable_Count}<br>Year: ${d.Year}`
-  );
+    let xData = data.map(d => d[xVar]);
+    let yData = yVar ? data.map(d => d[yVar]) : null;
 
-  let colorData = data.map(d =>
-    colorMap[d.Technique] || colorMap[d.Artist] || "#888"
-  );
+    let textData = data.map(d =>
+      `Vocal Technique: ${d.Technique}<br>Artist: ${d.Artist}<br>Album: ${d.Album} (pop. ${d.Album_Popularity})<br>Track: ${d.Song} (pop. ${d.Track_Popularity})<br>Syllables: ${d.Syllable_Count}<br>Year: ${d.Year}`
+    );
 
-  let trace = {
-    x: xData,
-    y: yData,
-    mode: 'markers',
-    type: 'scatter',
-    hovertemplate: textData.map(d => `${d}<extra></extra>`),
-    marker: { color: colorData, size: 8 }
-  };
+    let colorData = data.map(d =>
+      colorMap[d.Technique] || colorMap[d.Artist] || "#888"
+    );
 
-  const layout = {
-    title: "Scatter Chart",
-    autosize: true,
-    margin: { t: 50, b: 80, l: 100, r: 50 },
-    xaxis: { title: humanReadableLabel(xVar), tickangle: 30, tickfont: { size: 12 }, automargin: true },
-    yaxis: { title: humanReadableLabel(yVar), tickfont: { size: 12 }, automargin: true },
-    hovermode: 'closest'
-  };
+    let trace = {
+      x: xData,
+      y: yData,
+      mode: 'markers',
+      type: 'scatter',
+      hovertemplate: textData.map(d => `${d}<extra></extra>`),
+      marker: { color: colorData, size: 8 }
+    };
 
-  const config = {
-    responsive: true,
-    scrollZoom: zoomEnabled,
-    displayModeBar: true
-  };
+    const layout = {
+      title: "Scatter Chart",
+      autosize: true,
+      margin: { t: 50, b: 80, l: 100, r: 50 },
+      xaxis: { title: humanReadableLabel(xVar), tickangle: 30, tickfont: { size: 12 }, automargin: true },
+      yaxis: { title: humanReadableLabel(yVar), tickfont: { size: 12 }, automargin: true },
+      hovermode: 'closest'
+    };
 
-  Plotly.newPlot('plot', [trace], layout, config);
+    const config = {
+      responsive: true,
+      scrollZoom: zoomEnabled,
+      displayModeBar: true
+    };
 
+    Plotly.newPlot('plot', [trace], layout, config);
+    zoomButton.style.display = "inline-block";
   }
 
   window.onload = function() {
@@ -282,16 +361,13 @@
       });
 
     const zoomButton = document.getElementById('zoomToggle');
-zoomButton.addEventListener("click", () => {
-  zoomEnabled = !zoomEnabled;
-  zoomButton.textContent = zoomEnabled ? "Zoom On" : "Zoom Off";
-  drawChart(); // просто перерисовываем график с новым config
-});
-
+    zoomButton.addEventListener("click", () => {
+      zoomEnabled = !zoomEnabled;
+      zoomButton.textContent = zoomEnabled ? "Zoom On" : "Zoom Off";
+      drawChart();
+    });
   }
 </script>
-
-
 
 </body>
 </html>

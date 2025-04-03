@@ -14,16 +14,12 @@ def count_syllables(rhythmic_representation):
     i = 0
     while i < len(tokens):
         token = tokens[i]
-        # Считаем как один слог, если это группа в квадратных скобках
         if token.startswith('['):
-            # ищем конец группы
             while not tokens[i].endswith(']') and i < len(tokens) - 1:
                 i += 1
             count += 1
-        # Считаем, если token оканчивается на q
         elif token.endswith('q'):
             count += 1
-        # Считаем, если обычный слог (не пауза)
         elif not token.endswith('r') and not token.endswith('r.'):
             count += 1
         i += 1
@@ -57,19 +53,26 @@ def vocal_techniques():
 def vocal_stimuli():
     return render_template("extreme-vocal-only-stimuli.html")
 
+DATABASES = {
+    "emvt": {
+        "file": "1excerpts_database.tsv",
+        "columns": [
+            "Artist", "Album", "Year",
+            "Album_Popularity", "Track_Popularity",
+            "Stream_Count", "Syllable_Count"
+        ],
+        "numeric_columns": [
+            "Album_Popularity", "Track_Popularity", "Stream_Count",
+            "Syllable_Count", "Year"
+        ],
+        "categorical_columns": ["Artist"]
+    }
+    # в будущем сюда можно добавить другие базы
+}
+
 @app.route("/analytics")
 def analytics():
-    columns = [
-        "Artist", "Technique", "Album", "Year",
-        "Album_Popularity", "Track_Popularity",
-        "Stream_Count", "Syllable_Count"
-    ]
-    numeric_columns = [
-        "Album_Popularity", "Track_Popularity", "Stream_Count",
-        "Syllable_Count", "Year"
-    ]
-    categorical_columns = ["Technique", "Artist"]
-
+    db_info = DATABASES["emvt"]
     data = df.to_dict(orient="records")
 
     year_min = int(df["Year"].min())
@@ -77,11 +80,40 @@ def analytics():
 
     return render_template(
         "analytics.html",
-        columns=columns,
+        columns=db_info["columns"],
         data=data,
-        numeric_columns=numeric_columns,
-        categorical_columns=categorical_columns,
+        numeric_columns=db_info["numeric_columns"],
+        categorical_columns=db_info["categorical_columns"],
         year_range=[year_min, year_max]
+    )
+
+@app.route("/spectral-centroid-analysis")
+def spectral_centroid():
+    df_local = pd.read_csv(DATA_FILE, sep="\t", encoding="cp1252")
+    df_local = df_local[df_local["Technique"].isin(["Growling", "Screaming", "Clean"])]
+    df_local = df_local.dropna(subset=["Spectral_Centroid"])
+
+    group_stats = df_local.groupby('Technique')["Spectral_Centroid"].agg(['mean', 'std', 'count', 'min', 'max'])
+
+    from scipy.stats import f_oneway, ttest_ind
+    from statsmodels.stats.multicomp import pairwise_tukeyhsd
+
+    growling = df_local[df_local["Technique"] == "Growling"]["Spectral_Centroid"]
+    screaming = df_local[df_local["Technique"] == "Screaming"]["Spectral_Centroid"]
+    clean = df_local[df_local["Technique"] == "Clean"]["Spectral_Centroid"]
+
+    f_stat, p_value_anova = f_oneway(growling, screaming, clean)
+    t_stat, p_value_ttest = ttest_ind(growling, screaming)
+
+    tukey_result = pairwise_tukeyhsd(df_local["Spectral_Centroid"], df_local["Technique"])
+    tukey_df = pd.DataFrame(data=tukey_result.summary().data[1:], columns=tukey_result.summary().data[0])
+
+    return render_template(
+        "spectral-centroid-analysis.html",
+        stats=group_stats.to_dict(),
+        anova={"f": round(f_stat, 3), "p": round(p_value_anova, 3)},
+        ttest={"t": round(t_stat, 3), "p": round(p_value_ttest, 3)},
+        tukey=tukey_df.to_dict(orient="records")
     )
 
 @app.route("/about")
