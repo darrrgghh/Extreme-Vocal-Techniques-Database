@@ -1,190 +1,83 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>The Extreme Metal Vocal Techniques Databases</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      margin: 0;
-      background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-      color: #333;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+{% extends "base.html" %}
 
-    .content-area {
-      flex: 1;
-      max-width: 1050px;
-      margin: 40px auto;
-      display: flex;
-      gap: 20px;
-      align-items: flex-start;
-      padding: 0 20px;
-    }
+{% block title %}Extreme Metal Vocal Techniques DB with Spotify Popularity{% endblock %}
 
-    .menu-wrapper {
-      position: sticky;
-      top: 30px;
-    }
-
-    .menu-button {
-      display: inline-block;
-      padding: 8px 16px;
-      background-color: #e0e0e0;
-      color: #333;
-      font-weight: 600;
-      width: 90px;
-      text-align: center;
-      border-radius: 8px;
-      text-decoration: none;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      transition: background-color 0.2s;
-      cursor: pointer;
-    }
-
-    .menu-button:hover {
-      background-color: #d4d4d4;
-    }
-
-    .menu-options {
-      display: none;
-      position: absolute;
-      top: 45px;
-      left: 0;
-      background: #f1f3f5;
-      border-radius: 8px;
-      padding: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      flex-direction: column;
-      gap: 10px;
-      z-index: 100;
-      min-width: 250px;
-    }
-
-    .menu-options a {
-      text-decoration: none;
-      color: #333;
-      font-weight: 600;
-      padding: 6px 8px;
-      border-radius: 6px;
-      transition: background 0.2s;
-    }
-
-    .menu-options a:hover {
-      background: #e0e0e0;
-    }
-
-    .table-container {
-      flex: 1;
-    }
-
-    h1 {
-      text-align: center;
-      font-weight: 600;
-      font-size: 1.8rem;
-      margin-bottom: 5px;
-    }
-
-    .description {
-      max-width: 900px;
-      margin: 0 auto 20px;
-      background: #f1f3f5;
-      border-radius: 12px;
-      padding: 30px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-      font-size: 1rem;
-      color: #555;
-      line-height: 1.6;
-    }
-
-    .description h2 {
-      font-weight: 600;
-      margin-top: 40px;
-      margin-bottom: 20px;
-      color: #333;
-    }
-    .description h3 {
-  font-weight: 600;
-  font-size: 1.1rem;
-  margin-top: 25px;
-  margin-bottom: 10px;
-  color: #222;
-}
-
-    .description p {
-      margin-bottom: 25px;
-    }
-
-    .description ul li {
-      margin-top: 10px;
-      margin-bottom: 30px;
-    }
-
-    footer {
-      text-align: center;
-      color: #777;
-      font-size: 0.9rem;
-      padding: 16px 0;
-      margin-top: 30px;
-    }
-  </style>
-</head>
-<body>
-
-<div class="content-area">
-  <div class="menu-wrapper">
-    <div class="menu-button" onclick="toggleMenu()">☰ Menu
-      <div class="menu-options" id="menuOptions">
-        <a href="/">Home</a>
-        <a href="/extreme-vocal-techniques-popularity">Extreme Metal Vocal Techniques Database with Spotify popularity metrics</a>
-        <a href="/extreme-vocal-techniques">Extreme Metal Vocal Techniques Extended Database</a>
-        <a href="/extreme-vocal-only-stimuli">Extreme Metal Vocal Stimuli Database</a>
-        <a href="/analytics">Analytics</a>
-        <a href="/about">About</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="table-container">
+{% block content %}
+<!-- Section: Welcome -->
+<section class="section" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+  <div class="card">
     <h1>The Extreme Metal Vocal Techniques Databases</h1>
-
-    <div class="description">
-      <p>This website contains several research databases and analytical tools related to extreme metal vocal techniques. Use "Menu" for navigation.</p>
-
-      <h2>Available Databases</h2>
-      <ul>
-        <li><h3>Extreme Metal Vocal Techniques with Spotify popularity metrics</h3> Database of 210 curated excerpts of metal songs featuring three main extreme vocal techniques: growling, screaming, and clean vocals. Each excerpt includes detailed metadata: artist, album, year, lyrics excerpt, rhythmic and melodic representations, spectral centroid, time signature, tempo, and Spotify popularity metrics. The current version contains 210 examples, focusing on the least popular releases of selected artists. It will soon be expanded to include 420 examples, adding the most popular Spotify releases by the same artists.</li>
-
-        <li><h3>Extreme Metal Vocal Techniques Extended Database</h3> A larger database currently in development. It will include over 1000 excerpts and more vocal techniques. It will be similar to <strong>Extreme Metal Vocal Techniques Database with Spotify popularity metrics</strong> in structure but with no popularity metrics from Spotify API.</li>
-
-        <li><h3>Extreme Metal Vocal Stimuli</h3>A collection of recorded vocal stimuli produced by five professional metal vocalists in a controlled studio environment. Each vocalist reproduced the same excerpt in five conditions: clean vocals, growling, growling vocalized, screaming, and screaming vocalized. The recordings were processed and catalogued for further research.</li>
-      </ul>
-
-      <h2>Analytics</h2>
-      <p>This section provides interactive visualization tools and statistical analysis based on the available databases. Currently in beta testing.</p>
-    </div>
+    <p>This website contains several research databases and analytical tools related to<br>extreme metal vocal techniques.</br><br>Use "Menu" for navigation.</br></p>
   </div>
-</div>
+</section>
 
-<footer>
-  © 2025 Alexey Voronin
-</footer>
+<!-- Section: Databases -->
+<section class="section">
+  <div class="card small">
+    <h2>Available Databases</h2>
+    <div class="db-links">
+      <button class="db-button" onclick="showDescription('db1', this)">EMVT(+Spotify popularity)</button>
+      <button class="db-button" onclick="showDescription('db2', this)">Extended Database</button>
+      <button class="db-button" onclick="showDescription('db3', this)">Vocal Stimuli</button>
+    </div>
+    <div id="dbDescription" class="dynamic-description"></div>
+  </div>
+</section>
 
+<!-- Section: Analytics -->
+<section class="section">
+  <div class="card">
+    <h2>Analytics</h2>
+    <p>Explore visual insights and correlations based on the data collected across all databases.</p>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
 <script>
+  // Появление секций при скролле
+  const sections = document.querySelectorAll(".section");
+  const options = {
+    threshold: 0.3
+  };
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      }
+    });
+  }, options);
+  sections.forEach(section => observer.observe(section));
+
+  // Описание баз
+  const descriptions = {
+    db1: `<p><strong>Extreme Metal Vocal Techniques - Examples Database (+Spotify popularity):</strong> <br>210 curated excerpts of metal songs with growling, screaming, and clean vocals. Contains Spotify popularity metrics. To be expanded to include 420 examples, adding the most popular Spotify releases by the same artists.</br></p>`,
+    db2: `<p><strong>Extreme Metal Vocal Examples Extended Database:</strong> <br>A larger collection (1000+ entries) of extreme vocal excerpts without popularity metrics. Under development.</p>`,
+    db3: `<p><strong>Extreme Metal Vocal Techniques Database:</strong> <br>Studio recordings of five vocalists reproducing the same excerpts in different vocal techniques under controlled conditions. To be completed by July 2025.</p>`
+  };
+
+  function showDescription(key, btn) {
+    const desc = document.getElementById("dbDescription");
+    desc.classList.remove("visible");
+    setTimeout(() => {
+      desc.innerHTML = descriptions[key];
+      desc.classList.add("visible");
+    }, 200);
+    document.querySelectorAll('.db-button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+
+  // Меню
   function toggleMenu() {
-    const menu = document.getElementById('menuOptions');
+    const menu = document.getElementById('navLinks');
     menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
   }
 
   window.onclick = function(event) {
     if (!event.target.closest('.menu-button')) {
-      document.getElementById('menuOptions').style.display = 'none';
+      const menu = document.getElementById('navLinks');
+      if (menu) menu.style.display = 'none';
     }
   }
 </script>
-
-</body>
-</html>
+{% endblock %}
