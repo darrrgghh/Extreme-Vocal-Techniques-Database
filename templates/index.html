@@ -16,9 +16,8 @@
   <div class="card small">
     <h2>Available Databases</h2>
     <div class="db-links">
-      <button class="db-button" onclick="showDescription('db1', this)">EMVT(+Spotify popularity)</button>
-      <button class="db-button" onclick="showDescription('db2', this)">Extended Database</button>
-      <button class="db-button" onclick="showDescription('db3', this)">Vocal Stimuli</button>
+      <button class="db-button" onclick="showDescription('db1', this)">EMVT Examples DB + popularity metrics</button>
+      <button class="db-button" onclick="showDescription('db3', this)">EMVT Database (vocal only)</button>
     </div>
     <div id="dbDescription" class="dynamic-description"></div>
   </div>
@@ -51,9 +50,8 @@
 
   // Описание баз
   const descriptions = {
-    db1: `<p><strong>Extreme Metal Vocal Techniques - Examples Database (+Spotify popularity):</strong> <br>210 curated excerpts of metal songs with growling, screaming, and clean vocals. Contains Spotify popularity metrics. To be expanded to include 420 examples, adding the most popular Spotify releases by the same artists.</br></p>`,
-    db2: `<p><strong>Extreme Metal Vocal Examples Extended Database:</strong> <br>A larger collection (1000+ entries) of extreme vocal excerpts without popularity metrics. Under development.</p>`,
-    db3: `<p><strong>Extreme Metal Vocal Techniques Database:</strong> <br>Studio recordings of five vocalists reproducing the same excerpts in different vocal techniques under controlled conditions. To be completed by July 2025.</p>`
+    db1: `<p><strong>Extreme Metal Vocal Techniques Examples Database with Spotify popularity metrics:</strong> <br>210 curated excerpts of metal songs with growling, screaming, and clean vocals. Contains Spotify popularity metrics. To be expanded to include 420 examples, adding the most popular Spotify releases by the same artists. <br>More information on the dataset can be found in <strong>About</strong> section.</br></p>`,
+    db3: `<p><strong>Extreme Metal Vocal Techniques Database:</strong> <br>Studio recordings of five vocalists reproducing the same excerpts as in <strong>EMVT Examples Databes</strong>, but in different vocal techniques under controlled conditions. <br>To be completed by July 2025.</p>`
   };
 
   function showDescription(key, btn) {
@@ -67,17 +65,6 @@
     btn.classList.add('active');
   }
 
-  // Меню
-  function toggleMenu() {
-    const menu = document.getElementById('navLinks');
-    menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
-  }
 
-  window.onclick = function(event) {
-    if (!event.target.closest('.menu-button')) {
-      const menu = document.getElementById('navLinks');
-      if (menu) menu.style.display = 'none';
-    }
-  }
 </script>
 {% endblock %}
