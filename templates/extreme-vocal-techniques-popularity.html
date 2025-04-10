@@ -18,7 +18,7 @@
 
     <div class="filters">
       <label>Filter by Technique:
-        <select id="techniqueFilter" onchange="applyFilters()">
+        <select id="techniqueFilter" onchange="updateArtistFilter(); applyFilters()">
           <option value="">All</option>
           {% for technique in excerpts | map(attribute='Technique') | unique | sort %}
             <option value="{{ technique }}">{{ technique }}</option>
@@ -101,6 +101,7 @@
 <script>
   let sortDirection = 1;
   let lastSortedCol = null;
+  let allRows = [];
 
   function updateCounter() {
     const total = document.querySelectorAll(".data-row").length;
@@ -155,6 +156,35 @@
       tbody.appendChild(pair.detail);
     });
   }
+function updateArtistFilter() {
+  const tech = document.getElementById("techniqueFilter").value.toLowerCase();
+  const artistSet = new Set();
+
+  allRows.forEach(row => {
+    const rowTech = row.dataset.technique.toLowerCase();
+    const rowArtist = row.dataset.artist;
+
+    if (!tech || rowTech === tech) {
+      artistSet.add(rowArtist);
+    }
+  });
+
+  const artistFilter = document.getElementById("artistFilter");
+  const selectedArtist = artistFilter.value;
+  artistFilter.innerHTML = '<option value="">All</option>';
+
+  Array.from(artistSet)
+    .sort((a, b) => a.localeCompare(b))
+    .forEach(artist => {
+      const option = document.createElement("option");
+      option.value = artist;
+      option.textContent = artist;
+      if (artist === selectedArtist) {
+        option.selected = true;
+      }
+      artistFilter.appendChild(option);
+    });
+}
 
   function setupRowEvents() {
     const tbody = document.querySelector("#exampleTable tbody");
@@ -169,6 +199,7 @@
 
   window.onload = function() {
     setupRowEvents();
+    allRows = Array.from(document.querySelectorAll(".data-row"));
     updateCounter();
 
     document.querySelectorAll(".sort-icon").forEach(icon => {
