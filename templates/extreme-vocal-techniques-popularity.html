@@ -82,6 +82,7 @@
             <p><span class="label">Spectral Centroid (Hz):</span> {{ item['Spectral_Centroid'] if item['Spectral_Centroid'] and item['Spectral_Centroid'] != "nan" else "N/A" }}</p>
             <p><span class="label">Time Signature:</span> {{ item['Time_signature'] if item['Time_signature'] and item['Time_signature'] != "nan" else "N/A" }}</p>
             <p><span class="label">Tempo (approx.):</span> {{ item['Tempo_(approx.)'] if item['Tempo_(approx.)'] and item['Tempo_(approx.)'] != "nan" else "N/A" }}</p>
+            <p><span class="label">Excerpt duration (ms):</span> {{ item['Excerpt_duration_ms']|int if item['Excerpt_duration_ms'] and item['Excerpt_duration_ms'] != "nan" else "N/A" }}</p>
             <p><span class="label">Album Popularity:</span> {{ item['Album_Popularity'] if item['Album_Popularity'] and item['Album_Popularity'] != "nan" else "N/A" }}</p>
             <p><span class="label">Song Popularity:</span> {{ item['Track_Popularity'] if item['Track_Popularity'] and item['Track_Popularity'] != "nan" else "N/A" }}</p>
             <p><span class="label">Stream Count:</span> {{ item['Stream_Count'] }}</p>

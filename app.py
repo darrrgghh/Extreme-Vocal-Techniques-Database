@@ -59,11 +59,11 @@ DATABASES = {
         "columns": [
             "Artist", "Album", "Year",
             "Album_Popularity", "Track_Popularity",
-            "Stream_Count", "Syllable_Count"
+            "Stream_Count", "Syllable_Count", "Tempo_(approx.)", "Excerpt_duration_ms"
         ],
         "numeric_columns": [
             "Album_Popularity", "Track_Popularity", "Stream_Count",
-            "Syllable_Count", "Year"
+            "Syllable_Count", "Year", "Tempo_(approx.)", "Excerpt_duration_ms"
         ],
         "categorical_columns": ["Artist"]
     }

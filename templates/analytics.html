@@ -10,6 +10,15 @@
         <li>Scatter plot of all numeric and categorical variables</li>
         <li>Spectral Centroid Analysis (ANOVA, T-test, Tukey HSD)</li>
       </ul>
+      <div class="legend-inline">
+  <p style="margin-top:10px;"><strong>Color Legend (Vocal Technique):</strong></p>
+  <div class="legend-row">
+    <span class="legend-circle" style="background:#4fc3f7;"></span> Clean
+    <span class="legend-circle" style="background:#ff8a65;"></span> Growling
+    <span class="legend-circle" style="background:#81c784;"></span> Screaming
+  </div>
+</div>
+
     </div>
   </div>
 <div class="header">
@@ -91,6 +100,8 @@
       "Track_Popularity": "Track Popularity",
       "Stream_Count": "Stream Count",
       "Syllable_Count": "Syllable Count",
+      "Tempo_(approx.)": "Tempo (BPM)",
+    "Excerpt_duration_ms": "Excerpt Duration (ms)",
       "Year": "Year of Release",
       "Artist": "Artist",
       "Technique": "Vocal Technique"
@@ -112,9 +123,19 @@
     let xData = data.map(d => d[xVar]);
     let yData = yVar ? data.map(d => d[yVar]) : null;
 
-    let textData = data.map(d =>
-      `Vocal Technique: ${d.Technique}<br>Artist: ${d.Artist}<br>Album: ${d.Album} (pop. ${d.Album_Popularity})<br>Track: ${d.Song} (pop. ${d.Track_Popularity})<br>Syllables: ${d.Syllable_Count}<br>Year: ${d.Year}`
-    );
+let textData = data.map(d =>
+  `
+   Vocal Technique: ${d.Technique}<br>
+   Artist: ${d.Artist}<br>
+   Album: ${d.Album} (pop. ${d.Album_Popularity})<br>
+   Track: ${d.Song} (pop. ${d.Track_Popularity})<br>
+   Tempo: ${d["Tempo_(approx.)"]} bpm<br>
+   Excerpt Duration: ${d.Excerpt_duration_ms} ms<br>
+   Syllables: ${d.Syllable_Count}<br>
+   Year: ${d.Year}
+   `
+);
+
 
     let colorData = data.map(d =>
       colorMap[d.Technique] || colorMap[d.Artist] || "#888"
@@ -268,5 +289,27 @@
       font-style: italic;
       color: #555;
     }
+    .legend-inline {
+  margin-top: 12px;
+}
+
+.legend-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 6px;
+  flex-wrap: wrap;
+}
+
+.legend-circle {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  margin-right: 6px;
+  border: 1px solid #999;
+}
+
   </style>
 {% endblock %}
