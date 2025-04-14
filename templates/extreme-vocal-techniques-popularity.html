@@ -86,6 +86,7 @@
             <p><span class="label">Album Popularity:</span> {{ item['Album_Popularity'] if item['Album_Popularity'] and item['Album_Popularity'] != "nan" else "N/A" }}</p>
             <p><span class="label">Song Popularity:</span> {{ item['Track_Popularity'] if item['Track_Popularity'] and item['Track_Popularity'] != "nan" else "N/A" }}</p>
             <p><span class="label">Stream Count:</span> {{ item['Stream_Count'] }}</p>
+            <p><span class="label">Type of example:</span> {{ item['Example_type'] }}</p>
             <p><span class="label">Popularity metrics & streams collected on:</span> {{ item['Date_collected'] if item['Date_collected'] and item['Date_collected'] != "nan" else "N/A" }}</p>
           </td>
         </tr>

@@ -57,7 +57,7 @@ DATABASES = {
     "emvt": {
         "file": "1excerpts_database.tsv",
         "columns": [
-            "Artist", "Album", "Year",
+            "Artist", "Album", "Year", "Example_type",
             "Album_Popularity", "Track_Popularity",
             "Stream_Count", "Syllable_Count", "Tempo_(approx.)", "Excerpt_duration_ms"
         ],
