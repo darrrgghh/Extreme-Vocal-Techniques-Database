@@ -1,10 +1,10 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, request
 import pandas as pd
 import os
-import re
 
 app = Flask(__name__)
 DATA_FILE = "1excerpts_database.tsv"
+METALVOX_FILE = "1metal_vox.tsv"
 
 def count_syllables(rhythmic_representation):
     if rhythmic_representation == "N/A":
@@ -25,7 +25,7 @@ def count_syllables(rhythmic_representation):
         i += 1
     return count
 
-
+# Загрузка основной базы
 if os.path.exists(DATA_FILE):
     df = pd.read_csv(DATA_FILE, sep="\t", encoding="cp1252")
     df = df.fillna("N/A")
@@ -35,6 +35,60 @@ else:
 
 df["Year"] = pd.to_numeric(df["Year"], errors="coerce")
 df["Syllable_Count"] = df["Rhythmic_representation"].apply(count_syllables)
+df["Excerpt_ID"] = df["Excerpt_ID"].astype(str)
+
+# Загрузка METALVOX
+if os.path.exists(METALVOX_FILE):
+    metalvox_df = pd.read_csv(METALVOX_FILE, sep="\t")
+else:
+    metalvox_df = pd.DataFrame()
+
+metalvox_df["Original_Corresponding_Excerpt"] = metalvox_df["Original_Corresponding_Excerpt"].astype(str)
+
+# Shared songs
+SHARED_EXCERPT_IDS = [
+    "EXCE-093", "EXCE-056", "EXCE-108", "EXCE-124",
+    "EXCE-064", "EXCE-155", "EXCE-179", "EXCE-087",
+    "EXCE-141", "EXCE-042", "EXCE-208", "EXCE-184"
+]
+
+@app.route("/metalvox")
+def metalvox():
+    selected_vocalist = request.args.get("vocalist", "C")
+    df_vocalist = metalvox_df[metalvox_df["Vocalist_ID"] == selected_vocalist].copy()
+
+    # ВАЖНО: вот правильное разделение
+    shared_df = df_vocalist[df_vocalist["Original_Corresponding_Excerpt"].isin(SHARED_EXCERPT_IDS)].copy()
+    unique_df = df_vocalist[~df_vocalist["Original_Corresponding_Excerpt"].isin(SHARED_EXCERPT_IDS)].copy()
+
+    shared_df = shared_df.sort_values(["Song", "Technique"])
+    unique_df = unique_df.sort_values(["Song", "Technique"])
+
+    vocalists_df = metalvox_df[["Vocalist_ID", "Credits"]].drop_duplicates()
+    vocalists_df = vocalists_df[
+        (vocalists_df["Vocalist_ID"].notnull()) &
+        (vocalists_df["Vocalist_ID"].str.strip() != "") &
+        (vocalists_df["Vocalist_ID"].str.len() == 1)
+        ]
+    vocalists_df = vocalists_df.sort_values("Vocalist_ID")
+    vocalist_credits = {
+        row["Vocalist_ID"]: row["Credits"] for _, row in vocalists_df.iterrows()
+    }
+    vocalists = list(vocalist_credits.keys())
+
+    excerpts_dict = {row["Excerpt_ID"]: row.to_dict() for _, row in df.iterrows()}
+
+    return render_template(
+        "metalvox.html",
+        shared=shared_df.to_dict(orient="records"),
+        unique=unique_df.to_dict(orient="records"),
+        vocalists=vocalists,
+        vocalist_credits=vocalist_credits,
+        selected_vocalist=selected_vocalist,
+        excerpts=df.to_dict(orient="records"),
+        excerpts_dict=excerpts_dict,
+    )
+
 
 @app.route("/")
 def index():
@@ -42,8 +96,7 @@ def index():
 
 @app.route("/extreme-vocal-techniques-popularity")
 def vocal_techniques_popularity():
-    examples = df.to_dict(orient="records")
-    return render_template("extreme-vocal-techniques-popularity.html", excerpts=examples)
+    return render_template("extreme-vocal-techniques-popularity.html", excerpts=df.to_dict(orient="records"))
 
 @app.route("/extreme-vocal-techniques")
 def vocal_techniques():
@@ -53,57 +106,45 @@ def vocal_techniques():
 def vocal_stimuli():
     return render_template("extreme-vocal-only-stimuli.html")
 
-DATABASES = {
-    "emvt": {
-        "file": "1excerpts_database.tsv",
-        "columns": [
-            "Artist", "Album", "Year", "Example_type",
-            "Album_Popularity", "Track_Popularity",
-            "Stream_Count", "Syllable_Count", "Tempo_(approx.)", "Excerpt_duration_ms"
-        ],
-        "numeric_columns": [
-            "Album_Popularity", "Track_Popularity", "Stream_Count",
-            "Syllable_Count", "Year", "Tempo_(approx.)", "Excerpt_duration_ms"
-        ],
-        "categorical_columns": ["Artist"]
-    }
-    # в будущем сюда можно добавить другие базы
-}
-
 @app.route("/analytics")
 def analytics():
-    db_info = DATABASES["emvt"]
-    data = df.to_dict(orient="records")
-
-    year_min = int(df["Year"].min())
-    year_max = int(df["Year"].max())
+    db_info = {
+        "columns": ["Artist", "Album", "Year", "Example_type",
+                    "Album_Popularity", "Track_Popularity",
+                    "Stream_Count", "Syllable_Count", "Tempo_(approx.)", "Excerpt_duration_ms"],
+        "numeric_columns": ["Album_Popularity", "Track_Popularity", "Stream_Count",
+                            "Syllable_Count", "Year", "Tempo_(approx.)", "Excerpt_duration_ms"],
+        "categorical_columns": ["Artist"]
+    }
 
     return render_template(
         "analytics.html",
         columns=db_info["columns"],
-        data=data,
+        data=df.to_dict(orient="records"),
         numeric_columns=db_info["numeric_columns"],
         categorical_columns=db_info["categorical_columns"],
-        year_range=[year_min, year_max]
+        year_range=[int(df["Year"].min()), int(df["Year"].max())]
     )
 
 @app.route("/spectral-centroid-analysis")
 def spectral_centroid():
-    df_local = pd.read_csv(DATA_FILE, sep="\t", encoding="cp1252")
-    df_local = df_local[df_local["Technique"].isin(["Growling", "Screaming", "Clean"])]
+    df_local = df[df["Technique"].isin(["Growling", "Screaming", "Clean"])].copy()
+    df_local = df_local[df_local["Spectral_Centroid"] != "N/A"]
+
+    df_local["Spectral_Centroid"] = pd.to_numeric(df_local["Spectral_Centroid"], errors="coerce")
     df_local = df_local.dropna(subset=["Spectral_Centroid"])
 
-    group_stats = df_local.groupby('Technique')["Spectral_Centroid"].agg(['mean', 'std', 'count', 'min', 'max'])
+    group_stats = df_local.groupby("Technique")["Spectral_Centroid"].agg(['mean', 'std', 'count', 'min', 'max'])
 
     from scipy.stats import f_oneway, ttest_ind
     from statsmodels.stats.multicomp import pairwise_tukeyhsd
 
-    growling = df_local[df_local["Technique"] == "Growling"]["Spectral_Centroid"]
-    screaming = df_local[df_local["Technique"] == "Screaming"]["Spectral_Centroid"]
+    growl = df_local[df_local["Technique"] == "Growling"]["Spectral_Centroid"]
+    scream = df_local[df_local["Technique"] == "Screaming"]["Spectral_Centroid"]
     clean = df_local[df_local["Technique"] == "Clean"]["Spectral_Centroid"]
 
-    f_stat, p_value_anova = f_oneway(growling, screaming, clean)
-    t_stat, p_value_ttest = ttest_ind(growling, screaming)
+    f_stat, p_value_anova = f_oneway(growl, scream, clean)
+    t_stat, p_value_ttest = ttest_ind(growl, scream)
 
     tukey_result = pairwise_tukeyhsd(df_local["Spectral_Centroid"], df_local["Technique"])
     tukey_df = pd.DataFrame(data=tukey_result.summary().data[1:], columns=tukey_result.summary().data[0])

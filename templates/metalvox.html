@@ -1,10 +1,328 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}MetalVox Stimuli Set{% endblock %}
+
+{% block content %}
+<div class="table-container">
+  <h1>Metalvox Stimuli Set</h1>
+  <h2>(3 vocal techniques × 6 conditions × 6 vocalists × 12 shared x up to 12 unique excerpts)</h2>
+
+  <p class="description">
+    This set includes recordings from 6 vocalists (5 male, 1 female) who each performed 12 identical and 12 unique vocal fragments
+    across six distinct conditions using three extended, or extreme, vocal techniques (clean vocals, growling and screaming). This stimulus set was designed for a perceptual experiment as part of a research project presented at
+    the <strong>18th International Conference on Music Perception and Cognition (ICMPC)</strong> in São Paulo, Brazil, July 2025.<br>
+    <br>
+    <strong>The full dataset (all files and tables) is available for download here:</strong>
+    <br>
+    <a href="https://github.com/darrrgghh/Metal-Music/tree/main/databases/metal_vox" target="_blank">
+      https://github.com/darrrgghh/Metal-Music/tree/main/databases/metal_vox
+    </a>
+  </p>
+
+  <div class="description">
+    <strong>Conditions across Vocal Techniques:</strong><br>
+    Clean vocals with melody (<code>Clean</code>)<br>
+    Clean vocals without melody, monotonous (<code>Clean_Flat</code>)<br>
+    Screaming with melodic contour (<code>Screaming_V</code>)<br>
+    Screaming without melodic contour (<code>Screaming_NV</code>)<br>
+    Growling with melodic contour (<code>Growling_V</code>)<br>
+    Growling without melodic contour (<code>Growling_NV</code>)
+  </div>
+
+  {# Macro для форматирования даты YYYYMMDD в May 1, 2025 #}
+  {% macro format_date_ymd(date_str) -%}
+  {%- set months = [
+    '', 'January','February','March','April','May','June','July','August','September','October','November','December'] -%}
+  {%- set s = date_str|string -%}
+  {%- if s and s|length == 8 -%}
+    {%- set y = s[:4]|int -%}
+    {%- set m = s[4:6]|int -%}
+    {%- set d = s[6:8]|int -%}
+    {{ months[m] }} {{ d }}, {{ y }}
+  {%- else -%}
+    —
+  {%- endif -%}
+{%- endmacro %}
+
+
+  <div class="filters" style="display:flex; justify-content:center; align-items:flex-start;">
+    <div>
+      <label>Choose Vocalist:
+        <select id="vocalistSelect">
+          {% for v in vocalists %}
+            <option value="{{ v }}" {% if v == selected_vocalist %}selected{% endif %}>
+              Vocalist {{ v }} – {{ vocalist_credits.get(v, "Unknown") }}
+            </option>
+          {% endfor %}
+        </select>
+      </label>
+    </div>
+    {% set current = shared|first or unique|first %}
+    {% if current %}
+      <div style="margin-left:2em; min-width:180px; font-size:0.99em; line-height:1.4;">
+        {% if current['Gender'] not in ['N/A', 'nan', '', None] %}
+          <div><b>Gender:</b> {{ current['Gender'] }}</div>
+        {% endif %}
+        {% set band_url = current['band_url']|default('')|trim %}
+        {% if band_url and band_url not in ['N/A', 'nan'] %}
+          <div><b>Band:</b> <a href="{{ band_url }}" target="_blank" style="color:#3076b8;text-decoration:underline;">Band Page</a></div>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+
+  {% macro original_block(orig_id) %}
+    {% set original = excerpts_dict.get(orig_id) %}
+    {% if original and original['MP3_Path'] and original['MP3_Path'] != 'N/A' %}
+      <p><em>Compare with Original:</em></p>
+      <audio controls preload="none">
+        <source src="/{{ original['MP3_Path'] }}" type="audio/mpeg">
+      </audio>
+      <details>
+        <summary>Show Original Info</summary>
+        <ul style="font-size:0.97em;">
+          <li><b>Artist:</b> {{ original['Artist'] }}</li>
+          <li><b>Song:</b> {{ original['Song'] }}</li>
+          <li><b>Lyrics:</b> {{ original['Lyrics'] }}</li>
+          <li><b>Technique:</b> {{ original['Technique'] }}</li>
+          <li><b>Year:</b> {{ original['Year'] }}</li>
+          <li><b>Album:</b> {{ original['Album'] }}</li>
+          <li><b>Syllables Count:</b> {{ original['Syllable_Count'] }}</li>
+          <li><b>Popularity:</b> {{ original['Track_Popularity'] }}</li>
+          <li><b>Stream Count:</b> {{ original['Stream_Count'] }}</li>
+          <li><b>Duration:</b> {{ original['Excerpt_duration_ms'] }}</li>
+          {% if original['Spotify_URL'] not in ['N/A', 'nan', '', None] %}
+            <li><b>Spotify:</b> <a href="{{ original['Spotify_URL'] }}" target="_blank">Open in Spotify</a></li>
+          {% endif %}
+        </ul>
+      </details>
+    {% else %}
+      <p><em>Original not found</em></p>
+    {% endif %}
+  {% endmacro %}
+
+  {% if shared %}
+  <h2>Shared Songs</h2>
+  <table>
+    <thead>
+      <tr><th>Artist</th><th>Song</th><th>Lyrics</th></tr>
+    </thead>
+    <tbody>
+      {% set seen = [] %}
+      {% for row in shared %}
+        {% set key = row['Song'] ~ row['Artist'] %}
+        {% if key not in seen %}
+          {% set _ = seen.append(key) %}
+          {% set variations = shared | selectattr('Song', 'equalto', row['Song']) | selectattr('Artist', 'equalto', row['Artist']) | list %}
+          <tr class="data-row" onclick="toggleDetails('shared{{ loop.index }}')">
+            <td>{{ row["Artist"] }}</td>
+            <td>{{ row["Song"] }}</td>
+            <td>{{ row["Lyrics"] }}</td>
+          </tr>
+          <tr id="shared{{ loop.index }}" class="details" style="display: none;">
+            <td colspan="3">
+              <label>Technique:
+                <select onchange="switchTechnique(this, 'blockShared{{ loop.index }}')">
+                  {% for v in variations %}
+                    <option value="{{ loop.index0 }}" {% if v["Technique"] == "Clean" %}selected{% endif %}>
+                      {{ v["Technique"] }}
+                    </option>
+                  {% endfor %}
+                </select>
+              </label>
+              <div id="blockShared{{ loop.index }}">
+                {% for v in variations %}
+                  <div class="audio-technique" style="display: {% if v['Technique'] == 'Clean' %}block{% else %}none{% endif %}; margin-top: 1rem;">
+                    <p><strong>{{ v["Technique"] }}</strong></p>
+                    <audio controls preload="none">
+                      <source src="/{{ v['WAV_Path'] }}" type="audio/wav">
+                    </audio>
+                    <details style="margin:0.6em 0 0.6em 0;">
+                      <summary>Show Fragment Info</summary>
+                      <ul style="font-size:0.97em;">
+                        {% if v['Session_date_YMD'] not in ['N/A', 'nan', '', None] %}
+                          <li><b>Session date:</b> {{ format_date_ymd(v['Session_date_YMD']) }}</li>
+                        {% endif %}
+                        {% if v['Spectral_Centroid'] not in ['N/A', 'nan', '', None] %}
+                          <li><b>Spectral Centroid:</b> {{ v['Spectral_Centroid'] }}</li>
+                        {% endif %}
+                        {% if v['Duration'] not in ['N/A', 'nan', '', None] %}
+                          <li><b>Duration:</b> {{ v['Duration'] }}</li>
+                        {% endif %}
+                      </ul>
+                    </details>
+                    {{ original_block(v['Original_Corresponding_Excerpt']) }}
+                  </div>
+                {% endfor %}
+              </div>
+            </td>
+          </tr>
+        {% endif %}
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+
+  {% if unique %}
+  <h2 style="margin-top: 2rem;">Unique Songs</h2>
+  <table>
+    <thead>
+      <tr><th>Artist</th><th>Song</th><th>Lyrics</th></tr>
+    </thead>
+    <tbody>
+      {% set seen_u = [] %}
+      {% for row in unique %}
+        {% set key = row['Song'] ~ row['Artist'] %}
+        {% if key not in seen_u %}
+          {% set _ = seen_u.append(key) %}
+          {% set variations = unique | selectattr('Song', 'equalto', row['Song']) | selectattr('Artist', 'equalto', row['Artist']) | list %}
+          <tr class="data-row" onclick="toggleDetails('unique{{ loop.index }}')">
+            <td>{{ row["Artist"] }}</td>
+            <td>{{ row["Song"] }}</td>
+            <td>{{ row["Lyrics"] }}</td>
+          </tr>
+          <tr id="unique{{ loop.index }}" class="details" style="display: none;">
+            <td colspan="3">
+              <label>Technique:
+                <select onchange="switchTechnique(this, 'blockUnique{{ loop.index }}')">
+                  {% for v in variations %}
+                    <option value="{{ loop.index0 }}" {% if v["Technique"] == "Clean" %}selected{% endif %}>
+                      {{ v["Technique"] }}
+                    </option>
+                  {% endfor %}
+                </select>
+              </label>
+              <div id="blockUnique{{ loop.index }}">
+                {% for v in variations %}
+                  <div class="audio-technique" style="display: {% if v['Technique'] == 'Clean' %}block{% else %}none{% endif %}; margin-top: 1rem;">
+                    <p><strong>{{ v["Technique"] }}</strong></p>
+                    <audio controls preload="none">
+                      <source src="/{{ v['WAV_Path'] }}" type="audio/wav">
+                    </audio>
+                    <details style="margin:0.6em 0 0.6em 0;">
+                      <summary>Show Fragment Info</summary>
+                      <ul style="font-size:0.97em;">
+                        {% if v['Session_date_YMD'] not in ['N/A', 'nan', '', None] %}
+                          <li><b>Session date:</b> {{ format_date_ymd(v['Session_date_YMD']) }}</li>
+                        {% endif %}
+                        {% if v['Spectral_Centroid'] not in ['N/A', 'nan', '', None] %}
+                          <li><b>Spectral Centroid:</b> {{ v['Spectral_Centroid'] }}</li>
+                        {% endif %}
+                        {% if v['Duration'] not in ['N/A', 'nan', '', None] %}
+                          <li><b>Duration:</b> {{ v['Duration'] }}</li>
+                        {% endif %}
+                      </ul>
+                    </details>
+                    {{ original_block(v['Original_Corresponding_Excerpt']) }}
+                  </div>
+                {% endfor %}
+              </div>
+            </td>
+          </tr>
+        {% endif %}
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  document.getElementById("vocalistSelect").addEventListener("change", function () {
+    const vocalist = this.value;
+    window.location.href = `/metalvox?vocalist=${vocalist}`;
+  });
+
+  function toggleDetails(id) {
+    const row = document.getElementById(id);
+    row.style.display = (row.style.display === "none") ? "table-row" : "none";
+  }
+
+  function switchTechnique(select, blockId) {
+    const index = parseInt(select.value);
+    const container = document.getElementById(blockId);
+    const all = container.querySelectorAll(".audio-technique");
+    all.forEach((div, i) => {
+      div.style.display = (i === index) ? "block" : "none";
+    });
+  }
+</script>
+{% endblock %}
+
+{% block head %}
+<style>
+  .table-container {
+    max-width: 1050px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+  h1, h2 {
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+  h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+  }
+  h2 {
+    font-size: 1rem;
+    color: #555;
+    font-weight: 400;
+  }
+  .description {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto 20px;
+    color: #555;
+    font-size: 1rem;
+  }
+  .filters {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  table {
+    width: 100%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  }
+  th, td {
+    border-bottom: 1px solid #eee;
+    padding: 10px 14px;
+    text-align: left;
+  }
+  thead {
+    background-color: #f1f3f5;
+    height: 50px;
+  }
+  tr.data-row {
+    cursor: pointer;
+    transition: background-color 0.2s;
+    line-height: 1.4;
+  }
+  tr.data-row:hover {
+    background-color: #f8f9fa;
+  }
+  .details td {
+    background-color: #fdfdfd;
+    border-radius: 0 0 12px 12px;
+    padding: 12px;
+  }
+  audio {
+    width: 100%;
+    max-width: 350px;
+    margin-bottom: 0.5rem;
+  }
+  select {
+    padding: 6px 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background: #fff;
+    font-size: 1rem;
+  }
+</style>
+{% endblock %}
