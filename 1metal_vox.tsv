@@ -719,147 +719,147 @@ VOX-717	C	Screaming_NV	Cannibal Corpse	Sanded Faceless	"""Tedious rasping, Pains
 VOX-718	C	Screaming_V	Cannibal Corpse	Sanded Faceless	"""Tedious rasping, Painstakingly grate the skin"""		180	6/8	EXCE-001	static/metalvox/VOX-718.wav	Nathan Bagwell Jr.	20250613			Male		https://open.spotify.com/artist/0mAFtuhEzuJs2ouYJ0Lqo7?si=atMso54jTtyvtr7rBUDF8Q	
 VOX-719	C	Growling_NV	Cannibal Corpse	Sanded Faceless	"""Tedious rasping, Painstakingly grate the skin"""		180	6/8	EXCE-001	static/metalvox/VOX-719.wav	Nathan Bagwell Jr.	20250507			Male		https://open.spotify.com/artist/0mAFtuhEzuJs2ouYJ0Lqo7?si=atMso54jTtyvtr7rBUDF8Q	
 VOX-720	C	Growling_V	Cannibal Corpse	Sanded Faceless	"""Tedious rasping, Painstakingly grate the skin"""		180	6/8	EXCE-001	static/metalvox/VOX-720.wav	Nathan Bagwell Jr.	20250507			Male		https://open.spotify.com/artist/0mAFtuhEzuJs2ouYJ0Lqo7?si=atMso54jTtyvtr7rBUDF8Q	
-VOX-721	H	Clean	Trivium	The Deceived - Flavus	"""Tell that the promised have been failed"""		105	4/4	EXCE-093	static/metalvox/VOX-721.wav	Jerry Sola	20250617			Male	25		
-VOX-722	H	Clean_FLAT	Trivium	The Deceived - Flavus	"""Tell that the promised have been failed"""		105	4/4	EXCE-093	static/metalvox/VOX-722.wav	Jerry Sola	20250617			Male	25		
-VOX-723	H	Screaming_NV	Trivium	The Deceived - Flavus	"""Tell that the promised have been failed"""		105	4/4	EXCE-093	static/metalvox/VOX-723.wav	Jerry Sola	20250617			Male	25		
-VOX-724	H	Screaming_V	Trivium	The Deceived - Flavus	"""Tell that the promised have been failed"""		105	4/4	EXCE-093	static/metalvox/VOX-724.wav	Jerry Sola	20250617			Male	25		
-VOX-725	H	Growling_NV	Trivium	The Deceived - Flavus	"""Tell that the promised have been failed"""		105	4/4	EXCE-093	static/metalvox/VOX-725.wav	Jerry Sola	20250617			Male	25		
-VOX-726	H	Growling_V	Trivium	The Deceived - Flavus	"""Tell that the promised have been failed"""		105	4/4	EXCE-093	static/metalvox/VOX-726.wav	Jerry Sola	20250617			Male	25		
-VOX-727	H	Clean	Avenged Sevenfold	Higher	"""Meet you in the stars tonight"""		135	4/4	EXCE-056	static/metalvox/VOX-727.wav	Jerry Sola	20250617			Male	25		
-VOX-728	H	Clean_FLAT	Avenged Sevenfold	Higher	"""Meet you in the stars tonight"""		135	4/4	EXCE-056	static/metalvox/VOX-728.wav	Jerry Sola	20250617			Male	25		
-VOX-729	H	Screaming_NV	Avenged Sevenfold	Higher	"""Meet you in the stars tonight"""		135	4/4	EXCE-056	static/metalvox/VOX-729.wav	Jerry Sola	20250617			Male	25		
-VOX-730	H	Screaming_V	Avenged Sevenfold	Higher	"""Meet you in the stars tonight"""		135	4/4	EXCE-056	static/metalvox/VOX-730.wav	Jerry Sola	20250617			Male	25		
-VOX-731	H	Growling_NV	Avenged Sevenfold	Higher	"""Meet you in the stars tonight"""		135	4/4	EXCE-056	static/metalvox/VOX-731.wav	Jerry Sola	20250617			Male	25		
-VOX-732	H	Growling_V	Avenged Sevenfold	Higher	"""Meet you in the stars tonight"""		135	4/4	EXCE-056	static/metalvox/VOX-732.wav	Jerry Sola	20250617			Male	25		
-VOX-733	H	Clean	Killswitch Engage	Still Beats Your Name	"""Will I live another day?"""		110	4/4	EXCE-108	static/metalvox/VOX-733.wav	Jerry Sola	20250617			Male	25		
-VOX-734	H	Clean_FLAT	Killswitch Engage	Still Beats Your Name	"""Will I live another day?"""		110	4/4	EXCE-108	static/metalvox/VOX-734.wav	Jerry Sola	20250617			Male	25		
-VOX-735	H	Screaming_NV	Killswitch Engage	Still Beats Your Name	"""Will I live another day?"""		110	4/4	EXCE-108	static/metalvox/VOX-735.wav	Jerry Sola	20250617			Male	25		
-VOX-736	H	Screaming_V	Killswitch Engage	Still Beats Your Name	"""Will I live another day?"""		110	4/4	EXCE-108	static/metalvox/VOX-736.wav	Jerry Sola	20250617			Male	25		
-VOX-737	H	Growling_NV	Killswitch Engage	Still Beats Your Name	"""Will I live another day?"""		110	4/4	EXCE-108	static/metalvox/VOX-737.wav	Jerry Sola	20250617			Male	25		
-VOX-738	H	Growling_V	Killswitch Engage	Still Beats Your Name	"""Will I live another day?"""		110	4/4	EXCE-108	static/metalvox/VOX-738.wav	Jerry Sola	20250617			Male	25		
-VOX-739	H	Clean	Metallica	Crown of Barbed Wire	"""This rusted empire I own"""		110	4/4	EXCE-124	static/metalvox/VOX-739.wav	Jerry Sola	20250617			Male	25		
-VOX-740	H	Clean_FLAT	Metallica	Crown of Barbed Wire	"""This rusted empire I own"""		110	4/4	EXCE-124	static/metalvox/VOX-740.wav	Jerry Sola	20250617			Male	25		
-VOX-741	H	Screaming_NV	Metallica	Crown of Barbed Wire	"""This rusted empire I own"""		110	4/4	EXCE-124	static/metalvox/VOX-741.wav	Jerry Sola	20250617			Male	25		
-VOX-742	H	Screaming_V	Metallica	Crown of Barbed Wire	"""This rusted empire I own"""		110	4/4	EXCE-124	static/metalvox/VOX-742.wav	Jerry Sola	20250617			Male	25		
-VOX-743	H	Growling_NV	Metallica	Crown of Barbed Wire	"""This rusted empire I own"""		110	4/4	EXCE-124	static/metalvox/VOX-743.wav	Jerry Sola	20250617			Male	25		
-VOX-744	H	Growling_V	Metallica	Crown of Barbed Wire	"""This rusted empire I own"""		110	4/4	EXCE-124	static/metalvox/VOX-744.wav	Jerry Sola	20250617			Male	25		
-VOX-745	H	Clean	Architects	A Portrait for the Deceased	"""Then come and drown with me"""		161	4/4	EXCE-064	static/metalvox/VOX-745.wav	Jerry Sola	20250617			Male	25		
-VOX-746	H	Clean_FLAT	Architects	A Portrait for the Deceased	"""Then come and drown with me"""		161	4/4	EXCE-064	static/metalvox/VOX-746.wav	Jerry Sola	20250617			Male	25		
-VOX-747	H	Screaming_NV	Architects	A Portrait for the Deceased	"""Then come and drown with me"""		161	4/4	EXCE-064	static/metalvox/VOX-747.wav	Jerry Sola	20250617			Male	25		
-VOX-748	H	Screaming_V	Architects	A Portrait for the Deceased	"""Then come and drown with me"""		161	4/4	EXCE-064	static/metalvox/VOX-748.wav	Jerry Sola	20250617			Male	25		
-VOX-749	H	Growling_NV	Architects	A Portrait for the Deceased	"""Then come and drown with me"""		161	4/4	EXCE-064	static/metalvox/VOX-749.wav	Jerry Sola	20250617			Male	25		
-VOX-750	H	Growling_V	Architects	A Portrait for the Deceased	"""Then come and drown with me"""		161	4/4	EXCE-064	static/metalvox/VOX-750.wav	Jerry Sola	20250617			Male	25		
-VOX-751	H	Clean	August Burns Red	The Reflective Property	"""A brief wind is swept through"""		180	4/4	EXCE-155	static/metalvox/VOX-751.wav	Jerry Sola	20250617			Male	25		
-VOX-752	H	Clean_FLAT	August Burns Red	The Reflective Property	"""A brief wind is swept through"""		180	4/4	EXCE-155	static/metalvox/VOX-752.wav	Jerry Sola	20250617			Male	25		
-VOX-753	H	Screaming_NV	August Burns Red	The Reflective Property	"""A brief wind is swept through"""		180	4/4	EXCE-155	static/metalvox/VOX-753.wav	Jerry Sola	20250617			Male	25		
-VOX-754	H	Screaming_V	August Burns Red	The Reflective Property	"""A brief wind is swept through"""		180	4/4	EXCE-155	static/metalvox/VOX-754.wav	Jerry Sola	20250617			Male	25		
-VOX-755	H	Growling_NV	August Burns Red	The Reflective Property	"""A brief wind is swept through"""		180	4/4	EXCE-155	static/metalvox/VOX-755.wav	Jerry Sola	20250617			Male	25		
-VOX-756	H	Growling_V	August Burns Red	The Reflective Property	"""A brief wind is swept through"""		180	4/4	EXCE-155	static/metalvox/VOX-756.wav	Jerry Sola	20250617			Male	25		
-VOX-757	H	Clean	Northlane	Metamorphosis	"""And I will overcome this suffering"""		140	4/4	EXCE-179	static/metalvox/VOX-757.wav	Jerry Sola	20250617			Male	25		
-VOX-758	H	Clean_FLAT	Northlane	Metamorphosis	"""And I will overcome this suffering"""		140	4/4	EXCE-179	static/metalvox/VOX-758.wav	Jerry Sola	20250617			Male	25		
-VOX-759	H	Screaming_NV	Northlane	Metamorphosis	"""And I will overcome this suffering"""		140	4/4	EXCE-179	static/metalvox/VOX-759.wav	Jerry Sola	20250617			Male	25		
-VOX-760	H	Screaming_V	Northlane	Metamorphosis	"""And I will overcome this suffering"""		140	4/4	EXCE-179	static/metalvox/VOX-760.wav	Jerry Sola	20250617			Male	25		
-VOX-761	H	Growling_NV	Northlane	Metamorphosis	"""And I will overcome this suffering"""		140	4/4	EXCE-179	static/metalvox/VOX-761.wav	Jerry Sola	20250617			Male	25		
-VOX-762	H	Growling_V	Northlane	Metamorphosis	"""And I will overcome this suffering"""		140	4/4	EXCE-179	static/metalvox/VOX-762.wav	Jerry Sola	20250617			Male	25		
-VOX-763	H	Clean	Chelsea Grin	Behind A Veil Of Lies	"""I can't seek help from angels"""		115	4/4	EXCE-087	static/metalvox/VOX-763.wav	Jerry Sola	20250617			Male	25		
-VOX-764	H	Clean_FLAT	Chelsea Grin	Behind A Veil Of Lies	"""I can't seek help from angels"""		115	4/4	EXCE-087	static/metalvox/VOX-764.wav	Jerry Sola	20250617			Male	25		
-VOX-765	H	Screaming_NV	Chelsea Grin	Behind A Veil Of Lies	"""I can't seek help from angels"""		115	4/4	EXCE-087	static/metalvox/VOX-765.wav	Jerry Sola	20250617			Male	25		
-VOX-766	H	Screaming_V	Chelsea Grin	Behind A Veil Of Lies	"""I can't seek help from angels"""		115	4/4	EXCE-087	static/metalvox/VOX-766.wav	Jerry Sola	20250617			Male	25		
-VOX-767	H	Growling_NV	Chelsea Grin	Behind A Veil Of Lies	"""I can't seek help from angels"""		115	4/4	EXCE-087	static/metalvox/VOX-767.wav	Jerry Sola	20250617			Male	25		
-VOX-768	H	Growling_V	Chelsea Grin	Behind A Veil Of Lies	"""I can't seek help from angels"""		115	4/4	EXCE-087	static/metalvox/VOX-768.wav	Jerry Sola	20250617			Male	25		
-VOX-769	H	Clean	Whitechapel	The Night Remains	"""Rid yourself and never return"""		155	4/4	EXCE-141	static/metalvox/VOX-769.wav	Jerry Sola	20250617			Male	25		
-VOX-770	H	Clean_FLAT	Whitechapel	The Night Remains	"""Rid yourself and never return"""		155	4/4	EXCE-141	static/metalvox/VOX-770.wav	Jerry Sola	20250617			Male	25		
-VOX-771	H	Screaming_NV	Whitechapel	The Night Remains	"""Rid yourself and never return"""		155	4/4	EXCE-141	static/metalvox/VOX-771.wav	Jerry Sola	20250617			Male	25		
-VOX-772	H	Screaming_V	Whitechapel	The Night Remains	"""Rid yourself and never return"""		155	4/4	EXCE-141	static/metalvox/VOX-772.wav	Jerry Sola	20250617			Male	25		
-VOX-773	H	Growling_NV	Whitechapel	The Night Remains	"""Rid yourself and never return"""		155	4/4	EXCE-141	static/metalvox/VOX-773.wav	Jerry Sola	20250617			Male	25		
-VOX-774	H	Growling_V	Whitechapel	The Night Remains	"""Rid yourself and never return"""		155	4/4	EXCE-141	static/metalvox/VOX-774.wav	Jerry Sola	20250617			Male	25		
-VOX-775	H	Clean	Morbid Angel	God Of Our Own Divinity	"""Break apart this rusty chains"""		140	3/4	EXCE-042	static/metalvox/VOX-775.wav	Jerry Sola	20250617			Male	25		
-VOX-776	H	Clean_FLAT	Morbid Angel	God Of Our Own Divinity	"""Break apart this rusty chains"""		140	3/4	EXCE-042	static/metalvox/VOX-776.wav	Jerry Sola	20250617			Male	25		
-VOX-777	H	Screaming_NV	Morbid Angel	God Of Our Own Divinity	"""Break apart this rusty chains"""		140	3/4	EXCE-042	static/metalvox/VOX-777.wav	Jerry Sola	20250617			Male	25		
-VOX-778	H	Screaming_V	Morbid Angel	God Of Our Own Divinity	"""Break apart this rusty chains"""		140	3/4	EXCE-042	static/metalvox/VOX-778.wav	Jerry Sola	20250617			Male	25		
-VOX-779	H	Growling_NV	Morbid Angel	God Of Our Own Divinity	"""Break apart this rusty chains"""		140	3/4	EXCE-042	static/metalvox/VOX-779.wav	Jerry Sola	20250617			Male	25		
-VOX-780	H	Growling_V	Morbid Angel	God Of Our Own Divinity	"""Break apart this rusty chains"""		140	3/4	EXCE-042	static/metalvox/VOX-780.wav	Jerry Sola	20250617			Male	25		
-VOX-781	H	Clean	Whitechapel	Dwell in the Shadows	"""This blade cuts deeper than flesh"""		95	4/4	EXCE-208	static/metalvox/VOX-781.wav	Jerry Sola	20250617			Male	25		
-VOX-782	H	Clean_FLAT	Whitechapel	Dwell in the Shadows	"""This blade cuts deeper than flesh"""		95	4/4	EXCE-208	static/metalvox/VOX-782.wav	Jerry Sola	20250617			Male	25		
-VOX-783	H	Screaming_NV	Whitechapel	Dwell in the Shadows	"""This blade cuts deeper than flesh"""		95	4/4	EXCE-208	static/metalvox/VOX-783.wav	Jerry Sola	20250617			Male	25		
-VOX-784	H	Screaming_V	Whitechapel	Dwell in the Shadows	"""This blade cuts deeper than flesh"""		95	4/4	EXCE-208	static/metalvox/VOX-784.wav	Jerry Sola	20250617			Male	25		
-VOX-785	H	Growling_NV	Whitechapel	Dwell in the Shadows	"""This blade cuts deeper than flesh"""		95	4/4	EXCE-208	static/metalvox/VOX-785.wav	Jerry Sola	20250617			Male	25		
-VOX-786	H	Growling_V	Whitechapel	Dwell in the Shadows	"""This blade cuts deeper than flesh"""		95	4/4	EXCE-208	static/metalvox/VOX-786.wav	Jerry Sola	20250617			Male	25		
-VOX-787	H	Clean	The Black Dahlia Murder	Stygiophobic	"""Can't they see there are consequences?"""		110	4/4	EXCE-184	static/metalvox/VOX-787.wav	Jerry Sola	20250617			Male	25		
-VOX-788	H	Clean_FLAT	The Black Dahlia Murder	Stygiophobic	"""Can't they see there are consequences?"""		110	4/4	EXCE-184	static/metalvox/VOX-788.wav	Jerry Sola	20250617			Male	25		
-VOX-789	H	Screaming_NV	The Black Dahlia Murder	Stygiophobic	"""Can't they see there are consequences?"""		110	4/4	EXCE-184	static/metalvox/VOX-789.wav	Jerry Sola	20250617			Male	25		
-VOX-790	H	Screaming_V	The Black Dahlia Murder	Stygiophobic	"""Can't they see there are consequences?"""		110	4/4	EXCE-184	static/metalvox/VOX-790.wav	Jerry Sola	20250617			Male	25		
-VOX-791	H	Growling_NV	The Black Dahlia Murder	Stygiophobic	"""Can't they see there are consequences?"""		110	4/4	EXCE-184	static/metalvox/VOX-791.wav	Jerry Sola	20250617			Male	25		
-VOX-792	H	Growling_V	The Black Dahlia Murder	Stygiophobic	"""Can't they see there are consequences?"""		110	4/4	EXCE-184	static/metalvox/VOX-792.wav	Jerry Sola	20250617			Male	25		
-VOX-793	H	Clean	DragonForce							static/metalvox/VOX-793.wav	Jerry Sola	20250617			Male	25		
-VOX-794	H	Clean_FLAT	DragonForce							static/metalvox/VOX-794.wav	Jerry Sola	20250617			Male	25		
-VOX-795	H	Screaming_NV	DragonForce							static/metalvox/VOX-795.wav	Jerry Sola	20250617			Male	25		
-VOX-796	H	Screaming_V	DragonForce							static/metalvox/VOX-796.wav	Jerry Sola	20250617			Male	25		
-VOX-797	H	Growling_NV	DragonForce							static/metalvox/VOX-797.wav	Jerry Sola	20250617			Male	25		
-VOX-798	H	Growling_V	DragonForce							static/metalvox/VOX-798.wav	Jerry Sola	20250617			Male	25		
-VOX-799	H	Clean	DragonForce							static/metalvox/VOX-799.wav	Jerry Sola	20250617			Male	25		
-VOX-800	H	Clean_FLAT	DragonForce							static/metalvox/VOX-800.wav	Jerry Sola	20250617			Male	25		
-VOX-801	H	Screaming_NV	DragonForce							static/metalvox/VOX-801.wav	Jerry Sola	20250617			Male	25		
-VOX-802	H	Screaming_V	DragonForce							static/metalvox/VOX-802.wav	Jerry Sola	20250617			Male	25		
-VOX-803	H	Growling_NV	DragonForce							static/metalvox/VOX-803.wav	Jerry Sola	20250617			Male	25		
-VOX-804	H	Growling_V	DragonForce							static/metalvox/VOX-804.wav	Jerry Sola	20250617			Male	25		
-VOX-805	H	Clean								static/metalvox/VOX-805.wav	Jerry Sola	20250617			Male	25		
-VOX-806	H	Clean_FLAT								static/metalvox/VOX-806.wav	Jerry Sola	20250617			Male	25		
-VOX-807	H	Screaming_NV								static/metalvox/VOX-807.wav	Jerry Sola	20250617			Male	25		
-VOX-808	H	Screaming_V								static/metalvox/VOX-808.wav	Jerry Sola	20250617			Male	25		
-VOX-809	H	Growling_NV								static/metalvox/VOX-809.wav	Jerry Sola	20250617			Male	25		
-VOX-810	H	Growling_V								static/metalvox/VOX-810.wav	Jerry Sola	20250617			Male	25		
-VOX-811	H	Clean								static/metalvox/VOX-811.wav	Jerry Sola	20250617			Male	25		
-VOX-812	H	Clean_FLAT								static/metalvox/VOX-812.wav	Jerry Sola	20250617			Male	25		
-VOX-813	H	Screaming_NV								static/metalvox/VOX-813.wav	Jerry Sola	20250617			Male	25		
-VOX-814	H	Screaming_V								static/metalvox/VOX-814.wav	Jerry Sola	20250617			Male	25		
-VOX-815	H	Growling_NV								static/metalvox/VOX-815.wav	Jerry Sola	20250617			Male	25		
-VOX-816	H	Growling_V								static/metalvox/VOX-816.wav	Jerry Sola	20250617			Male	25		
-VOX-817	H	Clean								static/metalvox/VOX-817.wav	Jerry Sola	20250617			Male	25		
-VOX-818	H	Clean_FLAT								static/metalvox/VOX-818.wav	Jerry Sola	20250617			Male	25		
-VOX-819	H	Screaming_NV								static/metalvox/VOX-819.wav	Jerry Sola	20250617			Male	25		
-VOX-820	H	Screaming_V								static/metalvox/VOX-820.wav	Jerry Sola	20250617			Male	25		
-VOX-821	H	Growling_NV								static/metalvox/VOX-821.wav	Jerry Sola	20250617			Male	25		
-VOX-822	H	Growling_V								static/metalvox/VOX-822.wav	Jerry Sola	20250617			Male	25		
-VOX-823	H	Clean								static/metalvox/VOX-823.wav	Jerry Sola	20250617			Male	25		
-VOX-824	H	Clean_FLAT								static/metalvox/VOX-824.wav	Jerry Sola	20250617			Male	25		
-VOX-825	H	Screaming_NV								static/metalvox/VOX-825.wav	Jerry Sola	20250617			Male	25		
-VOX-826	H	Screaming_V								static/metalvox/VOX-826.wav	Jerry Sola	20250617			Male	25		
-VOX-827	H	Growling_NV								static/metalvox/VOX-827.wav	Jerry Sola	20250617			Male	25		
-VOX-828	H	Growling_V								static/metalvox/VOX-828.wav	Jerry Sola	20250617			Male	25		
-VOX-829	H	Clean								static/metalvox/VOX-829.wav	Jerry Sola	20250617			Male	25		
-VOX-830	H	Clean_FLAT								static/metalvox/VOX-830.wav	Jerry Sola	20250617			Male	25		
-VOX-831	H	Screaming_NV								static/metalvox/VOX-831.wav	Jerry Sola	20250617			Male	25		
-VOX-832	H	Screaming_V								static/metalvox/VOX-832.wav	Jerry Sola	20250617			Male	25		
-VOX-833	H	Growling_NV								static/metalvox/VOX-833.wav	Jerry Sola	20250617			Male	25		
-VOX-834	H	Growling_V								static/metalvox/VOX-834.wav	Jerry Sola	20250617			Male	25		
-VOX-835	H	Clean								static/metalvox/VOX-835.wav	Jerry Sola	20250617			Male	25		
-VOX-836	H	Clean_FLAT								static/metalvox/VOX-836.wav	Jerry Sola	20250617			Male	25		
-VOX-837	H	Screaming_NV								static/metalvox/VOX-837.wav	Jerry Sola	20250617			Male	25		
-VOX-838	H	Screaming_V								static/metalvox/VOX-838.wav	Jerry Sola	20250617			Male	25		
-VOX-839	H	Growling_NV								static/metalvox/VOX-839.wav	Jerry Sola	20250617			Male	25		
-VOX-840	H	Growling_V								static/metalvox/VOX-840.wav	Jerry Sola	20250617			Male	25		
-VOX-841	H	Clean								static/metalvox/VOX-841.wav	Jerry Sola	20250617			Male	25		
-VOX-842	H	Clean_FLAT								static/metalvox/VOX-842.wav	Jerry Sola	20250617			Male	25		
-VOX-843	H	Screaming_NV								static/metalvox/VOX-843.wav	Jerry Sola	20250617			Male	25		
-VOX-844	H	Screaming_V								static/metalvox/VOX-844.wav	Jerry Sola	20250617			Male	25		
-VOX-845	H	Growling_NV								static/metalvox/VOX-845.wav	Jerry Sola	20250617			Male	25		
-VOX-846	H	Growling_V								static/metalvox/VOX-846.wav	Jerry Sola	20250617			Male	25		
-VOX-847	H	Clean								static/metalvox/VOX-847.wav	Jerry Sola	20250617			Male	25		
-VOX-848	H	Clean_FLAT								static/metalvox/VOX-848.wav	Jerry Sola	20250617			Male	25		
-VOX-849	H	Screaming_NV								static/metalvox/VOX-849.wav	Jerry Sola	20250617			Male	25		
-VOX-850	H	Screaming_V								static/metalvox/VOX-850.wav	Jerry Sola	20250617			Male	25		
-VOX-851	H	Growling_NV								static/metalvox/VOX-851.wav	Jerry Sola	20250617			Male	25		
-VOX-852	H	Growling_V								static/metalvox/VOX-852.wav	Jerry Sola	20250617			Male	25		
-VOX-853	H	Clean								static/metalvox/VOX-853.wav	Jerry Sola	20250617			Male	25		
-VOX-854	H	Clean_FLAT								static/metalvox/VOX-854.wav	Jerry Sola	20250617			Male	25		
-VOX-855	H	Screaming_NV								static/metalvox/VOX-855.wav	Jerry Sola	20250617			Male	25		
-VOX-856	H	Screaming_V								static/metalvox/VOX-856.wav	Jerry Sola	20250617			Male	25		
-VOX-857	H	Growling_NV								static/metalvox/VOX-857.wav	Jerry Sola	20250617			Male	25		
-VOX-858	H	Growling_V								static/metalvox/VOX-858.wav	Jerry Sola	20250617			Male	25		
-VOX-859	H	Clean								static/metalvox/VOX-859.wav	Jerry Sola	20250617			Male	25		
-VOX-860	H	Clean_FLAT								static/metalvox/VOX-860.wav	Jerry Sola	20250617			Male	25		
-VOX-861	H	Screaming_NV								static/metalvox/VOX-861.wav	Jerry Sola	20250617			Male	25		
-VOX-862	H	Screaming_V								static/metalvox/VOX-862.wav	Jerry Sola	20250617			Male	25		
-VOX-863	H	Growling_NV								static/metalvox/VOX-863.wav	Jerry Sola	20250617			Male	25		
-VOX-864	H	Growling_V								static/metalvox/VOX-864.wav	Jerry Sola	20250617			Male	25		
+VOX-721	H	Clean	Trivium	The Deceived - Flavus	"""Tell that the promised have been failed"""		105	4/4	EXCE-093	static/metalvox/VOX-721.wav	Jerry Sola	20250619			Male	25		
+VOX-722	H	Clean_FLAT	Trivium	The Deceived - Flavus	"""Tell that the promised have been failed"""		105	4/4	EXCE-093	static/metalvox/VOX-722.wav	Jerry Sola	20250619			Male	25		
+VOX-723	H	Screaming_NV	Trivium	The Deceived - Flavus	"""Tell that the promised have been failed"""		105	4/4	EXCE-093	static/metalvox/VOX-723.wav	Jerry Sola	20250619			Male	25		
+VOX-724	H	Screaming_V	Trivium	The Deceived - Flavus	"""Tell that the promised have been failed"""		105	4/4	EXCE-093	static/metalvox/VOX-724.wav	Jerry Sola	20250619			Male	25		
+VOX-725	H	Growling_NV	Trivium	The Deceived - Flavus	"""Tell that the promised have been failed"""		105	4/4	EXCE-093	static/metalvox/VOX-725.wav	Jerry Sola	20250619			Male	25		
+VOX-726	H	Growling_V	Trivium	The Deceived - Flavus	"""Tell that the promised have been failed"""		105	4/4	EXCE-093	static/metalvox/VOX-726.wav	Jerry Sola	20250619			Male	25		
+VOX-727	H	Clean	Avenged Sevenfold	Higher	"""Meet you in the stars tonight"""		135	4/4	EXCE-056	static/metalvox/VOX-727.wav	Jerry Sola	20250619			Male	25		
+VOX-728	H	Clean_FLAT	Avenged Sevenfold	Higher	"""Meet you in the stars tonight"""		135	4/4	EXCE-056	static/metalvox/VOX-728.wav	Jerry Sola	20250619			Male	25		
+VOX-729	H	Screaming_NV	Avenged Sevenfold	Higher	"""Meet you in the stars tonight"""		135	4/4	EXCE-056	static/metalvox/VOX-729.wav	Jerry Sola	20250619			Male	25		
+VOX-730	H	Screaming_V	Avenged Sevenfold	Higher	"""Meet you in the stars tonight"""		135	4/4	EXCE-056	static/metalvox/VOX-730.wav	Jerry Sola	20250619			Male	25		
+VOX-731	H	Growling_NV	Avenged Sevenfold	Higher	"""Meet you in the stars tonight"""		135	4/4	EXCE-056	static/metalvox/VOX-731.wav	Jerry Sola	20250619			Male	25		
+VOX-732	H	Growling_V	Avenged Sevenfold	Higher	"""Meet you in the stars tonight"""		135	4/4	EXCE-056	static/metalvox/VOX-732.wav	Jerry Sola	20250619			Male	25		
+VOX-733	H	Clean	Killswitch Engage	Still Beats Your Name	"""Will I live another day?"""		110	4/4	EXCE-108	static/metalvox/VOX-733.wav	Jerry Sola	20250619			Male	25		
+VOX-734	H	Clean_FLAT	Killswitch Engage	Still Beats Your Name	"""Will I live another day?"""		110	4/4	EXCE-108	static/metalvox/VOX-734.wav	Jerry Sola	20250619			Male	25		
+VOX-735	H	Screaming_NV	Killswitch Engage	Still Beats Your Name	"""Will I live another day?"""		110	4/4	EXCE-108	static/metalvox/VOX-735.wav	Jerry Sola	20250619			Male	25		
+VOX-736	H	Screaming_V	Killswitch Engage	Still Beats Your Name	"""Will I live another day?"""		110	4/4	EXCE-108	static/metalvox/VOX-736.wav	Jerry Sola	20250619			Male	25		
+VOX-737	H	Growling_NV	Killswitch Engage	Still Beats Your Name	"""Will I live another day?"""		110	4/4	EXCE-108	static/metalvox/VOX-737.wav	Jerry Sola	20250619			Male	25		
+VOX-738	H	Growling_V	Killswitch Engage	Still Beats Your Name	"""Will I live another day?"""		110	4/4	EXCE-108	static/metalvox/VOX-738.wav	Jerry Sola	20250619			Male	25		
+VOX-739	H	Clean	Metallica	Crown of Barbed Wire	"""This rusted empire I own"""		110	4/4	EXCE-124	static/metalvox/VOX-739.wav	Jerry Sola	20250619			Male	25		
+VOX-740	H	Clean_FLAT	Metallica	Crown of Barbed Wire	"""This rusted empire I own"""		110	4/4	EXCE-124	static/metalvox/VOX-740.wav	Jerry Sola	20250619			Male	25		
+VOX-741	H	Screaming_NV	Metallica	Crown of Barbed Wire	"""This rusted empire I own"""		110	4/4	EXCE-124	static/metalvox/VOX-741.wav	Jerry Sola	20250619			Male	25		
+VOX-742	H	Screaming_V	Metallica	Crown of Barbed Wire	"""This rusted empire I own"""		110	4/4	EXCE-124	static/metalvox/VOX-742.wav	Jerry Sola	20250619			Male	25		
+VOX-743	H	Growling_NV	Metallica	Crown of Barbed Wire	"""This rusted empire I own"""		110	4/4	EXCE-124	static/metalvox/VOX-743.wav	Jerry Sola	20250619			Male	25		
+VOX-744	H	Growling_V	Metallica	Crown of Barbed Wire	"""This rusted empire I own"""		110	4/4	EXCE-124	static/metalvox/VOX-744.wav	Jerry Sola	20250619			Male	25		
+VOX-745	H	Clean	Architects	A Portrait for the Deceased	"""Then come and drown with me"""		161	4/4	EXCE-064	static/metalvox/VOX-745.wav	Jerry Sola	20250619			Male	25		
+VOX-746	H	Clean_FLAT	Architects	A Portrait for the Deceased	"""Then come and drown with me"""		161	4/4	EXCE-064	static/metalvox/VOX-746.wav	Jerry Sola	20250619			Male	25		
+VOX-747	H	Screaming_NV	Architects	A Portrait for the Deceased	"""Then come and drown with me"""		161	4/4	EXCE-064	static/metalvox/VOX-747.wav	Jerry Sola	20250619			Male	25		
+VOX-748	H	Screaming_V	Architects	A Portrait for the Deceased	"""Then come and drown with me"""		161	4/4	EXCE-064	static/metalvox/VOX-748.wav	Jerry Sola	20250619			Male	25		
+VOX-749	H	Growling_NV	Architects	A Portrait for the Deceased	"""Then come and drown with me"""		161	4/4	EXCE-064	static/metalvox/VOX-749.wav	Jerry Sola	20250619			Male	25		
+VOX-750	H	Growling_V	Architects	A Portrait for the Deceased	"""Then come and drown with me"""		161	4/4	EXCE-064	static/metalvox/VOX-750.wav	Jerry Sola	20250619			Male	25		
+VOX-751	H	Clean	August Burns Red	The Reflective Property	"""A brief wind is swept through"""		180	4/4	EXCE-155	static/metalvox/VOX-751.wav	Jerry Sola	20250619			Male	25		
+VOX-752	H	Clean_FLAT	August Burns Red	The Reflective Property	"""A brief wind is swept through"""		180	4/4	EXCE-155	static/metalvox/VOX-752.wav	Jerry Sola	20250619			Male	25		
+VOX-753	H	Screaming_NV	August Burns Red	The Reflective Property	"""A brief wind is swept through"""		180	4/4	EXCE-155	static/metalvox/VOX-753.wav	Jerry Sola	20250619			Male	25		
+VOX-754	H	Screaming_V	August Burns Red	The Reflective Property	"""A brief wind is swept through"""		180	4/4	EXCE-155	static/metalvox/VOX-754.wav	Jerry Sola	20250619			Male	25		
+VOX-755	H	Growling_NV	August Burns Red	The Reflective Property	"""A brief wind is swept through"""		180	4/4	EXCE-155	static/metalvox/VOX-755.wav	Jerry Sola	20250619			Male	25		
+VOX-756	H	Growling_V	August Burns Red	The Reflective Property	"""A brief wind is swept through"""		180	4/4	EXCE-155	static/metalvox/VOX-756.wav	Jerry Sola	20250619			Male	25		
+VOX-757	H	Clean	Northlane	Metamorphosis	"""And I will overcome this suffering"""		140	4/4	EXCE-179	static/metalvox/VOX-757.wav	Jerry Sola	20250619			Male	25		
+VOX-758	H	Clean_FLAT	Northlane	Metamorphosis	"""And I will overcome this suffering"""		140	4/4	EXCE-179	static/metalvox/VOX-758.wav	Jerry Sola	20250619			Male	25		
+VOX-759	H	Screaming_NV	Northlane	Metamorphosis	"""And I will overcome this suffering"""		140	4/4	EXCE-179	static/metalvox/VOX-759.wav	Jerry Sola	20250619			Male	25		
+VOX-760	H	Screaming_V	Northlane	Metamorphosis	"""And I will overcome this suffering"""		140	4/4	EXCE-179	static/metalvox/VOX-760.wav	Jerry Sola	20250619			Male	25		
+VOX-761	H	Growling_NV	Northlane	Metamorphosis	"""And I will overcome this suffering"""		140	4/4	EXCE-179	static/metalvox/VOX-761.wav	Jerry Sola	20250619			Male	25		
+VOX-762	H	Growling_V	Northlane	Metamorphosis	"""And I will overcome this suffering"""		140	4/4	EXCE-179	static/metalvox/VOX-762.wav	Jerry Sola	20250619			Male	25		
+VOX-763	H	Clean	Chelsea Grin	Behind A Veil Of Lies	"""I can't seek help from angels"""		115	4/4	EXCE-087	static/metalvox/VOX-763.wav	Jerry Sola	20250619			Male	25		
+VOX-764	H	Clean_FLAT	Chelsea Grin	Behind A Veil Of Lies	"""I can't seek help from angels"""		115	4/4	EXCE-087	static/metalvox/VOX-764.wav	Jerry Sola	20250619			Male	25		
+VOX-765	H	Screaming_NV	Chelsea Grin	Behind A Veil Of Lies	"""I can't seek help from angels"""		115	4/4	EXCE-087	static/metalvox/VOX-765.wav	Jerry Sola	20250619			Male	25		
+VOX-766	H	Screaming_V	Chelsea Grin	Behind A Veil Of Lies	"""I can't seek help from angels"""		115	4/4	EXCE-087	static/metalvox/VOX-766.wav	Jerry Sola	20250619			Male	25		
+VOX-767	H	Growling_NV	Chelsea Grin	Behind A Veil Of Lies	"""I can't seek help from angels"""		115	4/4	EXCE-087	static/metalvox/VOX-767.wav	Jerry Sola	20250619			Male	25		
+VOX-768	H	Growling_V	Chelsea Grin	Behind A Veil Of Lies	"""I can't seek help from angels"""		115	4/4	EXCE-087	static/metalvox/VOX-768.wav	Jerry Sola	20250619			Male	25		
+VOX-769	H	Clean	Whitechapel	The Night Remains	"""Rid yourself and never return"""		155	4/4	EXCE-141	static/metalvox/VOX-769.wav	Jerry Sola	20250619			Male	25		
+VOX-770	H	Clean_FLAT	Whitechapel	The Night Remains	"""Rid yourself and never return"""		155	4/4	EXCE-141	static/metalvox/VOX-770.wav	Jerry Sola	20250619			Male	25		
+VOX-771	H	Screaming_NV	Whitechapel	The Night Remains	"""Rid yourself and never return"""		155	4/4	EXCE-141	static/metalvox/VOX-771.wav	Jerry Sola	20250619			Male	25		
+VOX-772	H	Screaming_V	Whitechapel	The Night Remains	"""Rid yourself and never return"""		155	4/4	EXCE-141	static/metalvox/VOX-772.wav	Jerry Sola	20250619			Male	25		
+VOX-773	H	Growling_NV	Whitechapel	The Night Remains	"""Rid yourself and never return"""		155	4/4	EXCE-141	static/metalvox/VOX-773.wav	Jerry Sola	20250619			Male	25		
+VOX-774	H	Growling_V	Whitechapel	The Night Remains	"""Rid yourself and never return"""		155	4/4	EXCE-141	static/metalvox/VOX-774.wav	Jerry Sola	20250619			Male	25		
+VOX-775	H	Clean	Morbid Angel	God Of Our Own Divinity	"""Break apart this rusty chains"""		140	3/4	EXCE-042	static/metalvox/VOX-775.wav	Jerry Sola	20250619			Male	25		
+VOX-776	H	Clean_FLAT	Morbid Angel	God Of Our Own Divinity	"""Break apart this rusty chains"""		140	3/4	EXCE-042	static/metalvox/VOX-776.wav	Jerry Sola	20250619			Male	25		
+VOX-777	H	Screaming_NV	Morbid Angel	God Of Our Own Divinity	"""Break apart this rusty chains"""		140	3/4	EXCE-042	static/metalvox/VOX-777.wav	Jerry Sola	20250619			Male	25		
+VOX-778	H	Screaming_V	Morbid Angel	God Of Our Own Divinity	"""Break apart this rusty chains"""		140	3/4	EXCE-042	static/metalvox/VOX-778.wav	Jerry Sola	20250619			Male	25		
+VOX-779	H	Growling_NV	Morbid Angel	God Of Our Own Divinity	"""Break apart this rusty chains"""		140	3/4	EXCE-042	static/metalvox/VOX-779.wav	Jerry Sola	20250619			Male	25		
+VOX-780	H	Growling_V	Morbid Angel	God Of Our Own Divinity	"""Break apart this rusty chains"""		140	3/4	EXCE-042	static/metalvox/VOX-780.wav	Jerry Sola	20250619			Male	25		
+VOX-781	H	Clean	Whitechapel	Dwell in the Shadows	"""This blade cuts deeper than flesh"""		95	4/4	EXCE-208	static/metalvox/VOX-781.wav	Jerry Sola	20250619			Male	25		
+VOX-782	H	Clean_FLAT	Whitechapel	Dwell in the Shadows	"""This blade cuts deeper than flesh"""		95	4/4	EXCE-208	static/metalvox/VOX-782.wav	Jerry Sola	20250619			Male	25		
+VOX-783	H	Screaming_NV	Whitechapel	Dwell in the Shadows	"""This blade cuts deeper than flesh"""		95	4/4	EXCE-208	static/metalvox/VOX-783.wav	Jerry Sola	20250619			Male	25		
+VOX-784	H	Screaming_V	Whitechapel	Dwell in the Shadows	"""This blade cuts deeper than flesh"""		95	4/4	EXCE-208	static/metalvox/VOX-784.wav	Jerry Sola	20250619			Male	25		
+VOX-785	H	Growling_NV	Whitechapel	Dwell in the Shadows	"""This blade cuts deeper than flesh"""		95	4/4	EXCE-208	static/metalvox/VOX-785.wav	Jerry Sola	20250619			Male	25		
+VOX-786	H	Growling_V	Whitechapel	Dwell in the Shadows	"""This blade cuts deeper than flesh"""		95	4/4	EXCE-208	static/metalvox/VOX-786.wav	Jerry Sola	20250619			Male	25		
+VOX-787	H	Clean	The Black Dahlia Murder	Stygiophobic	"""Can't they see there are consequences?"""		110	4/4	EXCE-184	static/metalvox/VOX-787.wav	Jerry Sola	20250619			Male	25		
+VOX-788	H	Clean_FLAT	The Black Dahlia Murder	Stygiophobic	"""Can't they see there are consequences?"""		110	4/4	EXCE-184	static/metalvox/VOX-788.wav	Jerry Sola	20250619			Male	25		
+VOX-789	H	Screaming_NV	The Black Dahlia Murder	Stygiophobic	"""Can't they see there are consequences?"""		110	4/4	EXCE-184	static/metalvox/VOX-789.wav	Jerry Sola	20250619			Male	25		
+VOX-790	H	Screaming_V	The Black Dahlia Murder	Stygiophobic	"""Can't they see there are consequences?"""		110	4/4	EXCE-184	static/metalvox/VOX-790.wav	Jerry Sola	20250619			Male	25		
+VOX-791	H	Growling_NV	The Black Dahlia Murder	Stygiophobic	"""Can't they see there are consequences?"""		110	4/4	EXCE-184	static/metalvox/VOX-791.wav	Jerry Sola	20250619			Male	25		
+VOX-792	H	Growling_V	The Black Dahlia Murder	Stygiophobic	"""Can't they see there are consequences?"""		110	4/4	EXCE-184	static/metalvox/VOX-792.wav	Jerry Sola	20250619			Male	25		
+VOX-793	H	Clean	DragonForce	Scars of Yesterday	"""And through this madness a new day will rise"""		190	4/4	EXCE-190	static/metalvox/VOX-793.wav	Jerry Sola	20250619			Male	25		
+VOX-794	H	Clean_FLAT	DragonForce	Scars of Yesterday	"""And through this madness a new day will rise"""		190	4/4	EXCE-190	static/metalvox/VOX-794.wav	Jerry Sola	20250619			Male	25		
+VOX-795	H	Screaming_NV	DragonForce	Scars of Yesterday	"""And through this madness a new day will rise"""		190	4/4	EXCE-190	static/metalvox/VOX-795.wav	Jerry Sola	20250619			Male	25		
+VOX-796	H	Screaming_V	DragonForce	Scars of Yesterday	"""And through this madness a new day will rise"""		190	4/4	EXCE-190	static/metalvox/VOX-796.wav	Jerry Sola	20250619			Male	25		
+VOX-797	H	Growling_NV	DragonForce	Scars of Yesterday	"""And through this madness a new day will rise"""		190	4/4	EXCE-190	static/metalvox/VOX-797.wav	Jerry Sola	20250619			Male	25		
+VOX-798	H	Growling_V	DragonForce	Scars of Yesterday	"""And through this madness a new day will rise"""		190	4/4	EXCE-190	static/metalvox/VOX-798.wav	Jerry Sola	20250619			Male	25		
+VOX-799	H	Clean	DragonForce	The Warrior Inside	"""Stricken by your fatal decision"""		200	4/4	EXCE-191	static/metalvox/VOX-799.wav	Jerry Sola	20250619			Male	25		
+VOX-800	H	Clean_FLAT	DragonForce	The Warrior Inside	"""Stricken by your fatal decision"""		200	4/4	EXCE-191	static/metalvox/VOX-800.wav	Jerry Sola	20250619			Male	25		
+VOX-801	H	Screaming_NV	DragonForce	The Warrior Inside	"""Stricken by your fatal decision"""		200	4/4	EXCE-191	static/metalvox/VOX-801.wav	Jerry Sola	20250619			Male	25		
+VOX-802	H	Screaming_V	DragonForce	The Warrior Inside	"""Stricken by your fatal decision"""		200	4/4	EXCE-191	static/metalvox/VOX-802.wav	Jerry Sola	20250619			Male	25		
+VOX-803	H	Growling_NV	DragonForce	The Warrior Inside	"""Stricken by your fatal decision"""		200	4/4	EXCE-191	static/metalvox/VOX-803.wav	Jerry Sola	20250619			Male	25		
+VOX-804	H	Growling_V	DragonForce	The Warrior Inside	"""Stricken by your fatal decision"""		200	4/4	EXCE-191	static/metalvox/VOX-804.wav	Jerry Sola	20250619			Male	25		
+VOX-805	H	Clean	We Came As Romans	"Views That Never Cease, to Keep Me From Myself"	"""I will wade through the worst of it all"""		160	4/4	EXCE-197	static/metalvox/VOX-805.wav	Jerry Sola	20250619			Male	25		
+VOX-806	H	Clean_FLAT	We Came As Romans	"Views That Never Cease, to Keep Me From Myself"	"""I will wade through the worst of it all"""		160	4/4	EXCE-197	static/metalvox/VOX-806.wav	Jerry Sola	20250619			Male	25		
+VOX-807	H	Screaming_NV	We Came As Romans	"Views That Never Cease, to Keep Me From Myself"	"""I will wade through the worst of it all"""		160	4/4	EXCE-197	static/metalvox/VOX-807.wav	Jerry Sola	20250619			Male	25		
+VOX-808	H	Screaming_V	We Came As Romans	"Views That Never Cease, to Keep Me From Myself"	"""I will wade through the worst of it all"""		160	4/4	EXCE-197	static/metalvox/VOX-808.wav	Jerry Sola	20250619			Male	25		
+VOX-809	H	Growling_NV	We Came As Romans	"Views That Never Cease, to Keep Me From Myself"	"""I will wade through the worst of it all"""		160	4/4	EXCE-197	static/metalvox/VOX-809.wav	Jerry Sola	20250619			Male	25		
+VOX-810	H	Growling_V	We Came As Romans	"Views That Never Cease, to Keep Me From Myself"	"""I will wade through the worst of it all"""		160	4/4	EXCE-197	static/metalvox/VOX-810.wav	Jerry Sola	20250619			Male	25		
+VOX-811	H	Clean	We Came As Romans	Stay Inspired	"""There are greater rewards in coexistence"""		140	4/4	EXCE-198	static/metalvox/VOX-811.wav	Jerry Sola	20250619			Male	25		
+VOX-812	H	Clean_FLAT	We Came As Romans	Stay Inspired	"""There are greater rewards in coexistence"""		140	4/4	EXCE-198	static/metalvox/VOX-812.wav	Jerry Sola	20250619			Male	25		
+VOX-813	H	Screaming_NV	We Came As Romans	Stay Inspired	"""There are greater rewards in coexistence"""		140	4/4	EXCE-198	static/metalvox/VOX-813.wav	Jerry Sola	20250619			Male	25		
+VOX-814	H	Screaming_V	We Came As Romans	Stay Inspired	"""There are greater rewards in coexistence"""		140	4/4	EXCE-198	static/metalvox/VOX-814.wav	Jerry Sola	20250619			Male	25		
+VOX-815	H	Growling_NV	We Came As Romans	Stay Inspired	"""There are greater rewards in coexistence"""		140	4/4	EXCE-198	static/metalvox/VOX-815.wav	Jerry Sola	20250619			Male	25		
+VOX-816	H	Growling_V	We Came As Romans	Stay Inspired	"""There are greater rewards in coexistence"""		140	4/4	EXCE-198	static/metalvox/VOX-816.wav	Jerry Sola	20250619			Male	25		
+VOX-817	H	Clean	The Black Dahlia Murder	Asylum	"""We've done the damnedest things"""		250	4/4	EXCE-183	static/metalvox/VOX-817.wav	Jerry Sola	20250619			Male	25		
+VOX-818	H	Clean_FLAT	The Black Dahlia Murder	Asylum	"""We've done the damnedest things"""		250	4/4	EXCE-183	static/metalvox/VOX-818.wav	Jerry Sola	20250619			Male	25		
+VOX-819	H	Screaming_NV	The Black Dahlia Murder	Asylum	"""We've done the damnedest things"""		250	4/4	EXCE-183	static/metalvox/VOX-819.wav	Jerry Sola	20250619			Male	25		
+VOX-820	H	Screaming_V	The Black Dahlia Murder	Asylum	"""We've done the damnedest things"""		250	4/4	EXCE-183	static/metalvox/VOX-820.wav	Jerry Sola	20250619			Male	25		
+VOX-821	H	Growling_NV	The Black Dahlia Murder	Asylum	"""We've done the damnedest things"""		250	4/4	EXCE-183	static/metalvox/VOX-821.wav	Jerry Sola	20250619			Male	25		
+VOX-822	H	Growling_V	The Black Dahlia Murder	Asylum	"""We've done the damnedest things"""		250	4/4	EXCE-183	static/metalvox/VOX-822.wav	Jerry Sola	20250619			Male	25		
+VOX-823	H	Clean	Chelsea Grin	Welcome Back	"""I haven't found the cure"""		100	4/4	EXCE-082	static/metalvox/VOX-823.wav	Jerry Sola	20250619			Male	25		
+VOX-824	H	Clean_FLAT	Chelsea Grin	Welcome Back	"""I haven't found the cure"""		100	4/4	EXCE-082	static/metalvox/VOX-824.wav	Jerry Sola	20250619			Male	25		
+VOX-825	H	Screaming_NV	Chelsea Grin	Welcome Back	"""I haven't found the cure"""		100	4/4	EXCE-082	static/metalvox/VOX-825.wav	Jerry Sola	20250619			Male	25		
+VOX-826	H	Screaming_V	Chelsea Grin	Welcome Back	"""I haven't found the cure"""		100	4/4	EXCE-082	static/metalvox/VOX-826.wav	Jerry Sola	20250619			Male	25		
+VOX-827	H	Growling_NV	Chelsea Grin	Welcome Back	"""I haven't found the cure"""		100	4/4	EXCE-082	static/metalvox/VOX-827.wav	Jerry Sola	20250619			Male	25		
+VOX-828	H	Growling_V	Chelsea Grin	Welcome Back	"""I haven't found the cure"""		100	4/4	EXCE-082	static/metalvox/VOX-828.wav	Jerry Sola	20250619			Male	25		
+VOX-829	H	Clean	Chelsea Grin	Deathbed Companion	"""It will come to surface"""		110	4/4	EXCE-090	static/metalvox/VOX-829.wav	Jerry Sola	20250619			Male	25		
+VOX-830	H	Clean_FLAT	Chelsea Grin	Deathbed Companion	"""It will come to surface"""		110	4/4	EXCE-090	static/metalvox/VOX-830.wav	Jerry Sola	20250619			Male	25		
+VOX-831	H	Screaming_NV	Chelsea Grin	Deathbed Companion	"""It will come to surface"""		110	4/4	EXCE-090	static/metalvox/VOX-831.wav	Jerry Sola	20250619			Male	25		
+VOX-832	H	Screaming_V	Chelsea Grin	Deathbed Companion	"""It will come to surface"""		110	4/4	EXCE-090	static/metalvox/VOX-832.wav	Jerry Sola	20250619			Male	25		
+VOX-833	H	Growling_NV	Chelsea Grin	Deathbed Companion	"""It will come to surface"""		110	4/4	EXCE-090	static/metalvox/VOX-833.wav	Jerry Sola	20250619			Male	25		
+VOX-834	H	Growling_V	Chelsea Grin	Deathbed Companion	"""It will come to surface"""		110	4/4	EXCE-090	static/metalvox/VOX-834.wav	Jerry Sola	20250619			Male	25		
+VOX-835	H	Clean	August Burns Red	Treatment	"""Stripping your soul of everything"""		190	4/4	EXCE-158	static/metalvox/VOX-835.wav	Jerry Sola	20250619			Male	25		
+VOX-836	H	Clean_FLAT	August Burns Red	Treatment	"""Stripping your soul of everything"""		190	4/4	EXCE-158	static/metalvox/VOX-836.wav	Jerry Sola	20250619			Male	25		
+VOX-837	H	Screaming_NV	August Burns Red	Treatment	"""Stripping your soul of everything"""		190	4/4	EXCE-158	static/metalvox/VOX-837.wav	Jerry Sola	20250619			Male	25		
+VOX-838	H	Screaming_V	August Burns Red	Treatment	"""Stripping your soul of everything"""		190	4/4	EXCE-158	static/metalvox/VOX-838.wav	Jerry Sola	20250619			Male	25		
+VOX-839	H	Growling_NV	August Burns Red	Treatment	"""Stripping your soul of everything"""		190	4/4	EXCE-158	static/metalvox/VOX-839.wav	Jerry Sola	20250619			Male	25		
+VOX-840	H	Growling_V	August Burns Red	Treatment	"""Stripping your soul of everything"""		190	4/4	EXCE-158	static/metalvox/VOX-840.wav	Jerry Sola	20250619			Male	25		
+VOX-841	H	Clean	Dying Fetus	The Ancient Rivalry	"""Fighting a war, that cannot be won"""		90	4/4	EXCE-022	static/metalvox/VOX-841.wav	Jerry Sola	20250619			Male	25		
+VOX-842	H	Clean_FLAT	Dying Fetus	The Ancient Rivalry	"""Fighting a war, that cannot be won"""		90	4/4	EXCE-022	static/metalvox/VOX-842.wav	Jerry Sola	20250619			Male	25		
+VOX-843	H	Screaming_NV	Dying Fetus	The Ancient Rivalry	"""Fighting a war, that cannot be won"""		90	4/4	EXCE-022	static/metalvox/VOX-843.wav	Jerry Sola	20250619			Male	25		
+VOX-844	H	Screaming_V	Dying Fetus	The Ancient Rivalry	"""Fighting a war, that cannot be won"""		90	4/4	EXCE-022	static/metalvox/VOX-844.wav	Jerry Sola	20250619			Male	25		
+VOX-845	H	Growling_NV	Dying Fetus	The Ancient Rivalry	"""Fighting a war, that cannot be won"""		90	4/4	EXCE-022	static/metalvox/VOX-845.wav	Jerry Sola	20250619			Male	25		
+VOX-846	H	Growling_V	Dying Fetus	The Ancient Rivalry	"""Fighting a war, that cannot be won"""		90	4/4	EXCE-022	static/metalvox/VOX-846.wav	Jerry Sola	20250619			Male	25		
+VOX-847	H	Clean	Whitechapel	Tormented	"""That everyone you know"""		150	4/4	EXCE-209	static/metalvox/VOX-847.wav	Jerry Sola	20250619			Male	25		
+VOX-848	H	Clean_FLAT	Whitechapel	Tormented	"""That everyone you know"""		150	4/4	EXCE-209	static/metalvox/VOX-848.wav	Jerry Sola	20250619			Male	25		
+VOX-849	H	Screaming_NV	Whitechapel	Tormented	"""That everyone you know"""		150	4/4	EXCE-209	static/metalvox/VOX-849.wav	Jerry Sola	20250619			Male	25		
+VOX-850	H	Screaming_V	Whitechapel	Tormented	"""That everyone you know"""		150	4/4	EXCE-209	static/metalvox/VOX-850.wav	Jerry Sola	20250619			Male	25		
+VOX-851	H	Growling_NV	Whitechapel	Tormented	"""That everyone you know"""		150	4/4	EXCE-209	static/metalvox/VOX-851.wav	Jerry Sola	20250619			Male	25		
+VOX-852	H	Growling_V	Whitechapel	Tormented	"""That everyone you know"""		150	4/4	EXCE-209	static/metalvox/VOX-852.wav	Jerry Sola	20250619			Male	25		
+VOX-853	H	Clean	Cradle of Filth	Foetus Of A New Day Kicking	"""A poison rush, a heart attack"""		125	4/4	EXCE-078	static/metalvox/VOX-853.wav	Jerry Sola	20250619			Male	25		
+VOX-854	H	Clean_FLAT	Cradle of Filth	Foetus Of A New Day Kicking	"""A poison rush, a heart attack"""		125	4/4	EXCE-078	static/metalvox/VOX-854.wav	Jerry Sola	20250619			Male	25		
+VOX-855	H	Screaming_NV	Cradle of Filth	Foetus Of A New Day Kicking	"""A poison rush, a heart attack"""		125	4/4	EXCE-078	static/metalvox/VOX-855.wav	Jerry Sola	20250619			Male	25		
+VOX-856	H	Screaming_V	Cradle of Filth	Foetus Of A New Day Kicking	"""A poison rush, a heart attack"""		125	4/4	EXCE-078	static/metalvox/VOX-856.wav	Jerry Sola	20250619			Male	25		
+VOX-857	H	Growling_NV	Cradle of Filth	Foetus Of A New Day Kicking	"""A poison rush, a heart attack"""		125	4/4	EXCE-078	static/metalvox/VOX-857.wav	Jerry Sola	20250619			Male	25		
+VOX-858	H	Growling_V	Cradle of Filth	Foetus Of A New Day Kicking	"""A poison rush, a heart attack"""		125	4/4	EXCE-078	static/metalvox/VOX-858.wav	Jerry Sola	20250619			Male	25		
+VOX-859	H	Clean	Morbid Angel	For No Master	"""No prayer will yield our cleansing"""		150	6/8	EXCE-045	static/metalvox/VOX-859.wav	Jerry Sola	20250619			Male	25		
+VOX-860	H	Clean_FLAT	Morbid Angel	For No Master	"""No prayer will yield our cleansing"""		150	6/8	EXCE-045	static/metalvox/VOX-860.wav	Jerry Sola	20250619			Male	25		
+VOX-861	H	Screaming_NV	Morbid Angel	For No Master	"""No prayer will yield our cleansing"""		150	6/8	EXCE-045	static/metalvox/VOX-861.wav	Jerry Sola	20250619			Male	25		
+VOX-862	H	Screaming_V	Morbid Angel	For No Master	"""No prayer will yield our cleansing"""		150	6/8	EXCE-045	static/metalvox/VOX-862.wav	Jerry Sola	20250619			Male	25		
+VOX-863	H	Growling_NV	Morbid Angel	For No Master	"""No prayer will yield our cleansing"""		150	6/8	EXCE-045	static/metalvox/VOX-863.wav	Jerry Sola	20250619			Male	25		
+VOX-864	H	Growling_V	Morbid Angel	For No Master	"""No prayer will yield our cleansing"""		150	6/8	EXCE-045	static/metalvox/VOX-864.wav	Jerry Sola	20250619			Male	25		
