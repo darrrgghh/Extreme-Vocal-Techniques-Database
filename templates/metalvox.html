@@ -4,7 +4,7 @@
 {% block content %}
 <div class="table-container">
   <h1>Metalvox Stimuli Set</h1>
-  <h2>(3 vocal techniques × 6 conditions × 6 vocalists × 12 shared x up to 12 unique excerpts)</h2>
+  <h2>(3 vocal techniques × 6 conditions × 6 vocalists × 12 shared x up to 12 unique excerpts, 864 stimuli in total)</h2>
 
   <p class="description">
     This set includes recordings from 6 vocalists (5 male, 1 female) who each performed 12 identical and 12 unique vocal fragments
@@ -64,7 +64,7 @@
         {% endif %}
         {% set band_url = current['band_url']|default('')|trim %}
         {% if band_url and band_url not in ['N/A', 'nan'] %}
-          <div><b>Band:</b> <a href="{{ band_url }}" target="_blank" style="color:#3076b8;text-decoration:underline;">Band Page</a></div>
+          <div><a href="{{ band_url }}" target="_blank" style="color:#3076b8;text-decoration:underline;">Band Page</a></div>
         {% endif %}
       </div>
     {% endif %}
@@ -120,7 +120,7 @@
           </tr>
           <tr id="shared{{ loop.index }}" class="details" style="display: none;">
             <td colspan="3">
-              <label>Technique:
+              <label>Choose condition:
                 <select onchange="switchTechnique(this, 'blockShared{{ loop.index }}')">
                   {% for v in variations %}
                     <option value="{{ loop.index0 }}" {% if v["Technique"] == "Clean" %}selected{% endif %}>
