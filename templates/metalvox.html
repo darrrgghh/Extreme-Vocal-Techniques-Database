@@ -6,27 +6,61 @@
   <h1>Metalvox Stimuli Set</h1>
   <h2>(3 vocal techniques × 6 conditions × 6 vocalists × 12 shared x up to 12 unique excerpts, 864 stimuli in total)</h2>
 
-  <p class="description">
-    This set includes recordings from 6 vocalists (5 male, 1 female) who each performed 12 identical and 12 unique vocal fragments
-    across six distinct conditions using three extended, or extreme, vocal techniques (clean vocals, growling and screaming). This stimulus set was designed for a perceptual experiment as part of a research project presented at
-    the <strong>18th International Conference on Music Perception and Cognition (ICMPC)</strong> in São Paulo, Brazil, July 2025.<br>
-    <br>
-    <strong>The full dataset (all files and tables) is available for download here:</strong>
-    <br>
-    <a href="https://github.com/darrrgghh/Metal-Music/tree/main/databases/metal_vox" target="_blank">
-      https://github.com/darrrgghh/Metal-Music/tree/main/databases/metal_vox
-    </a>
-  </p>
+<div class="dataset-link" style="text-align:center; margin: 24px auto 22px auto; font-size:0.97em;">
+  <strong>
+    The full dataset is available for download
+    <a href="https://github.com/darrrgghh/Metal-Music/tree/main/databases/metal_vox" target="_blank" style="color:#1a3867; text-decoration:underline;">
+      here
+    </a> (GitHub).
+  </strong>
+</div>
+
+<div class="info-card">
+    <div class="info-card-inner">
+      This set includes recordings from 6 vocalists (5 male, 1 female) who each performed 12 identical and 12 unique vocal fragments across six distinct conditions using three extended, or extreme, vocal techniques (clean vocals, growling and screaming).<br><br>
+      This stimulus set was designed for a perceptual experiment as part of a research project presented at the <strong>18th International Conference on Music Perception and Cognition (ICMPC)</strong> in São Paulo, Brazil, July 2025.<br><br>
+      <span style="font-size:0.97em;">
+      This open dataset may be useful for researchers in music perception, music technology, vocal pedagogy, engineering, and anyone interested in the analysis of extreme vocal techniques.
+      </span>
+    </div>
+  </div>
+
+
 
   <div class="description">
-    <strong>Conditions across Vocal Techniques:</strong><br>
-    Clean vocals with melody (<code>Clean</code>)<br>
-    Clean vocals without melody, monotonous (<code>Clean_Flat</code>)<br>
-    Growling without melodic contour (<code>Growling_NV</code>)<br>
-    Growling with melodic contour (<code>Growling_V</code>)<br>
-    Screaming without melodic contour (<code>Screaming_NV</code>)<br>
-    Screaming with melodic contour (<code>Screaming_V</code>)
-  </div>
+  <details id="conditionsDetails" class="collapsible">
+    <summary><b>Description of the six conditions</b></summary>
+    <div class="collapsible-content">
+      <ul style="text-align:left; max-width:780px; margin:18px auto 0 auto; font-size:1.04em; line-height:1.7;">
+        <li>
+          <b>Clean vocals with melody (<code>Clean</code>)</b><br>
+          If the original excerpt included clean vocals and a clear melody, vocalists were asked either to reproduce it or create their own interpretation—provided there were noticeable pitch changes. The rhythmic pattern was to be kept as in the original.
+        </li>
+        <li>
+          <b>Clean vocals without melody, monotonous (<code>Clean_Flat</code>)</b><br>
+          Vocalists were instructed to sing the fragment entirely on a single pitch of their choice, in any register. The rhythmic pattern was to be kept as in the original.
+        </li>
+        <li>
+          <b>Growling without melodic contour (<code>Growling_NV</code>)</b><br>
+          Vocalists performed the fragment using a growling technique of their choice, keeping the melodic contour as flat as possible (aiming for all syllables to be produced at one pitch). The rhythmic pattern was to be kept as in the original.
+        </li>
+        <li>
+          <b>Growling with melodic contour (<code>Growling_V</code>)</b><br>
+          Vocalists performed the fragment using a growling technique of their choice, intentionally introducing audible pitch variations between syllables (adding frequency fluctuations). The rhythmic pattern was to be kept as in the original. This task is the opposite of <code>Growling_NV</code>.
+        </li>
+        <li>
+          <b>Screaming without melodic contour (<code>Screaming_NV</code>)</b><br>
+          Vocalists performed the fragment using a screaming technique of their choice, keeping the melodic contour as flat as possible (all syllables at one pitch). The rhythmic pattern was to be kept as in the original.
+        </li>
+        <li>
+          <b>Screaming with melodic contour (<code>Screaming_V</code>)</b><br>
+          Vocalists performed the fragment using a screaming technique of their choice, intentionally introducing audible pitch variations between syllables (adding frequency fluctuations). The rhythmic pattern was to be kept as in the original. This task is the opposite of <code>Screaming_NV</code>.
+        </li>
+      </ul>
+    </div>
+  </details>
+</div>
+
 
   {# Macro для форматирования даты YYYYMMDD в May 1, 2025 #}
   {% macro format_date_ymd(date_str) -%}
@@ -42,6 +76,28 @@
     —
   {%- endif -%}
 {%- endmacro %}
+
+{% set technique_descriptions = {
+  "Clean": (
+    "Clean vocals with melody",
+  ),
+  "Clean_FLAT": (
+    "Clean vocals without melody, monotonous singing",
+  ),
+  "Growling_NV": (
+    "Growling without melodic contour (reduced frequency difference between syllables)",
+  ),
+  "Growling_V": (
+    "Growling with melodic contour (intensified frequency difference between syllables)",
+  ),
+  "Screaming_NV": (
+    "Screaming without melodic contour (reduced frequency difference between syllables)",
+  ),
+  "Screaming_V": (
+    "Screaming with melodic contour (intensified frequency difference between syllables)",
+  )
+} %}
+
 
 
   <div class="filters" style="display:flex; justify-content:center; align-items:flex-start;">
@@ -70,35 +126,62 @@
     {% endif %}
   </div>
 
-  {% macro original_block(orig_id) %}
-    {% set original = excerpts_dict.get(orig_id) %}
-    {% if original and original['MP3_Path'] and original['MP3_Path'] != 'N/A' %}
-      <p><em>Compare with Original:</em></p>
-      <audio controls preload="none">
-        <source src="/{{ original['MP3_Path'] }}" type="audio/mpeg">
-      </audio>
-      <details>
-        <summary>Show Original Info</summary>
-        <ul style="font-size:0.97em;">
+{% macro original_block(orig_id) %}
+  {% set original = excerpts_dict.get(orig_id) %}
+  {% if original and original['MP3_Path'] and original['MP3_Path'] != 'N/A' %}
+    <details>
+      <summary>Compare with Original</summary>
+      <div style="margin-top:1em;">
+        <audio controls preload="none" style="margin-bottom:1em;">
+          <source src="/{{ original['MP3_Path'] }}" type="audio/mpeg">
+        </audio>
+        <ul style="font-size:0.97em; margin:0 0 0.6em 0;">
+          {% if original['Spotify_URL'] not in ['N/A', 'nan', '', None] %}
+            <li><b>Spotify:</b> <a href="{{ original['Spotify_URL'] }}" target="_blank">Open in Spotify</a></li>
+          {% endif %}
           <li><b>Artist:</b> {{ original['Artist'] }}</li>
           <li><b>Song:</b> {{ original['Song'] }}</li>
-          <li><b>Lyrics:</b> {{ original['Lyrics'] }}</li>
+                    {% if original['Timecode'] not in ['N/A', 'nan', '', None] %}
+            <li><b>Timecode:</b> {{ original['Timecode'] }}</li>
+          {% endif %}
           <li><b>Technique:</b> {{ original['Technique'] }}</li>
           <li><b>Year:</b> {{ original['Year'] }}</li>
           <li><b>Album:</b> {{ original['Album'] }}</li>
           <li><b>Syllables Count:</b> {{ original['Syllable_Count'] }}</li>
-          <li><b>Popularity:</b> {{ original['Track_Popularity'] }}</li>
-          <li><b>Stream Count:</b> {{ original['Stream_Count'] }}</li>
           <li><b>Duration:</b> {{ original['Excerpt_duration_ms'] }}</li>
-          {% if original['Spotify_URL'] not in ['N/A', 'nan', '', None] %}
-            <li><b>Spotify:</b> <a href="{{ original['Spotify_URL'] }}" target="_blank">Open in Spotify</a></li>
+           {% if original['Melodic_representation'] not in ['N/A', 'nan', '', None] %}
+            {% set tech = (original['Technique'] or '').lower() %}
+            <li>
+              <b>
+                {% if "screaming" in tech or "growling" in tech %}
+                  Melodic Contour:
+                {% else %}
+                  Melody (humdrum):
+                {% endif %}
+              </b>
+              {# Только для экстремальных техник вырезаем после "Contour:" #}
+              {% if "screaming" in tech or "growling" in tech %}
+                {{ (original['Melodic_representation'] | replace("Contour:", "")).strip() }}
+              {% else %}
+                {{ original['Melodic_representation'] }}
+              {% endif %}
+            </li>
+          {% endif %}
+          {% if original['Rhythmic_representation'] not in ['N/A', 'nan', '', None] %}
+            <li><b>Rhythm (humdrum):</b> {{ original['Rhythmic_representation'] }}</li>
+          {% endif %}
+          {% if original['Tempo_(approx.)'] not in ['N/A', 'nan', '', None] %}
+            <li><b>Tempo (approx.):</b> {{ original['Tempo_(approx.)'] }} BPM</li>
           {% endif %}
         </ul>
-      </details>
-    {% else %}
-      <p><em>Original not found</em></p>
-    {% endif %}
-  {% endmacro %}
+      </div>
+    </details>
+  {% else %}
+    <p><em>Original not found</em></p>
+  {% endif %}
+{% endmacro %}
+
+
 
   {% if shared %}
   <h2>Shared Songs</h2>
@@ -132,13 +215,19 @@
               <div id="blockShared{{ loop.index }}">
                 {% for v in variations %}
                   <div class="audio-technique" style="display: {% if v['Technique'] == 'Clean' %}block{% else %}none{% endif %}; margin-top: 1rem;">
-                    <p><strong>{{ v["Technique"] }}</strong></p>
+<p style="font-size:1.08em; font-weight:500; margin-bottom:7px;">
+  {{ technique_descriptions[v["Technique"]][0] }}
+</p>
                     <audio controls preload="none">
                       <source src="/{{ v['WAV_Path'] }}" type="audio/wav">
                     </audio>
                     <details style="margin:0.6em 0 0.6em 0;">
                       <summary>Show Fragment Info</summary>
                       <ul style="font-size:0.97em;">
+                        {% if v['Stimuli_ID'] not in ['N/A', 'nan', '', None] %}
+  <li><b>Stimuli ID:</b> {{ v['Stimuli_ID'] }}</li>
+{% endif %}
+
                         {% if v['Session_date_YMD'] not in ['N/A', 'nan', '', None] %}
                           <li><b>Session date:</b> {{ format_date_ymd(v['Session_date_YMD']) }}</li>
                         {% endif %}
@@ -194,13 +283,19 @@
               <div id="blockUnique{{ loop.index }}">
                 {% for v in variations %}
                   <div class="audio-technique" style="display: {% if v['Technique'] == 'Clean' %}block{% else %}none{% endif %}; margin-top: 1rem;">
-                    <p><strong>{{ v["Technique"] }}</strong></p>
+<p style="font-size:1.08em; font-weight:500; margin-bottom:7px;">
+  {{ technique_descriptions[v["Technique"]][0] }}
+</p>
                     <audio controls preload="none">
                       <source src="/{{ v['WAV_Path'] }}" type="audio/wav">
                     </audio>
                     <details style="margin:0.6em 0 0.6em 0;">
                       <summary>Show Fragment Info</summary>
                       <ul style="font-size:0.97em;">
+                        {% if v['Stimuli_ID'] not in ['N/A', 'nan', '', None] %}
+  <li><b>Stimuli ID:</b> {{ v['Stimuli_ID'] }}</li>
+{% endif %}
+
                         {% if v['Session_date_YMD'] not in ['N/A', 'nan', '', None] %}
                           <li><b>Session date:</b> {{ format_date_ymd(v['Session_date_YMD']) }}</li>
                         {% endif %}
@@ -228,16 +323,19 @@
 
 {% block scripts %}
 <script>
+  // Переключение вокалиста
   document.getElementById("vocalistSelect").addEventListener("change", function () {
     const vocalist = this.value;
     window.location.href = `/metalvox?vocalist=${vocalist}`;
   });
 
+  // Показ/скрытие подробностей по песне
   function toggleDetails(id) {
     const row = document.getElementById(id);
     row.style.display = (row.style.display === "none") ? "table-row" : "none";
   }
 
+  // Переключение техник внутри раскрытого блока
   function switchTechnique(select, blockId) {
     const index = parseInt(select.value);
     const container = document.getElementById(blockId);
@@ -246,8 +344,43 @@
       div.style.display = (i === index) ? "block" : "none";
     });
   }
+
+  // Плавная анимация раскрытия блока условий
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll('.collapsible').forEach((details) => {
+      const summary = details.querySelector('summary');
+      const content = details.querySelector('.collapsible-content');
+      if (!summary || !content) return;
+
+      function setOpen(open) {
+        if (open) {
+          details.classList.add('open');
+          content.style.maxHeight = content.scrollHeight + "px";
+          content.style.opacity = '1';
+        } else {
+          content.style.maxHeight = null;
+          content.style.opacity = '0';
+          details.classList.remove('open');
+        }
+      }
+
+      summary.addEventListener('click', function (e) {
+        e.preventDefault();
+        if (details.open) {
+          setOpen(false);
+          setTimeout(() => details.removeAttribute('open'), 700);
+        } else {
+          details.setAttribute('open', true);
+          setTimeout(() => setOpen(true), 10);
+        }
+      });
+
+      if (details.hasAttribute('open')) setOpen(true);
+    });
+  });
 </script>
 {% endblock %}
+
 
 {% block head %}
 <style>
@@ -324,5 +457,59 @@
     background: #fff;
     font-size: 1rem;
   }
+.info-card {
+    background: linear-gradient(120deg, #f8fafc 70%, #f0f4fa 100%);
+    border-radius: 18px;
+    box-shadow: 0 2px 12px rgba(55,60,80,0.08);
+    padding: 20px 26px 16px 26px;
+    max-width: 750px;
+    margin: 22px auto 16px auto;
+    font-size: 0.97em;
+    color: #333;
+    line-height: 1.65;
+    text-align: center;
+  }
+  .info-card-inner {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 0.99em;
+  }
+.dataset-link a {
+    color: #444;
+    text-decoration: underline dotted;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 2px;
+    transition: color 0.23s, text-decoration-color 0.27s;
+    text-decoration-color: #aaa;
+
+  }
+  .dataset-link a:hover {
+    color: #888;
+    text-decoration: underline dotted;
+    text-decoration-color: #bbb;
+    text-underline-offset: 3px;
+  }
+  .collapsible .collapsible-content {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.7s cubic-bezier(.45,0,.55,1), opacity 0.5s, padding-top 0.3s;
+    padding-top: 0;
+  }
+  .collapsible.open .collapsible-content {
+    opacity: 1;
+    padding-top: 8px;
+    /* max-height задаём через JS */
+  }
+  .collapsible summary {
+    cursor: pointer;
+    font-size: 1.09em;
+    user-select: none;
+    margin-bottom: 0;
+  }
+
+
+
 </style>
 {% endblock %}
