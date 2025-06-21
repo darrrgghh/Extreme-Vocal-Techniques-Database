@@ -4,3 +4,4 @@ __pycache__/
 *.db
 .env
 /emvt_database.tsv
+/table_editor.py

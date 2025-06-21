@@ -5,6 +5,15 @@ import os
 app = Flask(__name__)
 DATA_FILE = "1excerpts_database.tsv"
 METALVOX_FILE = "1metal_vox.tsv"
+TRIPLE_TWELVE_FILE = "1triple_twelve_stimuli_set.tsv"
+
+# Загрузка Triple Twelve
+if os.path.exists(TRIPLE_TWELVE_FILE):
+    triple_df = pd.read_csv(TRIPLE_TWELVE_FILE, sep="\t")
+    triple_df = triple_df.fillna("N/A")
+    triple_df.replace("", "N/A", inplace=True)
+else:
+    triple_df = pd.DataFrame()
 
 def count_syllables(rhythmic_representation):
     if rhythmic_representation == "N/A":
@@ -102,9 +111,78 @@ def vocal_techniques_popularity():
 def vocal_techniques():
     return render_template("extreme-vocal-techniques.html")
 
-@app.route("/extreme-vocal-only-stimuli")
-def vocal_stimuli():
-    return render_template("extreme-vocal-only-stimuli.html")
+@app.route("/triple_twelve")
+def triple_twelve():
+    # Получаем выбранного вокалиста и технику из GET-параметров (по умолчанию All)
+    selected_vocalist = request.args.get("vocalist", "A")
+    selected_technique = request.args.get("technique", "All")
+
+    # Получаем фрагменты выбранного вокалиста
+    df_vocalist = triple_df[triple_df["Vocalist_ID"] == selected_vocalist].copy()
+
+    # Определяем функции для фильтрации и получения оригинальной техники
+    excerpts_dict = {str(row["Excerpt_ID"]): row.to_dict() for _, row in df.iterrows()}
+    def get_original_tech(ex_id):
+        ex = excerpts_dict.get(str(ex_id))
+        return ex["Technique"] if ex is not None and "Technique" in ex else "N/A"
+
+    # Добавляем колонку Original_Technique
+    df_vocalist["Original_Technique"] = df_vocalist["Original_Corresponding_Excerpt"].apply(get_original_tech)
+
+    # Список техник, доступных у выбранного вокалиста (для выпадающего меню)
+    technique_options = sorted(df_vocalist["Original_Technique"].dropna().unique(), key=lambda x: x.lower())
+    # Для сортировки: Clean, Screaming, Growling (можно дополнять список)
+    technique_order = ["Clean", "Screaming", "Growling"]
+    def technique_sort_key(tech):
+        tech = (tech or "").lower()
+        for idx, base in enumerate(technique_order):
+            if base.lower() in tech:
+                return idx
+        return len(technique_order)  # все прочие в конец
+
+    # Разделяем shared и unique
+    shared_df = df_vocalist[df_vocalist["Original_Corresponding_Excerpt"].isin(SHARED_EXCERPT_IDS)].copy()
+    unique_df = df_vocalist[~df_vocalist["Original_Corresponding_Excerpt"].isin(SHARED_EXCERPT_IDS)].copy()
+
+    # Фильтрация по технике, если не All
+    if selected_technique != "All":
+        shared_df = shared_df[shared_df["Original_Technique"] == selected_technique]
+        unique_df = unique_df[unique_df["Original_Technique"] == selected_technique]
+
+    # Сортировка: сначала Clean, потом Screaming, потом Growling, затем всё остальное по алфавиту
+    shared_df = shared_df.sort_values(
+        by=["Original_Technique", "Song", "Technique"],
+        key=lambda col: col.map(lambda x: (technique_sort_key(x), x or ""))
+    )
+    unique_df = unique_df.sort_values(
+        by=["Original_Technique", "Song", "Technique"],
+        key=lambda col: col.map(lambda x: (technique_sort_key(x), x or ""))
+    )
+
+    # Список вокалистов и кредиты
+    vocalists_df = triple_df[["Vocalist_ID", "Credits"]].drop_duplicates()
+    vocalists_df = vocalists_df[
+        (vocalists_df["Vocalist_ID"].notnull()) &
+        (vocalists_df["Vocalist_ID"].str.strip() != "") &
+        (vocalists_df["Vocalist_ID"].str.len() == 1)
+    ].sort_values("Vocalist_ID")
+    vocalist_credits = {row["Vocalist_ID"]: row["Credits"] for _, row in vocalists_df.iterrows()}
+    vocalists = list(vocalist_credits.keys())
+
+    return render_template(
+        "triple_twelve.html",
+        shared=shared_df.to_dict(orient="records"),
+        unique=unique_df.to_dict(orient="records"),
+        vocalists=vocalists,
+        vocalist_credits=vocalist_credits,
+        selected_vocalist=selected_vocalist,
+        selected_technique=selected_technique,
+        technique_options=technique_options,
+        excerpts=df.to_dict(orient="records"),
+        excerpts_dict=excerpts_dict,
+    )
+
+
 
 @app.route("/analytics")
 def analytics():
