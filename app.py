@@ -103,13 +103,13 @@ def metalvox():
 def index():
     return render_template("index.html")
 
-@app.route("/extreme-vocal-techniques-popularity")
+@app.route("/spotty5-emvt-examples-dataset")
 def vocal_techniques_popularity():
-    return render_template("extreme-vocal-techniques-popularity.html", excerpts=df.to_dict(orient="records"))
+    return render_template("spotty5-emvt-examples-dataset.html", excerpts=df.to_dict(orient="records"))
 
-@app.route("/extreme-vocal-techniques")
+@app.route("/extreme-metal-vocal-techniques-dataset")
 def vocal_techniques():
-    return render_template("extreme-vocal-techniques.html")
+    return render_template("extreme-metal-vocal-techniques-dataset.html")
 
 @app.route("/triple_twelve")
 def triple_twelve():
