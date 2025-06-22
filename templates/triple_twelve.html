@@ -115,22 +115,43 @@
 
 
   <div class="description">
-    <details id="conditionsDetails" class="collapsible">
-      <summary><b>Detailed description of all conditions</b></summary>
-      <div class="collapsible-content">
-        <ul style="text-align:left; max-width:780px; margin:18px auto 0 auto; font-size:1.04em; line-height:1.7;">
-          <li>
-            <b>With melodic context</b><br>
-            Vocalists were asked to perform fragments with reference to a musical context or melody, following the contour if present.
-          </li>
-          <li>
-            <b>Without melodic context</b><br>
-            Vocalists were instructed to perform the fragment with no reference to a melodic context, keeping the pitch as flat as possible (monotone) if the technique allowed.
-          </li>
-        </ul>
-      </div>
-    </details>
-  </div>
+  <details id="conditionsDetails" class="collapsible">
+    <summary><b>Description of the six conditions</b></summary>
+    <div class="collapsible-content">
+            <p style="text-align:right; max-width:780px; margin:18px auto 0 0; font-size:1.04em; line-height:1.7;">
+         <em>
+        In this set, all fragments were selected from real musical material, each containing one of three vocal techniques: clean vocals, growling, or screaming. Vocalists were instructed to imitate these techniques under one of two experimental conditions: for clean vocals—either with or without melody; for extreme techniques—either with or without a melodic contour. The 12 shared songs were specifically chosen so that the extreme vocal excerpts would exhibit as monotone a contour as possible. In the 12 unique songs (for extreme techniques), melodic contour was analyzed during each recording session, resulting in the creation of two versions of each excerpt: one with an emphasized contour and one with a flat (monotone) contour.
+    </em>
+      </p>
+      <ul style="text-align:left; max-width:780px; margin:18px auto 0 auto; font-size:1.04em; line-height:1.7;">
+        <li>
+          <b>Clean vocals with melody (<code>Clean</code>)</b><br>
+          If the original excerpt included clean vocals and a clear melody, vocalists were asked either to reproduce it or create their own interpretation—provided there were noticeable pitch changes. The rhythmic pattern was to be kept as in the original.
+        </li>
+        <li>
+          <b>Clean vocals without melody, monotonous (<code>Clean_Flat</code>)</b><br>
+          Vocalists were instructed to sing the fragment entirely on a single pitch of their choice, in any register. The rhythmic pattern was to be kept as in the original.
+        </li>
+        <li>
+          <b>Growling without melodic contour (<code>Growling_NV</code>)</b><br>
+          Vocalists performed the fragment using a growling technique of their choice, keeping the melodic contour as flat as possible (aiming for all syllables to be produced at one pitch). The rhythmic pattern was to be kept as in the original.
+        </li>
+        <li>
+          <b>Growling with melodic contour (<code>Growling_V</code>)</b><br>
+          Vocalists performed the fragment using a growling technique of their choice, intentionally introducing audible pitch variations between syllables (adding frequency fluctuations). The rhythmic pattern was to be kept as in the original. This task is the opposite of <code>Growling_NV</code>.
+        </li>
+        <li>
+          <b>Screaming without melodic contour (<code>Screaming_NV</code>)</b><br>
+          Vocalists performed the fragment using a screaming technique of their choice, keeping the melodic contour as flat as possible (all syllables at one pitch). The rhythmic pattern was to be kept as in the original.
+        </li>
+        <li>
+          <b>Screaming with melodic contour (<code>Screaming_V</code>)</b><br>
+          Vocalists performed the fragment using a screaming technique of their choice, intentionally introducing audible pitch variations between syllables (adding frequency fluctuations). The rhythmic pattern was to be kept as in the original. This task is the opposite of <code>Screaming_NV</code>.
+        </li>
+      </ul>
+    </div>
+  </details>
+</div>
 
   <div class="filters" style="display:flex; justify-content:center; align-items:flex-start; gap:2em;">
   <div>
@@ -231,6 +252,22 @@
                         {% if v['Duration'] not in ['N/A', 'nan', '', None] %}
                           <li><b>Duration:</b> {{ v['Duration'] }}</li>
                         {% endif %}
+                        {% if v['Spectral_Centroid'] not in ['N/A', 'nan', '', None] %}
+  <li><b>Spectral Centroid (Hz):</b> {{ v['Spectral_Centroid'] }}</li>
+{% endif %}
+{% if v['Duration'] not in ['N/A', 'nan', '', None] %}
+  <li><b>Duration (ms):</b> {{ v['Duration'] }}</li>
+{% endif %}
+{% if v['logMel_Path'] not in ['N/A', 'nan', '', None] %}
+  <li>
+    <b>Log-Mel Spectrogram:</b><br>
+    <a href="/{{ v['logMel_Path'] }}" target="_blank">
+      <img src="/{{ v['logMel_Path'] }}" alt="Log-Mel Spectrogram"
+           style="max-width:340px; border-radius:10px; margin-top:6px; box-shadow:0 2px 12px rgba(0,0,0,0.07); cursor:pointer;">
+    </a>
+  </li>
+{% endif %}
+
                       </ul>
                     </details>
                     {{ original_block(v['Original_Corresponding_Excerpt']) }}
@@ -305,6 +342,22 @@
                         {% if v['Duration'] not in ['N/A', 'nan', '', None] %}
                           <li><b>Duration:</b> {{ v['Duration'] }}</li>
                         {% endif %}
+                        {% if v['Spectral_Centroid'] not in ['N/A', 'nan', '', None] %}
+  <li><b>Spectral Centroid (Hz):</b> {{ v['Spectral_Centroid'] }}</li>
+{% endif %}
+{% if v['Duration'] not in ['N/A', 'nan', '', None] %}
+  <li><b>Duration (ms):</b> {{ v['Duration'] }}</li>
+{% endif %}
+{% if v['logMel_Path'] not in ['N/A', 'nan', '', None] %}
+  <li>
+    <b>Log-Mel Spectrogram:</b><br>
+    <a href="/{{ v['logMel_Path'] }}" target="_blank">
+      <img src="/{{ v['logMel_Path'] }}" alt="Log-Mel Spectrogram"
+           style="max-width:340px; border-radius:10px; margin-top:6px; box-shadow:0 2px 12px rgba(0,0,0,0.07); cursor:pointer;">
+    </a>
+  </li>
+{% endif %}
+
                       </ul>
                     </details>
                     {{ original_block(v['Original_Corresponding_Excerpt']) }}

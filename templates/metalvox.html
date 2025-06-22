@@ -232,11 +232,20 @@
                           <li><b>Session date:</b> {{ format_date_ymd(v['Session_date_YMD']) }}</li>
                         {% endif %}
                         {% if v['Spectral_Centroid'] not in ['N/A', 'nan', '', None] %}
-                          <li><b>Spectral Centroid:</b> {{ v['Spectral_Centroid'] }}</li>
+                          <li><b>Spectral Centroid (Hz):</b> {{ v['Spectral_Centroid'] }}</li>
                         {% endif %}
                         {% if v['Duration'] not in ['N/A', 'nan', '', None] %}
-                          <li><b>Duration:</b> {{ v['Duration'] }}</li>
+                          <li><b>Duration (ms):</b> {{ v['Duration'] }}</li>
                         {% endif %}
+                        {% if v['logMel_Path'] not in ['N/A', 'nan', '', None] %}
+  <li>
+    <b>Log-Mel Spectrogram:</b><br>
+    <a href="/{{ v['logMel_Path'] }}" target="_blank">
+      <img src="/{{ v['logMel_Path'] }}" alt="Log-Mel Spectrogram"
+           style="max-width:340px; border-radius:10px; margin-top:6px; box-shadow:0 2px 12px rgba(0,0,0,0.07); cursor:pointer;">
+    </a>
+  </li>
+{% endif %}
                       </ul>
                     </details>
                     {{ original_block(v['Original_Corresponding_Excerpt']) }}
@@ -300,11 +309,21 @@
                           <li><b>Session date:</b> {{ format_date_ymd(v['Session_date_YMD']) }}</li>
                         {% endif %}
                         {% if v['Spectral_Centroid'] not in ['N/A', 'nan', '', None] %}
-                          <li><b>Spectral Centroid:</b> {{ v['Spectral_Centroid'] }}</li>
+                          <li><b>Spectral Centroid (Hz):</b> {{ v['Spectral_Centroid'] }}</li>
                         {% endif %}
                         {% if v['Duration'] not in ['N/A', 'nan', '', None] %}
-                          <li><b>Duration:</b> {{ v['Duration'] }}</li>
+                          <li><b>Duration (ms):</b> {{ v['Duration'] }}</li>
                         {% endif %}
+                        {% if v['logMel_Path'] not in ['N/A', 'nan', '', None] %}
+  <li>
+    <b>Log-Mel Spectrogram:</b><br>
+    <a href="/{{ v['logMel_Path'] }}" target="_blank">
+      <img src="/{{ v['logMel_Path'] }}" alt="Log-Mel Spectrogram"
+           style="max-width:340px; border-radius:10px; margin-top:6px; box-shadow:0 2px 12px rgba(0,0,0,0.07); cursor:pointer;">
+    </a>
+  </li>
+{% endif %}
+
                       </ul>
                     </details>
                     {{ original_block(v['Original_Corresponding_Excerpt']) }}
