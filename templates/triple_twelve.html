@@ -247,12 +247,6 @@
                           <li><b>Session date:</b> {{ format_date_ymd(v['Session_date_YMD']) }}</li>
                         {% endif %}
                         {% if v['Spectral_Centroid'] not in ['N/A', 'nan', '', None] %}
-                          <li><b>Spectral Centroid:</b> {{ v['Spectral_Centroid'] }}</li>
-                        {% endif %}
-                        {% if v['Duration'] not in ['N/A', 'nan', '', None] %}
-                          <li><b>Duration:</b> {{ v['Duration'] }}</li>
-                        {% endif %}
-                        {% if v['Spectral_Centroid'] not in ['N/A', 'nan', '', None] %}
   <li><b>Spectral Centroid (Hz):</b> {{ v['Spectral_Centroid'] }}</li>
 {% endif %}
 {% if v['Duration'] not in ['N/A', 'nan', '', None] %}
@@ -335,12 +329,6 @@
                         {% endif %}
                         {% if v['Session_date_YMD'] not in ['N/A', 'nan', '', None] %}
                           <li><b>Session date:</b> {{ format_date_ymd(v['Session_date_YMD']) }}</li>
-                        {% endif %}
-                        {% if v['Spectral_Centroid'] not in ['N/A', 'nan', '', None] %}
-                          <li><b>Spectral Centroid:</b> {{ v['Spectral_Centroid'] }}</li>
-                        {% endif %}
-                        {% if v['Duration'] not in ['N/A', 'nan', '', None] %}
-                          <li><b>Duration:</b> {{ v['Duration'] }}</li>
                         {% endif %}
                         {% if v['Spectral_Centroid'] not in ['N/A', 'nan', '', None] %}
   <li><b>Spectral Centroid (Hz):</b> {{ v['Spectral_Centroid'] }}</li>
