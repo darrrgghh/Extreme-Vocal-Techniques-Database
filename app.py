@@ -49,8 +49,21 @@ df["Excerpt_ID"] = df["Excerpt_ID"].astype(str)
 # Загрузка METALVOX
 if os.path.exists(METALVOX_FILE):
     metalvox_df = pd.read_csv(METALVOX_FILE, sep="\t")
+    # Исправление обработки даты
+    if "Session_date_YMD" in metalvox_df.columns:
+        def clean_ymd(val):
+            try:
+                val_str = str(int(float(val)))
+                if len(val_str) == 8:
+                    return val_str
+            except:
+                pass
+            return "N/A"
+        metalvox_df["Session_date_YMD"] = metalvox_df["Session_date_YMD"].apply(clean_ymd)
 else:
     metalvox_df = pd.DataFrame()
+
+
 
 metalvox_df["Original_Corresponding_Excerpt"] = metalvox_df["Original_Corresponding_Excerpt"].astype(str)
 
@@ -64,14 +77,37 @@ SHARED_EXCERPT_IDS = [
 @app.route("/metalvox")
 def metalvox():
     selected_vocalist = request.args.get("vocalist", "C")
-    df_vocalist = metalvox_df[metalvox_df["Vocalist_ID"] == selected_vocalist].copy()
+    stimulus_id = request.args.get("stimulus_id")
 
-    # ВАЖНО: вот правильное разделение
-    shared_df = df_vocalist[df_vocalist["Original_Corresponding_Excerpt"].isin(SHARED_EXCERPT_IDS)].copy()
-    unique_df = df_vocalist[~df_vocalist["Original_Corresponding_Excerpt"].isin(SHARED_EXCERPT_IDS)].copy()
+    stimulus_id_clean = None  # Это просто для jinja, чтобы подставлять в поле input
 
-    shared_df = shared_df.sort_values(["Song", "Technique"])
-    unique_df = unique_df.sort_values(["Song", "Technique"])
+    if stimulus_id:
+        stimulus_id_clean = str(int(stimulus_id)).zfill(3)
+        stim_id_str = f"VOX-{stimulus_id_clean}"
+        row = metalvox_df[metalvox_df["Stimuli_ID"] == stim_id_str]
+        if not row.empty:
+            selected_vocalist = row.iloc[0]["Vocalist_ID"]
+            is_shared = row.iloc[0]["Original_Corresponding_Excerpt"] in SHARED_EXCERPT_IDS
+
+            # <--- ВАЖНО! Фильтрация ровно по Stimuli_ID, никаких all_variants здесь не нужно!
+            if is_shared:
+                shared_df = row  # только одна строка
+                unique_df = pd.DataFrame()
+            else:
+                shared_df = pd.DataFrame()
+                unique_df = row  # только одна строка
+        else:
+            shared_df = pd.DataFrame()
+            unique_df = pd.DataFrame()
+    else:
+        df_vocalist = metalvox_df[metalvox_df["Vocalist_ID"] == selected_vocalist].copy()
+        shared_df = df_vocalist[df_vocalist["Original_Corresponding_Excerpt"].isin(SHARED_EXCERPT_IDS)].copy()
+        unique_df = df_vocalist[~df_vocalist["Original_Corresponding_Excerpt"].isin(SHARED_EXCERPT_IDS)].copy()
+
+    if not shared_df.empty and all(col in shared_df.columns for col in ["Song", "Technique"]):
+        shared_df = shared_df.sort_values(["Song", "Technique"])
+    if not unique_df.empty and all(col in unique_df.columns for col in ["Song", "Technique"]):
+        unique_df = unique_df.sort_values(["Song", "Technique"])
 
     vocalists_df = metalvox_df[["Vocalist_ID", "Credits"]].drop_duplicates()
     vocalists_df = vocalists_df[
@@ -96,8 +132,8 @@ def metalvox():
         selected_vocalist=selected_vocalist,
         excerpts=df.to_dict(orient="records"),
         excerpts_dict=excerpts_dict,
+        stimulus_id=stimulus_id_clean,  # Для заполнения input
     )
-
 
 @app.route("/")
 def index():
